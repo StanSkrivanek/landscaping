@@ -43,14 +43,14 @@ const project = defineType({
 				hotspot: true
 			}
 		}),
-		{
+		defineField({
 			name: 'gallery',
 			type: 'array',
 			of: [{ type: 'image' }],
 			options: {
 				layout: 'grid'
 			}
-		},
+		}),
 		// 4 supportive images
 		defineField({
 			name: 'image1',

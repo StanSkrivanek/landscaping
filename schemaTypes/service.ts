@@ -19,19 +19,20 @@ const service = defineType({
             options: {
                 source: 'title',
                 maxLength: 96,
-                // slugify: (input) => input
-                // 	.toLowerCase()
-                // 	.replace(/\s+/g, '-')
-                // 	.slice(0, 200)
+                slugify: (input) =>
+                    input
+                        .toLowerCase()
+                        .replace(/\s+/g, '-')
+                        .slice(0, 96)
             }
         }),
-        // reference to premise type
-        // defineField({
-        //     name: 'premiseType',
-        //     title: 'Premise Type',
-        //     type: 'reference',
-        //     to: [{ type: 'premise' }]
-        // }),
+//  headline    
+        defineField({
+            name: 'headline',
+            title: 'Service Headline',
+            type: 'string',
+            description: 'Enter a short headliner for the service '
+        }),
         // list of 3 short descriptions of current service 
         defineField({
             name: 'shortDescription',
