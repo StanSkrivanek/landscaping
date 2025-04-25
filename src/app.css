@@ -90,13 +90,15 @@ h3,
 h4,
 h5,
 h6 {
-	overflow-wrap: break-word;
+	/* overflow-wrap: break-word; */
 }
 
 /* 9. Improve line wrapping */
 p {
 	text-wrap: pretty;
+	letter-spacing: 0.05rem;
 }
+
 h1,
 h2,
 h3,
@@ -104,6 +106,9 @@ h4,
 h5,
 h6 {
 	text-wrap: balance;
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: 0.025rem;
 }
 
 /*
@@ -133,17 +138,57 @@ h6 {
 	--ff-regular: 'Haas Roman', sans-serif;
 	--ff-medium: 'Haas Medium', sans-serif;
 	--ff-org: 'Organetto', sans-serif;
+/* CONTAINER */
+	/* --step--2: clamp(0.84rem, 0.9295rem + -0.0724cqi, 0.9115rem);
+	--step--1: clamp(1.05rem, 1.1048rem + -0.0443cqi, 1.0938rem);
+	--step-0: clamp(1.3125rem, 1.3125rem + 0cqi, 1.3125rem);
+	--step-1: clamp(1.575rem, 1.5584rem + 0.0665cqi, 1.6406rem);
+	--step-2: clamp(1.89rem, 1.8493rem + 0.1628cqi, 2.0508rem);
+	--step-3: clamp(2.268rem, 2.1932rem + 0.2992cqi, 2.5635rem);
+	--step-4: clamp(2.7216rem, 2.5994rem + 0.4889cqi, 3.2043rem);
+	--step-5: clamp(3.2659rem, 3.0787rem + 0.7489cqi, 4.0054rem); */
+
+/* VIEWPORT */
+   --step--2: clamp(0.84rem, 1.2321rem + -0.3172vw, 1.1528rem);
+  --step--1: clamp(1.05rem, 1.2757rem + -0.1826vw, 1.2301rem);
+  --step-0: clamp(1.3125rem, 1.3125rem + 0vw, 1.3125rem);
+  --step-1: clamp(1.4004rem, 1.3396rem + 0.2435vw, 1.6406rem);
+  --step-2: clamp(1.4943rem, 1.3532rem + 0.5643vw, 2.0508rem);
+  --step-3: clamp(1.5944rem, 1.3487rem + 0.9826vw, 2.5635rem);
+  --step-4: clamp(1.7012rem, 1.3202rem + 1.5241vw, 3.2043rem);
+  --step-5: clamp(1.8152rem, 1.26rem + 2.2208vw, 4.0054rem);
+
+	--ff-xxs: var(--step--2);
+	--ff-xs: var(--step--1);
+	--ff-sm: var(--step-0);
+	--ff-md: var(--step-1);
+	--ff-lg: var(--step-2);
+	--ff-xl: var(--step-3);
+	--ff-xxl: var(--step-4);
+	--ff-xxxl: var(--step-5);
 }
+
 body {
 	margin: 0;
 	padding: 0;
 	font-family: var(--ff-light);
-	font-size: 21px;
-	letter-spacing: 0.04em;
-
+	font-size: 18px;
 	background-color: var(--clr-bg);
 	color: var(--clr-text-dark);
+    container-type: inline-size;
+    /* background-color: #57afa8; */
 }
+
+main {
+	/* display: grid; */
+	/* grid-template-columns: repeat(10, 1fr); */
+	/* gap: 16px; */
+	max-width: 110em; /*1978px */
+	margin: 0 auto;
+	border: 1px solid red;
+	/* padding-inline: 2em; */
+}
+
 h1,
 h2,
 h3,
@@ -152,4 +197,26 @@ h5,
 h6 {
 	font-family: var(--ff-org);
 	color: var(--clr-text-dark);
+}
+h1 {
+	font-size: var(--ff-xxxl);
+}
+
+a {
+	text-decoration: none;
+	color: var(--clr-orange);
+}
+
+@container (max-width: 768px) {
+	/* main {
+		grid-template-columns: repeat(8, 1fr);
+    
+	} */
+	
+}
+
+@container (max-width: 480px) {
+	/* main {
+		grid-template-columns: repeat(6, 1fr);
+	} */
 }

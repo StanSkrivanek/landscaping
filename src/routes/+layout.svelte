@@ -5,4 +5,6 @@
 </script>
 
 <!-- render layout -->
-{@render children()}
+<main>
+	{@render children()}
+</main>
