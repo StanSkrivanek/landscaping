@@ -150,6 +150,8 @@ h6 {
 	--step-3: clamp(1.5944rem, 1.3542rem + 0.9607vw, 2.5635rem);
 	--step-4: clamp(1.7012rem, 1.3287rem + 1.4901vw, 3.2043rem);
 	--step-5: clamp(1.8152rem, 1.2724rem + 2.1712vw, 4.0054rem);
+    --step-6: clamp(1.9372rem, 1.1764rem + 3.032vw, 5.0000rem);
+    --step-7: clamp(2.0684rem, 1.0323rem + 4.098vw, 6.2500rem);
 
 	--ff-xxs: var(--step--2);
 	--ff-xs: var(--step--1);
@@ -159,6 +161,8 @@ h6 {
 	--ff-xl: var(--step-3);
 	--ff-xxl: var(--step-4);
 	--ff-xxxl: var(--step-5);
+	--ff-xxxxl: var(--step-6);
+	--ff-xxxxxl: var(--step-7);
 }
 
 body {
