@@ -1,14 +1,14 @@
 <script>
-    import Cta from '$lib/components/CtaBlock.svelte';
+    // load data from CMS
 </script>
 
 <div class="hero">
 	<div class="hero-content">
-	
+	<!-- <h1>{headline}</h1> -->
 		<h1>Crafting outdoor spaces with beauty, purpose, and permanence</h1>
 	</div>
 </div>
-<Cta />
+
 <style>
 	.hero {
 		position: relative;
