@@ -7,7 +7,6 @@
 	<div class="tiles-grid">
 		{#each items as item}
 			<div class="tile-card">
-
 				<a href={item.slug} aria-label={`Go to ${item.title}`}>
 					<div class="arrow-icon">
 						<svg
@@ -34,20 +33,47 @@
 				</div>
 			</div>
 		{/each}
+		<div class="tile-card">
+			<p>We offer a comprehensive range of landscaping and gardening services</p>
+			<!-- <p>all services</p> -->
+			<a href="/services" aria-label={`Go to Services`}>
+				<!-- <div class="logo">
+					<img
+						src="https://cdn.sanity.io/images/lbo1agd3/production/5f8e2a82c1890a731881ab5bafad52be906eec6b-213x227.svg"
+						alt=""
+					/>
+				</div> -->
+				<div class="arrow-icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="64"
+						height="64"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
+						><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg
+					>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
 
 <style>
 	.tiles__c {
-		margin-top: 10rem;
-        h2{
-            font-size: var(--fs-xxxl);
-            margin-bottom: 2rem;
-        span{
-            color: var(--clr-accent);
-            
-            letter-spacing: 0.08rem;
-        }}
+		margin-top: 6rem;
+		h2 {
+			font-size: var(--fs-xxxl);
+			margin-bottom: 2rem;
+			& span {
+				color: var(--clr-accent);
+				letter-spacing: 0.08rem;
+			}
+		}
 	}
 
 	.tiles-grid {
@@ -62,17 +88,19 @@
 		overflow: hidden;
 		border-radius: 4px;
 		/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-
-}
+	}
 	.tile-card::before {
-		content: "";
+		content: '';
 		position: absolute;
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		/* Example gradient: dark at bottom, transparent at top */
-		background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.25) 90%, transparent 100%);
+		&:not(:last-child) {
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%);
+		}
+		/* background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%); */
 	}
+
 	.tile-card:nth-child(4n + 4) {
 		grid-column: span 6; /* Second card in even rows */
 	}
@@ -83,30 +111,56 @@
 		object-fit: cover;
 	}
 
-	
-/* Card sizes based on the pattern */
-/* First row and odd rows follow 6-4 pattern */
-.tile-card:nth-child(4n + 1) {
-	grid-column: span 6; /* First card in odd rows */
-}
+	/* Card sizes based on the pattern */
+	/* First row and odd rows follow 6-4 pattern */
+	.tile-card:nth-child(4n + 1) {
+		grid-column: span 6; /* First card in odd rows */
+	}
 
-.tile-card:nth-child(4n + 2) {
-	grid-column: span 4; /* Second card in odd rows */
-}
+	.tile-card:nth-child(4n + 2) {
+		grid-column: span 4; /* Second card in odd rows */
+	}
 
-/* Even rows follow 4-6 pattern (reversed) */
-.tile-card:nth-child(4n + 3) {
-	grid-column: span 4; /* First card in even rows */
-}
+	/* Even rows follow 4-6 pattern (reversed) */
+	.tile-card:nth-child(4n + 3) {
+		grid-column: span 4; /* First card in even rows */
+	}
 
-.tile-card:nth-child(4n + 4) {
-	grid-column: span 6; /* Second card in even rows */
-}
+	.tile-card:nth-child(4n + 4) {
+		grid-column: span 6; /* Second card in even rows */
+	}
 
+	.tile-card:last-child {
+		background: var(--clr-accent); /* Last card */
+        background-image: url('https://cdn.sanity.io/images/lbo1agd3/production/c22c12bcb7cd010b64507b591f67702669e4bdc5-142x175.svg');
+		
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position:  right 20px bottom -100px ;
+        
 
-.tile-content {
-	position: absolute;
-;
+        padding: 40px;
+        & p {
+            font-size: var(--fs-xl);
+            color: var(--clr-bg);
+            font-family: var(--ff-org);
+            letter-spacing: 0.08rem;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+		& .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            /* height: 50%; */
+            /* background: red; */
+            /* overflow: hidden; */
+        }
+	}
+
+	.tile-content {
+		position: absolute;
 		bottom: 0;
 		left: 0;
 		width: 100%;
@@ -127,7 +181,7 @@
 		letter-spacing: 0.08rem;
 	}
 	.arrow-icon {
-        position: absolute;
+		position: absolute;
 		bottom: 20px;
 		right: 20px;
 		width: 64px;
