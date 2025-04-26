@@ -66,7 +66,7 @@
 <style>
 	.tiles__c {
 		margin-top: 6rem;
-		h2 {
+		& h2 {
 			font-size: var(--fs-xxxl);
 			margin-bottom: 2rem;
 			& span {
@@ -86,7 +86,8 @@
 	.tile-card {
 		position: relative;
 		overflow: hidden;
-		border-radius: 4px;
+		border-radius: 0.25rem;
+        max-height: 480px;
 		/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 	}
 	.tile-card::before {
@@ -132,31 +133,19 @@
 
 	.tile-card:last-child {
 		background: var(--clr-accent); /* Last card */
-        background-image: url('https://cdn.sanity.io/images/lbo1agd3/production/c22c12bcb7cd010b64507b591f67702669e4bdc5-142x175.svg');
-		
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position:  right 20px bottom -100px ;
-        
-
-        padding: 40px;
-        & p {
-            font-size: var(--fs-xl);
-            color: var(--clr-bg);
-            font-family: var(--ff-org);
-            letter-spacing: 0.08rem;
-            line-height: 1.1;
-            margin-bottom: 3rem;
-        }
-		& .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            /* height: 50%; */
-            /* background: red; */
-            /* overflow: hidden; */
-        }
+		background-image: url('https://cdn.sanity.io/images/lbo1agd3/production/c22c12bcb7cd010b64507b591f67702669e4bdc5-142x175.svg');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right 20px bottom -100px;
+		padding: 40px;
+		& p {
+			font-size: var(--fs-xl);
+			color: var(--clr-bg);
+			font-family: var(--ff-org);
+			letter-spacing: 0.08rem;
+			line-height: 1.1;
+			margin-bottom: 3rem;
+		}
 	}
 
 	.tile-content {
@@ -173,6 +162,7 @@
 		font-size: var(--fs-lg);
 		margin-bottom: 10px;
 		color: var(--clr-bg);
+        width:20ch;
 	}
 
 	.tile-content p {
