@@ -40,6 +40,14 @@
 <style>
 	.tiles__c {
 		margin-top: 10rem;
+        h2{
+            font-size: var(--fs-xxxl);
+            margin-bottom: 2rem;
+        span{
+            color: var(--clr-accent);
+            
+            letter-spacing: 0.08rem;
+        }}
 	}
 
 	.tiles-grid {
