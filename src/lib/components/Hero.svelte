@@ -1,7 +1,5 @@
 <script>
 	// load data from CMS
-
-	import Navigation from './Navigation.svelte';
 </script>
 
 <div class="hero">
@@ -44,7 +42,10 @@
 	}
 
 	/* container query */
-	@container (max-width: 1970px) {
+	@media (width < 1970px) {
+		.hero {
+			max-height: 100dvh;
+		}
 		.hero-content {
 			& h1 {
 				font-size: var(--ff-xxxl);
@@ -52,9 +53,10 @@
 		}
 	}
 
-	@container (max-width: 992px) {
+	@media (width < 992px) {
 		.hero {
 			grid-template-columns: repeat(8, 1fr);
+			height: 700px;
 		}
 		.hero-content {
 			& h1 {
@@ -63,7 +65,7 @@
 		}
 	}
 
-	@container (max-width: 768px) {
+	@media (width < 768px) {
 		.hero {
 			height: 600px;
 		}
@@ -75,7 +77,7 @@
 		}
 	}
 
-	@container (max-width: 480px) {
+	@media (width < 480px) {
 		.hero {
 			height: 400px;
 		}
