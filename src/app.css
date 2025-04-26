@@ -140,7 +140,8 @@ h6 {
 	--ff-org: 'Organetto', sans-serif;
 
 	/* VIEWPORT */
-
+	
+	/* --step--3: clamp(0.625rem, 1.1875rem + -0.3101vw, 1.1rem); */
 	--step--2: clamp(0.84rem, 1.2304rem + -0.3101vw, 1.1528rem);
 	--step--1: clamp(1.05rem, 1.2747rem + -0.1785vw, 1.2301rem);
 	--step-0: clamp(1.3125rem, 1.3125rem + 0vw, 1.3125rem);
@@ -152,6 +153,7 @@ h6 {
 	--step-6: clamp(1.9372rem, 1.1764rem + 3.032vw, 5rem);
 	--step-7: clamp(2.0684rem, 1.0323rem + 4.098vw, 6.25rem);
 
+	/* --fs-xxxs: var(--step--3); */
 	--fs-xxs: var(--step--2);
 	--fs-xs: var(--step--1);
 	--fs-sm: var(--step-0);
@@ -182,11 +184,12 @@ main {
 	margin: 0 auto;
 }
 
-section{
+section {
 	max-width: 96em;
 	margin: 0 auto;
 	container-type: inline-size;
 }
+
 h1,
 h2,
 h3,
@@ -218,4 +221,3 @@ a {
 		grid-template-columns: repeat(6, 1fr);
 	} */
 /* } */
-
