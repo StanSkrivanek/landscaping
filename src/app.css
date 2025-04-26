@@ -152,16 +152,16 @@ h6 {
 	--step-6: clamp(1.9372rem, 1.1764rem + 3.032vw, 5rem);
 	--step-7: clamp(2.0684rem, 1.0323rem + 4.098vw, 6.25rem);
 
-	--ff-xxs: var(--step--2);
-	--ff-xs: var(--step--1);
-	--ff-sm: var(--step-0);
-	--ff-md: var(--step-1);
-	--ff-lg: var(--step-2);
-	--ff-xl: var(--step-3);
-	--ff-xxl: var(--step-4);
-	--ff-xxxl: var(--step-5);
-	--ff-xxxxl: var(--step-6);
-	--ff-xxxxxl: var(--step-7);
+	--fs-xxs: var(--step--2);
+	--fs-xs: var(--step--1);
+	--fs-sm: var(--step-0);
+	--fs-md: var(--step-1);
+	--fs-lg: var(--step-2);
+	--fs-xl: var(--step-3);
+	--fs-xxl: var(--step-4);
+	--fs-xxxl: var(--step-5);
+	--fs-xxxxl: var(--step-6);
+	--fs-xxxxxl: var(--step-7);
 }
 
 body {
@@ -197,7 +197,7 @@ h6 {
 	color: var(--clr-text-dark);
 }
 h1 {
-	font-size: var(--ff-xxxl);
+	font-size: var(--fs-xxxl);
 }
 
 a {

@@ -37,7 +37,7 @@
 
 		& h1 {
 			color: var(--clr-text-light);
-			font-size: var(--ff-xxxl);
+			font-size: var(--fs-xxxl);
 		}
 	}
 
@@ -48,7 +48,7 @@
 		}
 		.hero-content {
 			& h1 {
-				font-size: var(--ff-xxxl);
+				font-size: var(--fs-xxxl);
 			}
 		}
 	}
@@ -60,7 +60,7 @@
 		}
 		.hero-content {
 			& h1 {
-				font-size: var(--ff-xxl);
+				font-size: var(--fs-xxl);
 			}
 		}
 	}
@@ -72,7 +72,7 @@
 		.hero-content {
 			margin-bottom: 2.5rem;
 			& h1 {
-				font-size: var(--ff-xl);
+				font-size: var(--fs-xl);
 			}
 		}
 	}
@@ -85,7 +85,7 @@
 			grid-column: 2 / -2;
 			margin-bottom: 2rem;
 			& h1 {
-				font-size: var(--ff-lg);
+				font-size: var(--fs-lg);
 			}
 		}
 	}
