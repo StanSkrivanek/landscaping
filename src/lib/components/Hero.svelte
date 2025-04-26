@@ -1,10 +1,13 @@
 <script>
-    // load data from CMS
+	// load data from CMS
+
+	import Navigation from './Navigation.svelte';
 </script>
 
 <div class="hero">
+	<!-- <Navigation /> -->
 	<div class="hero-content">
-	<!-- <h1>{headline}</h1> -->
+		<!-- <h1>{headline}</h1> -->
 		<h1>Crafting outdoor spaces with beauty, purpose, and permanence</h1>
 	</div>
 </div>
@@ -15,15 +18,15 @@
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		grid-column: 1 / -1;
-		height: 800px;
+		height: 960px;
 		gap: 16px;
-        background: url('https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp') center/cover no-repeat;
+		background: url('https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp')
+			center/cover no-repeat;
 		overflow: hidden;
 		/* Enable container queries */
 		container-type: inline-size;
-        pointer-events: none;
+		pointer-events: none;
 	}
-
 
 	.hero-content {
 		flex: 1;
@@ -32,7 +35,7 @@
 		grid-column: 2 / span 4;
 		align-self: self-end;
 		margin-bottom: 4rem;
-        /* background-color: black; */
+		/* background-color: black; */
 
 		& h1 {
 			color: var(--clr-text-light);

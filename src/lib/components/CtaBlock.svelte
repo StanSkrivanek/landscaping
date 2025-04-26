@@ -85,13 +85,13 @@
 			text-align: center;
 		}
 		.cta-content h2 {
-			font-size: var(--ff-xxxl);
+			font-size: var(--ff-xxxxl);
 		}
 		.cta-content p {
-			font-size: var(--ff-lg);
+			font-size: var(--ff-md);
 		}
 		.cta-button {
-			font-size: var(--ff-lg);
+			font-size: var(--ff-md);
 		}
 	}
 	@container (max-width: 768px) {
@@ -126,7 +126,11 @@
 			text-align: center;
 		}
 		.cta-content p {
-			font-size: var(--ff-sm);
+			font-size: var(--ff-xxs);
+		}
+		.cta-button {
+			font-size: var(--ff-xxs);
+			width: 100%;
 		}
 	}
 	@container (max-width: 320px) {

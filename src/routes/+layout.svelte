@@ -1,11 +1,18 @@
 <script>
-	//  with rune `$props()` we have access ot { children, data, form }
-	let { children } = $props();
+	import { page } from '$app/state';
+	import Navigation from '$lib/components/Navigation.svelte';
 	import '../app.css';
+	let { children } = $props();
 </script>
 
 <!-- render layout -->
-<div class="container">
-	{@render children()}
+<div class="page__c">
+	<main>
+		<div class="container">
+			{#if !page.url.pathname.startsWith('/studio')}
+				<Navigation />
+			{/if}
+			{@render children?.()}
+		</div>
+	</main>
 </div>
-

@@ -1,55 +1,52 @@
 <script>
-    import Cta from '$lib/components/CtaBlock.svelte';
+	import Cta from '$lib/components/CtaBlock.svelte';
+	import Hero from '$lib/components/Hero.svelte';
 </script>
 
-<div class="hero">
-	<div class="hero-content">
-	
-		<h1>Crafting outdoor spaces with beauty, purpose, and permanence</h1>
-	</div>
-</div>
-<Cta />
+<Hero />
+<section>
+	<Cta />
+</section>
+
 <style>
-	.hero {
+	/* .hero {
 		position: relative;
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		grid-column: 1 / -1;
-		height: 800px;
+		height: 900px;
 		gap: 16px;
-        background: url('https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp') center/cover no-repeat;
+        background: url('https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp') center/cover no-repeat;
 		overflow: hidden;
-		/* Enable container queries */
+	
 		container-type: inline-size;
         pointer-events: none;
-	}
+	} */
 
-
-	.hero-content {
+	/* .hero-content {
 		flex: 1;
 		position: relative;
 		z-index: 1;
 		grid-column: 2 / span 4;
 		align-self: self-end;
-		margin-bottom: 4rem;
-        /* background-color: black; */
+		margin-bottom: 4rem;/
 
 		& h1 {
 			color: var(--clr-text-light);
 			font-size: var(--ff-xxxl);
 		}
-	}
+	} */
 
 	/* container query */
-	@container (max-width: 1970px) {
+	/* @container (max-width: 1970px) {
 		.hero-content {
 			& h1 {
 				font-size: var(--ff-xxxl);
 			}
 		}
-	}
+	} */
 
-	@container (max-width: 992px) {
+	/* @container (max-width: 992px) {
 		.hero {
 			grid-template-columns: repeat(8, 1fr);
 		}
@@ -58,9 +55,9 @@
 				font-size: var(--ff-xxl);
 			}
 		}
-	}
+	} */
 
-	@container (max-width: 768px) {
+	/* @container (max-width: 768px) {
 		.hero {
 			height: 600px;
 		}
@@ -70,9 +67,9 @@
 				font-size: var(--ff-xl);
 			}
 		}
-	}
+	} */
 
-	@container (max-width: 480px) {
+	/* @container (max-width: 480px) {
 		.hero {
 			height: 400px;
 		}
@@ -83,5 +80,5 @@
 				font-size: var(--ff-lg);
 			}
 		}
-	}
+	} */
 </style>
