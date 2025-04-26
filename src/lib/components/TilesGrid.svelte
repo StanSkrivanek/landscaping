@@ -99,12 +99,9 @@
 		&:not(:last-child) {
 			background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%);
 		}
-		/* background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%); */
 	}
 
-	.tile-card:nth-child(4n + 4) {
-		grid-column: span 6; /* Second card in even rows */
-	}
+
 
 	.tile-card img {
 		width: 100%;

@@ -130,7 +130,8 @@ h6 {
 	--clr-white: #ffffff;
 	--clr-orange: #f05d40;
 
-	--clr-accent: #57afa8;
+	/* --clr-accent: #57afa8; */
+	--clr-accent: #70ceb2;
 	--clr-accent-dark: #3c6e71;
 
 	--ff-thin: 'Haas Thin', sans-serif;
