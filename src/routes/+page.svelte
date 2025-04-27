@@ -14,12 +14,33 @@
 <section>
 	<GlobIntro />
 	<TilesGrid {items} />
+	<div class="text-center">
+		<p>WE CREATE SPACES THAT WILL NURTURE YOUR HEART, SOUL AND MIND</p>
+	</div>
 	<Cta />
 </section>
 
 <style>
 	section {
-		padding-inline: .6rem;
+		padding-inline: 0.6rem;
 	}
+	.text-center {
+		display: flex;
+		margin-block: 12rem;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 1rem;
 
+
+		font-size: var(--fs-xxl);
+		/* background-color: chocolate; */
+		& p{
+			font-family: var(--ff-org);
+			line-height: 1;
+			max-width: 720px;
+			font-size: var(--fs-xxl);
+		}
+
+	}
 </style>

@@ -18,7 +18,7 @@
 
 <div class="intro__c">
 	<div class="content__w">
-		<h2>Transforming Outdoor Spaces</h2>
+		<h2><span>Transforming</span> Outdoor Spaces</h2>
 		<div class="content">
 			<p>
 				{introText}
@@ -67,7 +67,10 @@
 		& h2 {
 			font-size: var(--fs-xl);
 			margin-bottom: 2rem;
-			color: var(--clr-accent-dark);
+            font-family: var(--ff-regular);
+            & span {
+                color: var(--clr-accent);
+            }
 		}
 		& .content {
 			font-size: var(--fs-sm);

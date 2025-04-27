@@ -27,7 +27,7 @@
 		/* padding: 2rem; */
 		background-color: var(--clr-primary);
 		color: var(--clr-text);
-		padding-block: 10rem;
+		margin-block: 10rem;
 		/* Enable container queries */
 		container-type: inline-size;
 	}
