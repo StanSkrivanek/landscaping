@@ -15,7 +15,7 @@
 	<GlobIntro />
 	<TilesGrid {items} />
 	<div class="text-center">
-		<p>WE CREATE SPACES THAT WILL NURTURE YOUR HEART, SOUL AND MIND</p>
+		<p>WE CREATE <span>SPACES THAT WILL NURTURE YOUR HEART</span>, SOUL AND MIND</p>
 	</div>
 	<Cta />
 </section>
@@ -40,6 +40,10 @@
 			line-height: 1;
 			max-width: 720px;
 			font-size: var(--fs-xxl);
+			& span{
+				color: var(--clr-accent);
+			}
+			
 		}
 
 	}
