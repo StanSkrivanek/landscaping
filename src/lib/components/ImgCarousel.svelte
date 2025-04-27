@@ -17,6 +17,8 @@
 	let runTimeOut = $state<ReturnType<typeof setTimeout> | undefined>();
 	let runNextAuto = $state<ReturnType<typeof setTimeout> | undefined>();
 
+	let animating = $state(''); // '', 'next', or 'prev'
+
 	// Use $effect to run after mount
 	$effect(() => {
 		// Initial setup: Move first thumbnail to end for correct initial state
@@ -58,6 +60,7 @@
 		}
 
 		if (type === 'next') {
+			animating = 'next';
 			slidesList.appendChild(SliderItemsDom[0]);
 			thumbnailContainer.appendChild(thumbnailItems[0]);
 			void carouselContainer.offsetWidth;
@@ -65,8 +68,13 @@
 				if (carouselContainer) {
 					carouselContainer.classList.add('next');
 				}
+				// Remove animating class after animation
+				setTimeout(() => {
+					animating = '';
+				}, animationDelay + timeRunning);
 			}, animationDelay);
 		} else {
+			animating = 'prev';
 			slidesList.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
 			thumbnailContainer.prepend(thumbnailItems[thumbnailItems.length - 1]);
 			void carouselContainer.offsetWidth;
@@ -74,6 +82,9 @@
 				if (carouselContainer) {
 					carouselContainer.classList.add('prev');
 				}
+				setTimeout(() => {
+					animating = '';
+				}, animationDelay + timeRunning);
 			}, animationDelay);
 		}
 
@@ -91,28 +102,7 @@
 <div class="carousel" bind:this={carouselContainer}>
 	<!-- list item -->
 	<div class="list" bind:this={slidesList}>
-		<div class="item">
-			<img
-				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
-				alt="AI Engines"
-			/>
-			<div class="content__wrap">
-				<div class="content">
-					<p class="tag">AI Engines</p>
-					<p class="title">CHAT GPT</p>
-					<!-- <p class="topic">MOOSE</p> -->
-					<p class="des">
-						Known for generating coherent and contextually rich text, GPT excels at language-based
-						tasks like conversational responses, summarization, and creative writing. Its ability to
-						understand and generate human-like text makes it an essential tool for various natural
-						language processing applications.
-					</p>
-					<div class="buttons">
-						<button>learn more</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<!-- Only the first .item is the main slide -->
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp"
@@ -208,15 +198,7 @@
 	</div>
 	<!-- list thumbnail -->
 	<div class="thumbnail" bind:this={thumbnailContainer}>
-		<div class="item">
-			<img
-				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
-				alt="AI Engines"
-			/>
-			<div class="content">
-				<div class="title">CHAT-GPT</div>
-			</div>
-		</div>
+
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp"
@@ -491,7 +473,7 @@
 
 	/* Ensure the image being animated is targeted correctly */
 	/* Add a small delay using animation-delay (e.g., 0.1s) */
-	.carousel .next .list .item:nth-child(2) img {
+	.carousel.next .list .item:nth-child(2) img {
 		/* Target the *second* item's img when 'next' is applied, as the first one was moved */
 		position: absolute;
 		bottom: 50px; /* Start position for animation */
@@ -507,7 +489,7 @@
 	}
 
 	/* Add animation-delay here */
-	.carousel .next .thumbnail .item:nth-last-child(1) {
+	.carousel.next .thumbnail .item:nth-last-child(1) {
 		overflow: hidden;
 		animation: showThumbnail var(--thumb-anim-time) ease-out forwards;
 		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
@@ -522,7 +504,7 @@
 	}
 
 	/* Add animation-delay here */
-	.carousel .next .thumbnail {
+	.carousel.next .thumbnail {
 		/* Ensure this transform doesn't conflict if already positioned with left: 50% */
 		/* Consider removing if left: 50% and width: max-content handles positioning */
 		animation: effectNext 0.65s ease-out forwards;
@@ -540,15 +522,15 @@
 	}
 
 	/* Add animation-delay here */
-	.carousel .next .time,
-	.carousel .prev .time {
+	.carousel.next .time,
+	.carousel.prev .time {
 		animation: runningTime 3s linear forwards;
 		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
 	}
 
 	/* Target the correct item for the 'prev' image animation */
 	/* Add animation-delay here */
-	.carousel .prev .list .item:nth-child(1) img {
+	.carousel.prev .list .item:nth-child(1) img {
 		/* Target the *first* item's img when 'prev' is applied */
 		z-index: 2; /* Ensure it's visible */
 		animation: outFrame var(--thumb-anim-time) linear forwards;
@@ -557,7 +539,7 @@
 	/* REMOVED redundant rule block for .carousel.prev .list .item:nth-child(2) */
 
 	/* Add animation-delay here */
-	.carousel .prev .thumbnail .item:nth-child(1) {
+	.carousel.prev .thumbnail .item:nth-child(1) {
 		overflow: hidden;
 		opacity: 0; /* Start hidden for animation */
 		animation: showThumbnail var(--thumb-anim-time) ease-in forwards;
@@ -565,7 +547,7 @@
 	}
 
 	/* Ensure backdrop applies correctly during prev transition */
-	.carousel .prev .list .item:nth-child(2) .content__wrap .content::after {
+	.carousel.prev .list .item:nth-child(2) .content__wrap .content::after {
 		/* Target second item's content */
 		content: '';
 		position: absolute;
@@ -577,13 +559,13 @@
 		/* animation: showBackdrop var(--thumb-anim-time) linear forwards; */ /* Might not be needed if content hides */
 	}
 
-	.carousel .next .arrows button,
-	.carousel .prev .arrows button {
+	.carousel.next .arrows button,
+	.carousel.prev .arrows button {
 		pointer-events: none;
 	}
 
 	/* Add animation-delay here */
-	.carousel .prev .list .item:nth-child(2) .content__wrap .content {
+	.carousel.prev .list .item:nth-child(2) .content__wrap .content {
 		/* Target second item's content */
 		animation: hideContent 0.4s linear forwards;
 		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
