@@ -141,7 +141,7 @@ h6 {
 	--ff-org: 'Organetto', sans-serif;
 
 	/* VIEWPORT */
-	
+
 	/* --step--3: clamp(0.625rem, 1.1875rem + -0.3101vw, 1.1rem); */
 	--step--2: clamp(0.84rem, 1.2304rem + -0.3101vw, 1.1528rem);
 	--step--1: clamp(1.05rem, 1.2747rem + -0.1785vw, 1.2301rem);
@@ -165,6 +165,7 @@ h6 {
 	--fs-xxxl: var(--step-5);
 	--fs-xxxxl: var(--step-6);
 	--fs-xxxxxl: var(--step-7);
+
 }
 
 body {

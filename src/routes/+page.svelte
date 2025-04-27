@@ -1,7 +1,9 @@
 <script>
+
 	import Cta from '$lib/components/CtaBlock.svelte';
 	import GlobIntro from '$lib/components/GlobIntro.svelte';
 	import Hero from '$lib/components/Hero.svelte';
+	import ImgCarousel from '$lib/components/ImgCarousel.svelte';
 	import TilesGrid from '$lib/components/TilesGrid.svelte';
 
 	const { data } = $props();
@@ -17,6 +19,7 @@
 	<div class="text-center">
 		<p>WE CREATE <span>SPACES THAT WILL NURTURE YOUR HEART</span>, SOUL AND MIND</p>
 	</div>
+	<ImgCarousel />
 	<Cta />
 </section>
 
