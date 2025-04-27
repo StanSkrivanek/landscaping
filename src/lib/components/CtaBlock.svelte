@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="cta-container">
+<div class="cta__c">
 	<div class="decoration">
 		<img
 			src="https://cdn.sanity.io/images/lbo1agd3/production/f7d40d83ec3f900c2d0b23a0cdab80cdddde34df-354x284.svg"
@@ -19,7 +19,7 @@
 </div>
 
 <style>
-	.cta-container {
+	.cta__c {
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		gap: 16px;
@@ -71,7 +71,7 @@
 	}
 
 	@container (max-width: 992px) {
-		.cta-container {
+		.cta__c {
 			/* grid-template-columns: repeat(8, 1fr); */
 			padding-block: 4rem;
 		}
@@ -95,7 +95,7 @@
 		}
 	}
 	@container (max-width: 768px) {
-		.cta-container {
+		.cta__c {
 			padding-block: 4rem;
 		}
 		.decoration {
@@ -113,7 +113,7 @@
 		}
 	}
 	@container (max-width: 480px) {
-		.cta-container {
+		.cta__c {
 			padding-block: 3rem;
 		}
 		.decoration {
@@ -134,7 +134,7 @@
 		}
 	}
 	@container (max-width: 320px) {
-		.cta-container {
+		.cta__c {
 			padding-block: 1rem;
 		}
 		.decoration {

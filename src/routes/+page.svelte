@@ -1,5 +1,6 @@
 <script>
 	import Cta from '$lib/components/CtaBlock.svelte';
+	import GlobIntro from '$lib/components/GlobIntro.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import TilesGrid from '$lib/components/TilesGrid.svelte';
 
@@ -11,6 +12,7 @@
 
 <Hero />
 <section>
+	<GlobIntro />
 	<TilesGrid {items} />
 	<Cta />
 </section>
