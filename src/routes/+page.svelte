@@ -16,3 +16,10 @@
 	<TilesGrid {items} />
 	<Cta />
 </section>
+
+<style>
+	section {
+		padding-inline: .6rem;
+	}
+
+</style>

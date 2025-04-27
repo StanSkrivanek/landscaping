@@ -65,7 +65,8 @@
 
 <style>
 	.tiles__c {
-		margin-top: 6rem;
+		margin-top: 4rem;
+        
 		& h2 {
 			font-size: var(--fs-xxxl);
 			margin-bottom: 2rem;
