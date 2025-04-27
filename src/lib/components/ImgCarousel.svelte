@@ -1,81 +1,100 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	// import { page } from '$app/stores';
 	// import { getTilesg } from '$lib/api/tiles';
 
 	let items = [];
 
-	onMount(async () => {
-		//step 1: get DOM
-		let nextBtn = document.getElementById('next'); /*button*/
-		let prevBtn = document.getElementById('prev'); /*button*/
+	let carouselContainer = $state<HTMLElement | null>(null);
+	let slidesList = $state<HTMLElement | null>(null);
+	let thumbnailContainer = $state<HTMLElement | null>(null);
+	let nextBtn = $state<HTMLButtonElement | null>(null);
+	let prevBtn = $state<HTMLButtonElement | null>(null);
 
-		let carouselContainer = document.querySelector('.carousel');
-		let slidesList = carouselContainer?.querySelector('.carousel .list');
-		let thumbnailContainer = document?.querySelector('.carousel .thumbnail');
-		let thumbnailItem = thumbnailContainer?.querySelectorAll('.item');
-		// let timeDom = document.querySelector('.carousel .time');
-		if (thumbnailItem) {
-			thumbnailContainer?.appendChild(thumbnailItem[0]);
+	let timeRunning = 3000;
+	let timeAutoNext = 7000;
+	let animationDelay = 50;
+
+	let runTimeOut = $state<ReturnType<typeof setTimeout> | undefined>();
+	let runNextAuto = $state<ReturnType<typeof setTimeout> | undefined>();
+
+	// Use $effect to run after mount
+	$effect(() => {
+		// Initial setup: Move first thumbnail to end for correct initial state
+		const initialThumbnailItems = thumbnailContainer?.querySelectorAll('.item');
+		if (initialThumbnailItems && initialThumbnailItems.length > 0 && thumbnailContainer) {
+			thumbnailContainer.appendChild(initialThumbnailItems[0]);
 		}
 
-		let timeRunning = 3000;
-		let timeAutoNext = 7000;
-
-		if (nextBtn) {
-			nextBtn.onclick = function () {
-				showSlider('next');
-			};
-		}
-
-		if (prevBtn) {
-			prevBtn.onclick = function () {
-				showSlider('prev');
-			};
-		}
-		let runTimeOut: ReturnType<typeof setTimeout>;
-
-		let runNextAuto = setTimeout(() => {
-			if (nextBtn) nextBtn.click();
+		// Setup auto-next
+		runNextAuto = setTimeout(() => {
+			nextBtn?.click();
 		}, timeAutoNext);
-
-		function showSlider(type: string) {
-			let SliderItemsDom = slidesList?.querySelectorAll('.carousel .list .item');
-			let thumbnailItem = document.querySelectorAll('.carousel .thumbnail .item');
-
-			if (type === 'next') {
-				if (SliderItemsDom && SliderItemsDom[0]) {
-					slidesList?.appendChild(SliderItemsDom[0]);
-				}
-				thumbnailContainer?.appendChild(thumbnailItem[0]);
-				carouselContainer?.classList.add('next');
-			} else {
-				if (SliderItemsDom && SliderItemsDom.length > 0) {
-					slidesList?.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
-				}
-				thumbnailContainer?.prepend(thumbnailItem[thumbnailItem.length - 1]);
-				carouselContainer?.classList.add('prev');
-			}
-			clearTimeout(runTimeOut);
-			runTimeOut = setTimeout(() => {
-				carouselContainer?.classList.remove('next');
-				carouselContainer?.classList.remove('prev');
-			}, timeRunning);
-
-			clearTimeout(runNextAuto);
-			runNextAuto = setTimeout(() => {
-				nextBtn?.click();
-			}, timeAutoNext);
-		}
 	});
+
+	function showSlider(type: string) {
+		const SliderItemsDom = slidesList?.querySelectorAll('.carousel .list .item');
+		const thumbnailItems = thumbnailContainer?.querySelectorAll('.carousel .thumbnail .item');
+
+		if (
+			!SliderItemsDom ||
+			SliderItemsDom.length === 0 ||
+			!thumbnailItems ||
+			thumbnailItems.length === 0 ||
+			!slidesList ||
+			!thumbnailContainer ||
+			!carouselContainer
+		) {
+			console.error('Carousel elements not found, cannot transition.');
+			return;
+		}
+
+		if (carouselContainer) {
+			carouselContainer.classList.remove('next', 'prev');
+		}
+		clearTimeout(runTimeOut);
+
+		if (carouselContainer) {
+			carouselContainer.classList.remove('next', 'prev');
+		}
+
+		if (type === 'next') {
+			slidesList.appendChild(SliderItemsDom[0]);
+			thumbnailContainer.appendChild(thumbnailItems[0]);
+			void carouselContainer.offsetWidth;
+			setTimeout(() => {
+				if (carouselContainer) {
+					carouselContainer.classList.add('next');
+				}
+			}, animationDelay);
+		} else {
+			slidesList.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+			thumbnailContainer.prepend(thumbnailItems[thumbnailItems.length - 1]);
+			void carouselContainer.offsetWidth;
+			setTimeout(() => {
+				if (carouselContainer) {
+					carouselContainer.classList.add('prev');
+				}
+			}, animationDelay);
+		}
+
+		runTimeOut = setTimeout(() => {
+			carouselContainer.classList.remove('next', 'prev');
+		}, timeRunning + animationDelay);
+
+		clearTimeout(runNextAuto);
+		runNextAuto = setTimeout(() => {
+			nextBtn?.click();
+		}, timeAutoNext);
+	}
 </script>
 
-<div class="carousel">
+<div class="carousel" bind:this={carouselContainer}>
 	<!-- list item -->
-	<div class="list">
+	<div class="list" bind:this={slidesList}>
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
+				alt="AI Engines"
 			/>
 			<div class="content__wrap">
 				<div class="content">
@@ -97,6 +116,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp"
+				alt="AI Engines"
 			/>
 			<div class="content__wrap">
 				<div class="content">
@@ -119,6 +139,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
+				alt="AI Engines"
 			/>
 			<div class="content__wrap">
 				<div class="content">
@@ -141,6 +162,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp"
+				alt="AI Engines"
 			/>
 			<div class="content__wrap">
 				<div class="content">
@@ -163,6 +185,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
+				alt="AI Engines"
 			/>
 			<div class="content__wrap">
 				<div class="content">
@@ -184,10 +207,11 @@
 		</div>
 	</div>
 	<!-- list thumbnail -->
-	<div class="thumbnail">
+	<div class="thumbnail" bind:this={thumbnailContainer}>
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
+				alt="AI Engines"
 			/>
 			<div class="content">
 				<div class="title">CHAT-GPT</div>
@@ -196,6 +220,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp"
+				alt="AI Engines"
 			/>
 			<div class="content">
 				<div class="title">MIDJOURNEY</div>
@@ -204,6 +229,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
+				alt="AI Engines"
 			/>
 			<div class="content">
 				<div class="title">DALL-E</div>
@@ -212,6 +238,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp"
+				alt="AI Engines"
 			/>
 			<div class="content">
 				<div class="title">STABLE DIFUSION</div>
@@ -220,6 +247,7 @@
 		<div class="item">
 			<img
 				src="https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp"
+				alt="AI Engines"
 			/>
 			<div class="content">
 				<div class="title">RUNWAY ML</div>
@@ -229,7 +257,7 @@
 	<!-- next prev -->
 
 	<div class="arrows">
-		<button id="prev" aria-label="Previous slide">
+		<button bind:this={prevBtn} aria-label="Previous slide" onclick={() => showSlider('prev')}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -240,7 +268,7 @@
 				<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
 			</svg>
 		</button>
-		<button id="next" aria-label="Next slide">
+		<button bind:this={nextBtn} aria-label="Next slide" onclick={() => showSlider('next')}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -330,7 +358,7 @@
 	}
 
 	/* .carousel .list .item .topic */
-	.carousel .list .item .title{
+	.carousel .list .item .title {
 		font-size: 3em;
 		font-weight: 900;
 		line-height: 1.2em;
@@ -456,33 +484,49 @@
 		background-color: transparent;
 		filter: blur(16px);
 		transform: translateY(var(--anim-move));
-		animation: showContent 1s ease-in 1s forwards;
+		/* Delay animation slightly to sync better with image */
+		/* The delay here is relative to when the element becomes visible/applicable */
+		animation: showContent 0.8s ease-in 0.7s forwards;
 	}
 
-	.carousel.next .list .item:nth-child(1) img {
+	/* Ensure the image being animated is targeted correctly */
+	/* Add a small delay using animation-delay (e.g., 0.1s) */
+	.carousel .next .list .item:nth-child(2) img {
+		/* Target the *second* item's img when 'next' is applied, as the first one was moved */
 		position: absolute;
-		bottom: 50px;
+		bottom: 50px; /* Start position for animation */
 		left: 50%;
-		width: var(--thumb-width);
+		width: var(--thumb-width); /* Start size */
 		height: var(--thumb-height);
+		border-radius: 0.25rem;
+		object-fit: cover; /* Ensure object-fit is applied */
+		/* Add animation-delay here */
 		animation: showImage var(--thumb-anim-time) ease-in forwards;
+		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
+		z-index: 2; /* Ensure it's above the main image */
 	}
 
-	.carousel.next .thumbnail .item:nth-last-child(1) {
+	/* Add animation-delay here */
+	.carousel .next .thumbnail .item:nth-last-child(1) {
 		overflow: hidden;
 		animation: showThumbnail var(--thumb-anim-time) ease-out forwards;
+		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
 	}
-	/* ADDED */
-	.carousel.next .list .item:nth-child(1) img {
+	/* REMOVED duplicate/conflicting rule */
+	/* .carousel.next .list .item:nth-child(1) img {
 		animation: showImage var(--thumb-anim-time) ease-in forwards;
-	}
+	} */
 
 	.carousel.prev .list .item img {
 		z-index: 100;
 	}
 
-	.carousel.next .thumbnail {
+	/* Add animation-delay here */
+	.carousel .next .thumbnail {
+		/* Ensure this transform doesn't conflict if already positioned with left: 50% */
+		/* Consider removing if left: 50% and width: max-content handles positioning */
 		animation: effectNext 0.65s ease-out forwards;
+		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
 	}
 
 	.carousel .time {
@@ -495,29 +539,34 @@
 		top: 0;
 	}
 
-	.carousel.next .time,
-	.carousel.prev .time {
+	/* Add animation-delay here */
+	.carousel .next .time,
+	.carousel .prev .time {
 		animation: runningTime 3s linear forwards;
+		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
 	}
 
-	.carousel.prev .list .item:nth-child(2) {
-		z-index: 2;
-		animation: showBackdrop var(--thumb-anim-time) linear forwards;
-		& img {
-			animation: outFrame var(--thumb-anim-time) linear forwards;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-		}
+	/* Target the correct item for the 'prev' image animation */
+	/* Add animation-delay here */
+	.carousel .prev .list .item:nth-child(1) img {
+		/* Target the *first* item's img when 'prev' is applied */
+		z-index: 2; /* Ensure it's visible */
+		animation: outFrame var(--thumb-anim-time) linear forwards;
+		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
 	}
+	/* REMOVED redundant rule block for .carousel.prev .list .item:nth-child(2) */
 
-	.carousel.prev .thumbnail .item:nth-child(1) {
+	/* Add animation-delay here */
+	.carousel .prev .thumbnail .item:nth-child(1) {
 		overflow: hidden;
-		opacity: 0;
+		opacity: 0; /* Start hidden for animation */
 		animation: showThumbnail var(--thumb-anim-time) ease-in forwards;
+		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
 	}
 
-	.carousel.prev .list .item .content__wrap .content::after {
+	/* Ensure backdrop applies correctly during prev transition */
+	.carousel .prev .list .item:nth-child(2) .content__wrap .content::after {
+		/* Target second item's content */
 		content: '';
 		position: absolute;
 		inset: 0 0 0 0;
@@ -525,15 +574,19 @@
 		background-color: var(--bg-color);
 		backdrop-filter: blur(var(--blur));
 		-webkit-backdrop-filter: blur(var(--blur));
+		/* animation: showBackdrop var(--thumb-anim-time) linear forwards; */ /* Might not be needed if content hides */
 	}
 
-	.carousel.next .arrows button,
-	.carousel.prev .arrows button {
+	.carousel .next .arrows button,
+	.carousel .prev .arrows button {
 		pointer-events: none;
 	}
 
-	.carousel.prev .list .item:nth-child(2) .content__wrap .content {
+	/* Add animation-delay here */
+	.carousel .prev .list .item:nth-child(2) .content__wrap .content {
+		/* Target second item's content */
 		animation: hideContent 0.4s linear forwards;
+		/* animation-delay: 0.1s; */ /* Alternative: Add delay via JS setTimeout */
 	}
 
 	/* Keyframes */
@@ -551,12 +604,16 @@
 		}
 	}
 	@keyframes showImage {
+		/* Animation starts implicitly from the element's current state */
+		/* The target state is the thumbnail position/size */
 		to {
 			width: var(--thumb-width);
 			height: var(--thumb-height);
-			bottom: 250px;
-			left: 50%;
-			border-radius: 0.25rem;
+			bottom: 50px; /* Final position matching thumbnail container bottom */
+			left: calc(
+				50% + var(--thumb-width) * 2.5 + 16px * 2
+			); /* Approximate final position in thumbnail list */
+			border-radius: 0.5rem; /* Match thumbnail radius */
 		}
 	}
 	@keyframes showThumbnail {
@@ -564,11 +621,21 @@
 			width: 0;
 			opacity: 0;
 		}
+		to {
+			/* Explicitly define end state */
+			width: var(--thumb-width);
+			opacity: 1;
+		}
 	}
 
 	@keyframes effectNext {
 		from {
-			transform: translateX(var(--thumb-width));
+			transform: translateX(
+				calc(var(--thumb-width) + 16px)
+			); /* Move by one thumbnail width + gap */
+		}
+		to {
+			transform: translateX(0);
 		}
 	}
 
@@ -582,18 +649,22 @@
 	}
 
 	@keyframes outFrame {
+		/* Animation starts implicitly from the element's current state (full size) */
+		/* The target state is the thumbnail position/size */
 		to {
 			width: var(--thumb-width);
 			height: var(--thumb-height);
-			bottom: 50px;
-			left: 50%;
-			border-radius: 0.25rem;
+			bottom: 50px; /* Final position matching thumbnail container bottom */
+			left: calc(
+				50% - var(--thumb-width) * 1.5 - 16px
+			); /* Approximate final position in thumbnail list */
+			border-radius: 0.5rem; /* Match thumbnail radius */
 		}
 	}
 
 	@keyframes hideContent {
 		to {
-			transform: translateY(var(--anim-move) * -1);
+			transform: translateY(calc(var(--anim-move) * -1));
 			opacity: 0;
 			filter: blur(16px);
 		}
