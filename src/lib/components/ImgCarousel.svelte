@@ -2,34 +2,56 @@
 	import { BROWSER } from 'esm-env';
 	// Import tick if needed for class timing, though setTimeout might suffice
 
-	let items = $state([
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/ec0e3c0f8328af7a6f79e07fb4fcbaef996bacb1-1000x688.jpg',
-			title: 'Slide 1',
-			description: 'Description for Slide 1'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/4e0d61ef665efb6c35468b23a2d63d2900941278-1000x688.jpg',
-			title: 'Slide 2',
-			description: 'Description for Slide 2'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/8172da50f52752c1063fe4d9d9dfc6922cba0d86-1000x688.jpg',
-			title: 'Slide 3',
-			description: 'Description for Slide 3'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/6a09c087b2ece7598870e6babf9a4543ec00d210-1000x688.jpg',
-			title: 'Slide 4',
-			description: 'Description for Slide 4'
-		}
-	]);
+let items = $state([
+        {
+            url: 'https://cdn.sanity.io/images/lbo1agd3/production/ec0e3c0f8328af7a6f79e07fb4fcbaef996bacb1-1000x688.jpg', // Placeholder - maybe a nice patio shot
+            projectType: 'Patio Installation',
+            testimonial:
+                'We are absolutely thrilled with our new patio! The team was professional, meticulous, and the final result is stunning. It has completely transformed our outdoor living space.',
+				name: "Mark & Lisa"
+        },
+        {
+            url: 'https://cdn.sanity.io/images/lbo1agd3/production/4e0d61ef665efb6c35468b23a2d63d2900941278-1000x688.jpg', // Placeholder - maybe a lush garden
+            projectType: 'Garden Makeover',
+            testimonial:
+                'Our garden was tired and overgrown. They listened to our ideas and created a beautiful, low-maintenance design that we love. Highly recommended for their creativity and hard work.',
+				name: "Jennifer S."
+        },
+        {
+            url: 'https://cdn.sanity.io/images/lbo1agd3/production/8172da50f52752c1063fe4d9d9dfc6922cba0d86-1000x688.jpg', // Placeholder - maybe a paved driveway
+            projectType: 'Driveway Paving',
+            testimonial:
+                'Excellent job on our new driveway. The quality of the paving is top-notch, and the crew was efficient and tidy. It has significantly improved our home\'s curb appeal.',
+				name: "David Chen"
+        },
+        {
+            url: 'https://cdn.sanity.io/images/lbo1agd3/production/6a09c087b2ece7598870e6babf9a4543ec00d210-1000x688.jpg', // Placeholder - maybe a neat lawn/hedges
+            projectType: 'Lawn & Hedge Maintenance',
+            testimonial:
+                'Reliable, friendly, and they always leave our property looking immaculate. Taking care of the lawn and hedges used to be a chore, but now we can just enjoy it.',
+				name: "The Robertsons"
+        },
+        {
+            url: 'https://cdn.sanity.io/images/lbo1agd3/production/46a114d9e78108025864536ff350c07a5c0432bd-810x401.webp', // Placeholder - maybe a retaining wall or steps
+            projectType: 'Retaining Wall & Steps',
+            testimonial:
+                'The new retaining wall and garden steps look fantastic and are built to last. They solved our slope problem beautifully. Very professional from start to finish.',
+				name: "Brian T."
+        },
+        {
+            url: 'https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp', // Placeholder - maybe a full landscape project
+            projectType: 'Full Landscape Design',
+            testimonial:
+                'From the initial design consultation to the final planting, the entire process was seamless. They transformed our blank canvas into a stunning landscape we enjoy every day.',
+				name: "Sarah W."
+        }
+    ]);
 
 	let slider: HTMLDivElement | undefined = $state();
 	// Make autoRunInterval a regular variable, not $state, to avoid potential effect loops
 	let autoRunInterval: ReturnType<typeof setInterval> | undefined;
-	const autoRunDelay = 5000; // ms
-	const animationSpeed = 800; // ms - Should match CSS --speed
+	const autoRunDelay = 8000; // ms
+	const animationSpeed = 1000; // ms - Should match CSS --speed
 
 	let currentSlideIndex = $state(0);
 	let previousSlideIndex = $state<number | null>(null);
@@ -105,7 +127,7 @@
 			classes += ' previous animate-split-out';
 		} else {
 			// All other slides are hidden
-			// classes += ' hidden';
+			classes += ' hidden';
 		}
 		return classes;
 	}
@@ -138,9 +160,7 @@
 	function resumeAutoRun() {
 		if (BROWSER) {
 			isPaused = false; // Clear paused state, the $effect will start the interval
-			// Optional: uncomment the line below if you want the timer delay
-			// to restart immediately when the mouse leaves the slider.
-			// resetInterval();
+			// resetInterval(); // Optionally restart timer delay immediately on mouse leave
 		}
 	}
 </script>
@@ -163,15 +183,14 @@
 			style={index === previousSlideIndex ? `--bg-image: url(${item.url})` : ''}
 		>
 			<!-- Image is used as fallback and for dimensions, but hidden during split -->
-			<img src={item.url} alt={item.title} />
+			<img src={item.url} alt={item.projectType} />
 
 			<div class="content">
-				<div class="title">{item.title}</div>
+				<div class="projectType">{item.projectType}</div>
 				<div class="description">
-					{item.description}
+					<p>{item.testimonial}</p>
+					<p>{item.name}</p>
 				</div>
-				<!-- Optional: Add a button or link -->
-				<!-- <button>See More</button> -->
 			</div>
 		</div>
 	{/each}
@@ -195,29 +214,27 @@
 				viewBox="0 0 24 24"
 				stroke-width="1.5"
 				stroke="currentColor"
-				class="size-6"
 			>
 				<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
 			</svg>
 		</button>
 	</div>
-	<!-- Thumbnail navigation might need different logic if implemented -->
-	<!-- <div class="nav"> ... </div> -->
 </div>
 
 <style>
 	:root {
-		--speed: 800ms; /* Animation duration - match JS const */
-		--content-anim-duration: 500ms; /* Duration for content fade/slide in */
-		--content-entry-delay: 300ms; /* Delay after split before content animates in */
+		--speed: 1000ms; /* Animation duration - match JS const */
+		--content-anim-duration: 800ms; /* Duration for content fade/slide in */
+		--content-entry-delay: 1600ms; /* Delay after split before content animates in */
 	}
 
 	.slider {
 		position: relative;
 		width: 100%;
-		height: 900px; /* Or specific height */
-		/* overflow: hidden; */ /* Removed overflow hidden to ensure pseudo-elements are visible */
-		background-color: #333; /* Background shown during transitions */
+		max-height: 900px; /* Or specific height */
+		aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+		/* border-radius: 0.5rem; */
+		overflow: hidden;
 	}
 
 	.item {
@@ -229,7 +246,7 @@
 		pointer-events: none; /* Non-visible items shouldn't be interactive */
 		overflow: hidden; /* Clip content during animation if needed */
 		z-index: 0; /* Default stacking */
-		/* background-color: #000; */ /* Removed: Fallback background for item - this might have caused the black flash */
+		border-radius: 0.5rem;
 	}
 	.item.hidden {
 		/* Explicitly hidden state */
@@ -246,8 +263,6 @@
 		object-fit: cover;
 		display: block; /* Remove potential extra space */
 		opacity: 1; /* Visible by default */
-		/* Remove transition delay that was hiding the incoming image */
-		/* transition: opacity 0s linear var(--speed); */
 	}
 
 	.item.current {
@@ -274,10 +289,12 @@
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		width: 50%;
+		width: 50%; /* Each pseudo-element takes half the width */
 		height: 100%;
 		background-image: var(--bg-image); /* Set via inline style */
-		background-size: cover; /* Or contain */
+		/* Make the background twice as wide as the pseudo-element */
+		/* so each half shows the correct portion of the original image */
+		background-size: 200% auto;
 		background-repeat: no-repeat;
 		z-index: 3; /* Above hidden image, below content */
 		will-change: transform; /* Optimize animation */
@@ -285,12 +302,14 @@
 
 	.item.previous::before {
 		left: 0;
-		background-position: left center; /* Show left half */
+		/* Position the background to show the left half of the full image */
+		background-position: 0% 50%; /* or left center */
 	}
 
 	.item.previous::after {
 		right: 0;
-		background-position: right center; /* Show right half */
+		/* Position the background to show the right half of the full image */
+		background-position: 100% 50%; /* or right center */
 	}
 
 	/* --- Animations --- */
@@ -312,6 +331,7 @@
 			transform: translateX(0%);
 		}
 		100% {
+			/* Move the left half completely off-screen to the left */
 			transform: translateX(-100%);
 		}
 	}
@@ -320,6 +340,7 @@
 			transform: translateX(0%);
 		}
 		100% {
+			/* Move the right half completely off-screen to the right */
 			transform: translateX(100%);
 		}
 	}
@@ -329,10 +350,14 @@
 		width: min(80vw, 450px); /* Responsive width */
 		position: absolute;
 		bottom: 10%; /* Position from bottom */
-		left: 5%; /* Position from left */
+		right: 5%; /* Position from left */
 		z-index: 4; /* Content above splitting pseudo-elements */
 		color: white;
-		text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+		/* text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); */
+		background-color: rgba(0, 0, 0, 0.345);
+		backdrop-filter: blur(8px); /* Optional: frosted glass effect */
+		border-radius: 0.5rem;
+		padding: 1.5rem;
 		opacity: 0; /* Hidden by default, start position for incoming */
 		transform: translateY(24px); /* Start position for incoming, end position for outgoing */
 		/* Default transition for INCOMING content */
@@ -342,7 +367,7 @@
 		/* Delay is handled by .item.current .content */
 		display: flex; /* Use flex for layout */
 		flex-direction: column;
-		gap: 0.8rem; /* Space between title/desc */
+		gap: 0.8rem; /* Space between projectType/desc */
 		pointer-events: none; /* Prevent interaction when hidden */
 		will-change: opacity, transform;
 	}
@@ -366,15 +391,33 @@
 		pointer-events: none; /* Disable interaction immediately */
 	}
 
-	.content .title {
-		font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
-		font-weight: 700;
-		text-transform: uppercase;
+	.content .projectType {
+		font-size: var(--fs-md);
 		line-height: 1.1;
+		letter-spacing: 0.05em;
+		&:after{
+			content: '';
+			display: block;
+			width: 50px;
+			height: 2px;
+			background-color: var(--clr-accent);
+			margin-top: 0.5rem;
+		}
 	}
 	.content .description {
-		font-size: clamp(0.9rem, 2vw, 1.1rem);
-		line-height: 1.6;
+		/* font-size: clamp(0.9rem, 2vw, 1.1rem); */
+		font-size: var(--fs-xs);
+		line-height: 1.4;
+		& :first-child {
+			margin-bottom: 1rem;
+		}
+		& :last-child {
+			font-size: var(--fs-sm);
+			&:before{
+				content: '—  ';
+				
+			}
+		}
 	}
 
 	/* --- Arrows Styling --- */

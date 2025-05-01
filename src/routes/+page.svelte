@@ -1,6 +1,7 @@
 <script>
 
 	import Cta from '$lib/components/CtaBlock.svelte';
+	import Faq from '$lib/components/Faq.svelte';
 	import GlobIntro from '$lib/components/GlobIntro.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import ImgCarousel from '$lib/components/ImgCarousel.svelte';
@@ -20,6 +21,7 @@
 		<p>WE CREATE <span>SPACES THAT WILL NURTURE YOUR HEART</span>, SOUL AND MIND</p>
 	</div>
 	<ImgCarousel />
+	<Faq />
 	<Cta />
 </section>
 

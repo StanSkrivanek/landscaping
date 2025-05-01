@@ -34,7 +34,7 @@
 			</div>
 		{/each}
 		<div class="tile-card">
-			<p>We offer a comprehensive range of landscaping and gardening services</p>
+			<p>check our comprehensive range of landscaping and gardening services</p>
 			<!-- <p>all services</p> -->
 			<a href="/services" aria-label={`Go to Services`}>
 				<!-- <div class="logo">
@@ -130,8 +130,8 @@
 	}
 
 	.tile-card:last-child {
-		background: var(--clr-accent); /* Last card */
-		background-image: url('https://cdn.sanity.io/images/lbo1agd3/production/c22c12bcb7cd010b64507b591f67702669e4bdc5-142x175.svg');
+		background: var(--clr-accent-dark); /* Last card */
+		/* background-image: url('https://cdn.sanity.io/images/lbo1agd3/production/c22c12bcb7cd010b64507b591f67702669e4bdc5-142x175.svg'); */
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: right 20px bottom -100px;
