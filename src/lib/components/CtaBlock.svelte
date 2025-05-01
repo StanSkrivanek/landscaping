@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<div class="cta__c">
+<section class="section-grid">
 	<div class="decoration">
 		<img
 			src="https://cdn.sanity.io/images/lbo1agd3/production/f7d40d83ec3f900c2d0b23a0cdab80cdddde34df-354x284.svg"
@@ -16,21 +16,10 @@
 		</p>
 		<a href="/" class="cta-button">Let's get in touch</a>
 	</div>
-</div>
+</section>
 
 <style>
-	.cta__c {
-		display: grid;
-		grid-template-columns: repeat(10, 1fr);
-		gap: 16px;
-		grid-column: 1 / -1;
-		/* padding: 2rem; */
-		background-color: var(--clr-primary);
-		color: var(--clr-text);
-		margin-block: 10rem;
-		/* Enable container queries */
-		container-type: inline-size;
-	}
+	
 	.decoration {
 		display: flex;
 		grid-column: 2 / span 4;
@@ -71,7 +60,7 @@
 	}
 
 	@container (max-width: 992px) {
-		.cta__c {
+		.section-grid {
 			/* grid-template-columns: repeat(8, 1fr); */
 			padding-block: 4rem;
 		}
@@ -95,7 +84,7 @@
 		}
 	}
 	@container (max-width: 768px) {
-		.cta__c {
+		.section-grid {
 			padding-block: 4rem;
 		}
 		.decoration {
@@ -113,7 +102,7 @@
 		}
 	}
 	@container (max-width: 480px) {
-		.cta__c {
+		.section-grid {
 			padding-block: 3rem;
 		}
 		.decoration {
@@ -134,7 +123,7 @@
 		}
 	}
 	@container (max-width: 320px) {
-		.cta__c {
+		.section-grid {
 			padding-block: 1rem;
 		}
 		.decoration {

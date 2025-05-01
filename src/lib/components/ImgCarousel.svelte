@@ -164,7 +164,7 @@ let items = $state([
 		}
 	}
 </script>
-
+<section class="section-grid">
 <div
 	class="slider"
 	bind:this={slider}
@@ -220,7 +220,7 @@ let items = $state([
 		</button>
 	</div>
 </div>
-
+</section>
 <style>
 	:root {
 		--speed: 1000ms; /* Animation duration - match JS const */
@@ -231,6 +231,7 @@ let items = $state([
 	.slider {
 		position: relative;
 		width: 100%;
+		grid-column: 1 / -1;
 		max-height: 900px; /* Or specific height */
 		aspect-ratio: 16 / 9; /* Maintain aspect ratio */
 		/* border-radius: 0.5rem; */

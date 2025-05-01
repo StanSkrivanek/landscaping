@@ -64,7 +64,7 @@
 	}
 </script>
 
-<section class="faq-section">
+<section class="section-grid">
 	<div class="faq-content">
 		<h2>Common <span>Questions</span></h2>
 		<!-- <h2>Frequently Asked <span>Questions</span></h2> -->
@@ -76,8 +76,8 @@
 					aria-expanded={openIndex === i}
 					aria-controls="faq-answer-{i}"
 					id="faq-question-{i}"
-					on:click={() => toggle(i)}
-					on:keydown={(e) => handleKeydown(e, i)}
+					onclick={() => toggle(i)}
+					onkeydown={(e) => handleKeydown(e, i)}
 				>
 					<span>{faq.question}</span>
 					<span class="icon">{openIndex === i ? '−' : '+'}</span>
@@ -105,17 +105,7 @@
 </section>
 
 <style>
-	.faq-section {
-		display: grid;
-		grid-template-columns: repeat(10, 1fr);
-		gap: 16px;
-		grid-column: 1 / -1;
-		margin-block: 10rem;
-		/* Enable container queries */
-		container-type: inline-size;
-		align-items: start;	
-		color: var(--clr-text-dark)
-	}
+
 
 	.faq-content {
 		grid-column: 2 / span 5;
@@ -135,13 +125,13 @@
 		height: auto;
 	}
 
-	.faq-section h2 {
+	.section-grid h2 {
 		font-size: var(--fs-xl);
 		margin-bottom: 2.5rem;
 		letter-spacing: 0.05em;
 	}
 
-	.faq-section h2 span {
+	.section-grid h2 span {
 		color: var(--clr-accent); /* Teal color */
 	}
 
@@ -195,7 +185,7 @@
 
 	/* Responsive adjustments */
 	@media (max-width: 768px) {
-		.faq-section {
+		.section-grid {
 			flex-direction: column; /* Stack content and image */
 			align-items: center; /* Center items when stacked */
 		}
@@ -206,7 +196,7 @@
 			margin: 0 auto; /* Center image */
 		}
 
-		.faq-section h2 {
+		.section-grid h2 {
 			font-size: 2rem;
 			text-align: center;
 		}

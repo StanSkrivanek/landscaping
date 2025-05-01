@@ -165,7 +165,6 @@ h6 {
 	--fs-xxxl: var(--step-5);
 	--fs-xxxxl: var(--step-6);
 	--fs-xxxxxl: var(--step-7);
-
 }
 
 body {
@@ -189,6 +188,18 @@ main {
 section {
 	max-width: 96em;
 	margin: 0 auto;
+	container-type: inline-size;
+}
+.section-grid {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: 16px;
+	grid-column: 1 / -1;
+	/* padding: 2rem; */
+	background-color: var(--clr-primary);
+	color: var(--clr-text);
+	margin-block: 10rem;
+	/* Enable container queries */
 	container-type: inline-size;
 }
 

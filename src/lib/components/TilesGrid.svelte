@@ -2,7 +2,7 @@
 	let { items } = $props();
 </script>
 
-<div class="tiles__c">
+<section class="section-grid">
 	<h2><span>Services</span> we offer</h2>
 	<div class="tiles-grid">
 		{#each items as item}
@@ -61,13 +61,14 @@
 			</a>
 		</div>
 	</div>
-</div>
+</section>
 
 <style>
-	.tiles__c {
+	.section-grid {
 		margin-top: 4rem;
         
 		& h2 {
+			grid-column: 1 / -1;
 			font-size: var(--fs-xxxl);
 			margin-bottom: 2rem;
 			& span {
@@ -76,8 +77,9 @@
 			}
 		}
 	}
-
+	
 	.tiles-grid {
+		grid-column: 1 / -1;
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		gap: 8px;
@@ -188,7 +190,7 @@
 	}
 	/* Responsive adjustments */
 	@media (width < 1280px) {
-		.tiles__c {
+		.section-grid {
 			/* padding: 0 24px; */
 		}
 		.tile-card:nth-child(n) {
@@ -204,7 +206,7 @@
 		}
 	}
 	@media (width < 1024px) {
-		.tiles__c {
+		.section-grid {
 			/* padding: 0 16px; */
 		}
 		.tile-card:nth-child(n) {
@@ -221,7 +223,7 @@
 	}
 
 	@media (width < 960px) {
-		.tiles__c {
+		.section-grid {
 			/* padding: 0 12px; */
 		}
 		.tile-card:nth-child(n) {
@@ -236,7 +238,7 @@
 	}
 
 	@media (width < 640px) {
-		.tiles__c {
+		.section-grid {
 			/* padding: 0 8px; */
 		}
 		.tile-card:nth-child(n) {

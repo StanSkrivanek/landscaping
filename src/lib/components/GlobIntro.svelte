@@ -16,7 +16,7 @@
 	];
 </script>
 
-<div class="intro__c">
+<section class="section-grid">
 	<div class="content__w">
 		<h2><span>Transforming</span> Outdoor Spaces</h2>
 		<div class="content">
@@ -44,22 +44,10 @@
 			<p>{summaryData[3].description}</p>
 		</div>
 	</div>
-</div>
+</section>
 
 <style>
-	.intro__c {
-		/* Add your styles here */
-		display: grid;
-		grid-template-columns: repeat(10, 1fr);
-		gap: 16px;
-		grid-column: 1 / -1;
-		/* padding: 2rem; */
-		background-color: var(--clr-primary);
-		color: var(--clr-text);
-		margin-block: 10rem;
-		/* Enable container queries */
-		container-type: inline-size;
-	}
+
 
 	.content__w {
 		/* Add your styles here */
@@ -106,7 +94,7 @@
 		}
 	}
 	@media (max-width: 1280px) {
-		.intro__c {
+		.section-grid {
 			grid-template-columns: 1fr;
 			gap: 2rem;
 			margin-block: 5rem;
@@ -129,7 +117,7 @@
 		}
 	}
 	@media (max-width: 1024px) {
-		.intro__c {
+		.section-grid {
 			grid-template-columns: 1fr;
 			gap: 2rem;
 			margin-block: 5rem;
@@ -168,7 +156,7 @@
 		}
 	}
 	@media (max-width: 480px) {
-		.intro__c {
+		.section-grid {
 			grid-template-columns: 1fr;
 			/* gap: 2rem; */
 			margin-block: 3rem;
