@@ -37,13 +37,13 @@
 		align-items: center;
 		flex-direction: column;
 		grid-column: 1/-1;
-		font-size: var(--fs-xxl);
+		/* font-size: var(--fs-xxl); */
 
 		& p {
 			font-family: var(--ff-org);
 			line-height: 1;
-			max-width: 720px;
-			font-size: var(--fs-xxl);
+			max-width: 20ch;
+			font-size: var(--fs-xxxxl);
 			& span {
 				color: var(--clr-accent);
 			}

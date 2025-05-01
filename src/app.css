@@ -187,6 +187,7 @@ main {
 
 section {
 	max-width: 96em;
+	padding-inline: 0.8rem;
 	margin: 0 auto;
 	container-type: inline-size;
 }
