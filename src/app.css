@@ -219,7 +219,8 @@ h1 {
 
 a {
 	text-decoration: none;
-	color: var(--clr-orange);
+	/* color: var(--clr-orange); */
+	color: var(--clr-text-dark);
 }
 
 /* @container (max-width: 768px) { */

@@ -7,12 +7,12 @@
 
 <!-- render layout -->
 <div class="page__c">
-	<main>
+
 		<!-- <div class="container"> -->
 			{#if !page.url.pathname.startsWith('/studio')}
 				<Navigation />
 			{/if}
 			{@render children?.()}
 		<!-- </div> -->
-	</main>
+	
 </div>

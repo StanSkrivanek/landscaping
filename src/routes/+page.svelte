@@ -15,16 +15,18 @@
 
 <Hero />
 <!-- <section> -->
-<GlobIntro />
-<TilesGrid {items} />
-<section class="section-grid">
-	<div class="text-center">
-		<p>WE CREATE <span>SPACES THAT WILL NURTURE YOUR HEART</span>, SOUL AND MIND</p>
-	</div>
-</section>
-<ImgCarousel />
-<Faq />
-<Cta />
+<main>
+	<GlobIntro />
+	<TilesGrid {items} />
+	<section class="section-grid">
+		<div class="text-center">
+			<p>WE CREATE <span>SPACES THAT WILL NURTURE YOUR HEART</span>, SOUL AND MIND</p>
+		</div>
+	</section>
+	<ImgCarousel />
+	<Faq />
+	<Cta />
+</main>
 <!-- </section> -->
 <Footer />
 
