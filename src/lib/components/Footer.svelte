@@ -137,18 +137,7 @@
 			}
 		}
 	}
-	.logo {
-		margin-bottom: 2rem;
-		& img {
-			width: 100%;
-			max-width: 120px;
-			height: auto;
-			margin-bottom: 1rem;
-			@media (width < 768px) {
-				max-width: 100px; /* Adjust logo size for smaller screens */
-			}
-		}
-	}
+
 	.social {
 		display: flex;
 		gap: 0.5rem; /* Add spacing between social icons */

@@ -34,7 +34,7 @@
 			</div>
 		{/each}
 		<div class="tile-card">
-			<p>check our comprehensive range of landscaping and gardening services</p>
+			<p>check our comprehensive range of services</p>
 			<!-- <p>all services</p> -->
 			<a href="/services" aria-label={`Go to Services`}>
 				<!-- <div class="logo">
@@ -66,7 +66,7 @@
 <style>
 	.section-grid {
 		margin-top: 4rem;
-        
+
 		& h2 {
 			grid-column: 1 / -1;
 			font-size: var(--fs-xxl);
@@ -77,7 +77,7 @@
 			}
 		}
 	}
-	
+
 	.tiles-grid {
 		grid-column: 1 / -1;
 		display: grid;
@@ -90,7 +90,7 @@
 		position: relative;
 		overflow: hidden;
 		border-radius: 0.25rem;
-        max-height: 480px;
+		max-height: 480px;
 		/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 	}
 	.tile-card::before {
@@ -103,8 +103,6 @@
 			background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%);
 		}
 	}
-
-
 
 	.tile-card img {
 		width: 100%;
@@ -132,19 +130,33 @@
 	}
 
 	.tile-card:last-child {
-		background: var(--clr-accent-dark); /* Last card */
-		/* background-image: url('https://cdn.sanity.io/images/lbo1agd3/production/c22c12bcb7cd010b64507b591f67702669e4bdc5-142x175.svg'); */
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: right 20px bottom -100px;
+		position: relative;
 		padding: 40px;
+	
+		/* overflow: hidden; */
 		& p {
-			font-size: var(--fs-xl);
+			font-size: var(--fs-xxl);
 			color: var(--clr-bg);
 			font-family: var(--ff-org);
 			letter-spacing: 0.08rem;
 			line-height: 1.1;
 			margin-bottom: 3rem;
+			position: relative;
+			z-index: 1;
+			width: 16ch;
+			text-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
+
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-color: var(--clr-accent);
+			background-image: url('svg/garden-h.svg');
+			background-size: cover;
+			background-repeat: no-repeat;
+
+			z-index: 0;
 		}
 	}
 
@@ -162,13 +174,15 @@
 		font-size: var(--fs-lg);
 		margin-bottom: 10px;
 		color: var(--clr-bg);
-        width:20ch;
+		width: 20ch;
+		text-shadow: 6px 4px 4px rgba(0, 0, 0, 0.5);
 	}
 
 	.tile-content p {
 		font-size: var(--fs-xs);
 		font-family: var(--ff-light);
 		letter-spacing: 0.08rem;
+		
 	}
 	.arrow-icon {
 		position: absolute;
