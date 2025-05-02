@@ -24,10 +24,10 @@
 			</div>
 			<div class="social">
 				<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer nofollow">
-					<Instagram width={32} height={32} />
+					<Instagram width={48} height={48} />
 				</a>
 				<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer nofollow">
-					<Facebook width={32} height={32} />
+					<Facebook width={48} height={48} />
 				</a>
 			</div>
 		</div>
