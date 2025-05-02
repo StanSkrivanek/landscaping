@@ -1,9 +1,8 @@
-Always Use only Svelte 5 and Runes . Full documentation provided bellow
 
 
+# 01 - Introduntion
 
 
-# 01 - Introduction
 
 ## Overview
 

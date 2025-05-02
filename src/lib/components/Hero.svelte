@@ -1,17 +1,34 @@
 <script>
-	const { heroImg, slogan, content } = $props();
+	import CustomHeading from '$lib/portableText/CustomHeading.svelte';
+	import CustomParagraph from '$lib/portableText/CustomParagraph.svelte';
+	import { PortableText } from '@portabletext/svelte';
+	const { heroImg, slogan, introduction } = $props();
+	// $inspect('heroImg', heroImg); // Added logging for debugging purposes
+	$inspect('introduction', introduction); // Added logging for debugging purposes
 </script>
 
 <div class="hero" style="--image-url: url({heroImg});">
 	<div class="hero-headline">
 		<h1>{slogan}</h1>
 	</div>
-	{#if content}
-		<div class="hero-content">
-			{content}
-		</div>
-	{/if}
 </div>
+{#if introduction}
+	<div class="hero-content">
+		<h1>TEXT</h1>
+		<PortableText
+			value={introduction}
+			onMissingComponent={false}
+			components={{
+				block: {
+					normal: CustomParagraph,
+					h1: CustomHeading,
+					h2: CustomHeading,
+					h3: CustomHeading
+				}
+			}}
+		/>
+	</div>
+{/if}
 
 <style>
 	.hero {
