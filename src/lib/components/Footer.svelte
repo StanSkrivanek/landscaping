@@ -8,34 +8,30 @@
 
 <footer class="section-grid">
 	<div class="content__c">
-		<div class="part">
-			<div class="logo">
-				<!-- <a href="/"> -->
-				<!-- <img src={bg} alt="Logo" /> -->
-				<img
-					src="https://cdn.sanity.io/images/lbo1agd3/production/643bf99e2bf633a8ee3567dffcc06a1386845f96-200x74.svg"
-					alt="Logo"
-				/>
-				<!-- </a> -->
-				<div>
-					<p>
-						<a href="mailto:example@example.com">info@abrlandscaping.com</a>
-					</p>
-					<p>
-						<a href="tel:+123456789">+353 86 896 6575</a>
-					</p>
-				</div>
-				<div class="social">
-					<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer nofollow">
-						<Instagram width={32} height={32} />
-					</a>
-					<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer nofollow">
-						<Facebook width={32} height={32} />
-					</a>
-				</div>
+		<div class="company-info">
+			<img
+				src="https://cdn.sanity.io/images/lbo1agd3/production/643bf99e2bf633a8ee3567dffcc06a1386845f96-200x74.svg"
+				alt="Logo"
+			/>
+
+			<div>
+				<p>
+					<a href="mailto:example@example.com">info@abrlandscaping.com</a>
+				</p>
+				<p>
+					<a href="tel:+123456789">+353 86 896 6575</a>
+				</p>
+			</div>
+			<div class="social">
+				<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer nofollow">
+					<Instagram width={32} height={32} />
+				</a>
+				<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer nofollow">
+					<Facebook width={32} height={32} />
+				</a>
 			</div>
 		</div>
-		<div class="parts">
+		<div class="footer-nav">
 			<div class="part">
 				<h3>pages</h3>
 				<div>
@@ -121,20 +117,25 @@
 			}
 		}
 	}
-	.part {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem; /* Add gap for vertical spacing */
-		/* flex-basis: 50%; */
-		justify-content: space-evenly;
-	}
-	.parts {
+	.footer-nav {
 		display: flex;
 		flex-direction: row;
 		gap: calc(4rem + 1vw); /* Add gap for horizontal spacing */
 		/* flex-basis: 50%; */
 		justify-content: space-evenly;
 		align-items: flex-start;
+	}
+	.company-info {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		@media (width < 768px) {
+			align-items: center;
+			text-align: center;
+			& img {
+				width: 75%;
+			}
+		}
 	}
 	.logo {
 		margin-bottom: 2rem;
@@ -155,7 +156,7 @@
 	}
 	.sub-footer {
 		grid-column: 2/-2;
-		font-size: var(--fs-xxs);
+		font-size: 14px;
 		display: flex; /* Use flexbox for alignment */
 		justify-content: space-between; /* Space out items */
 		flex-wrap: wrap; /* Allow wrapping on small screens */
@@ -173,7 +174,7 @@
 			color: var(--clr-orange);
 		}
 		@media (width < 480px) {
-			grid-column: 2/-2;
+			grid-column: 1/-1;
 			font-size: 12px;
 		}
 	}

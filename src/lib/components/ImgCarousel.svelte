@@ -461,7 +461,7 @@
 		padding: 1rem;
 		border-radius: 0.5rem;
 		color: var(--clr-bg);
-		background-color: rgba(0, 0, 0, 0.75);
+		background-color: rgba(6, 35, 26, 0.75);
 
 		/* --- Add these styles --- */
 		display: grid; /* Use grid to stack items */

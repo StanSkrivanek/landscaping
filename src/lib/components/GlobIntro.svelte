@@ -140,6 +140,12 @@
 	}
 	/* Add additional breakpoint for even smaller screens */
 	@media (max-width: 768px) {
+		.section-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			margin-block: 2rem;
+			padding: 2rem;
+		}
 		.summary__w {
 			grid-template-columns: repeat(2, 1fr);
 			padding: 0;
