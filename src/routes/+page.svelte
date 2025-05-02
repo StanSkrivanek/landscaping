@@ -10,10 +10,13 @@
 	const { data } = $props();
 	$inspect('data', data); // Added logging for debugging purposes
 	// let loading = data.isLoading;
+	const heroImg = data.hero.mainImage;
+	const slogan = data.hero.slogan;
+	const content = data.hero?.introduction;
 	const items = data.services;
 </script>
 
-<Hero />
+<Hero {heroImg} {slogan} {content} />
 <!-- <section> -->
 <main>
 	<GlobIntro />

@@ -1,13 +1,16 @@
 <script>
-	// load data from CMS
+	const { heroImg, slogan, content } = $props();
 </script>
 
-<div class="hero">
-	<!-- <Navigation /> -->
-	<div class="hero-content">
-		<!-- <h1>{headline}</h1> -->
-		<h1>Crafting outdoor spaces with beauty, purpose, and permanence</h1>
+<div class="hero" style="--image-url: url({heroImg});">
+	<div class="hero-headline">
+		<h1>{slogan}</h1>
 	</div>
+	{#if content}
+		<div class="hero-content">
+			{content}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -16,23 +19,23 @@
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		grid-column: 1 / -1;
-		height: 960px;
+		height: 86dvh;
 		gap: 16px;
-		background: url('https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp')
-			center/cover no-repeat;
+		background-image: var(--image-url);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		overflow: hidden;
-		/* Enable container queries */
-		container-type: inline-size;
 		pointer-events: none;
 	}
 
-	.hero-content {
+	.hero-headline {
 		flex: 1;
 		position: relative;
 		z-index: 1;
 		grid-column: 2 / span 4;
 		align-self: self-end;
-		margin-bottom: 4rem;
+		margin-bottom: 3rem;
 		/* background-color: black; */
 
 		& h1 {
@@ -40,13 +43,26 @@
 			font-size: var(--fs-xxxl);
 		}
 	}
+	.hero-content {
+		grid-column: 2 / span 4;
+		align-self: self-end;
+		margin-bottom: 3rem;
+		z-index: 1;
+		pointer-events: auto;
+	}
+	.hero-content p {
+		color: var(--clr-text-light);
+		font-size: var(--fs-lg);
+		line-height: 1.5;
+		max-width: 40ch;
+	}
 
 	/* container query */
 	@media (width < 1970px) {
 		.hero {
 			max-height: 100dvh;
 		}
-		.hero-content {
+		.hero-headline {
 			& h1 {
 				font-size: var(--fs-xxxl);
 			}
@@ -58,7 +74,7 @@
 			grid-template-columns: repeat(8, 1fr);
 			height: 700px;
 		}
-		.hero-content {
+		.hero-headline {
 			& h1 {
 				font-size: var(--fs-xxl);
 			}
@@ -69,7 +85,7 @@
 		.hero {
 			height: 600px;
 		}
-		.hero-content {
+		.hero-headline {
 			margin-bottom: 2.5rem;
 			& h1 {
 				font-size: var(--fs-xl);
@@ -81,7 +97,7 @@
 		.hero {
 			height: 400px;
 		}
-		.hero-content {
+		.hero-headline {
 			grid-column: 2 / -2;
 			margin-bottom: 2rem;
 			& h1 {

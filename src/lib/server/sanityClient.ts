@@ -31,3 +31,44 @@ export const getFiveServices = async () => {
 		return [];
 	}
 };
+
+export const getAllServices = async () => {
+	const query = `*[_type == "service"]{
+		"id": _id,
+			"slug": slug.current,
+			title,
+			"thumb": thumbnail.asset->url,
+			"shorts": shortDescription[]{
+				"text": children[].text
+			},
+		}`;
+	try {
+		const services = await client.fetch(query);
+		console.log('Fetched services:', services);
+		return services;
+	} catch (err) {
+		console.error('Error fetching recipes:', err);
+		return [];
+	}
+};
+
+// get hero for current page
+export const getHero = async (page: string) => {
+	const query = `*[_type == "hero" && title == $page][0]{
+		"id": _id,
+			"page": title,
+			"slogan": slogan,
+			"mainImage": mainImage.asset->url,
+			"introduction": introduction[]{
+				"text": children[].text
+			}
+	}`;
+	try {
+		const hero = await client.fetch(query, { page });
+		console.log('Fetched hero:', hero);
+		return hero;
+	} catch (err) {
+		console.error('Error fetching recipes:', err);
+		return [];
+	}
+}

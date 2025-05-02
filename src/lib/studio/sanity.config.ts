@@ -20,6 +20,7 @@ export default defineConfig({
 						S.documentTypeListItem('service').title('Services'),
 						S.divider(),
 						S.documentTypeListItem('premise').title('Premise Types'),
+						S.documentTypeListItem('hero').title('Hero Sections'),
 						S.documentTypeListItem('media.tag').title('Tags')
 					])
 		}),

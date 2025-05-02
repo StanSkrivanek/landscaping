@@ -1,4 +1,6 @@
 <script>
+	import { page } from "$app/state";
+
 	let { items } = $props();
 </script>
 
@@ -33,7 +35,9 @@
 				</div>
 			</div>
 		{/each}
-		<div class="tile-card">
+		<!-- if url is homepage -->
+		 {#if page.url.pathname === '/'}
+		<div class="tile-card last">
 			<p>check our comprehensive range of services</p>
 			<!-- <p>all services</p> -->
 			<a href="/services" aria-label={`Go to Services`}>
@@ -60,6 +64,7 @@
 				</div>
 			</a>
 		</div>
+		{/if}
 	</div>
 </section>
 
@@ -99,7 +104,7 @@
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		&:not(:last-child) {
+		&:not(.last) {
 			background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%);
 		}
 	}
@@ -129,7 +134,7 @@
 		grid-column: span 6; /* Second card in even rows */
 	}
 
-	.tile-card:last-child {
+	.tile-card.last {
 		position: relative;
 		padding: 40px;
 	
