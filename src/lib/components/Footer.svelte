@@ -11,28 +11,28 @@
 		<div class="part">
 			<div class="logo">
 				<!-- <a href="/"> -->
-					<!-- <img src={bg} alt="Logo" /> -->
-					<img
-						src="https://cdn.sanity.io/images/lbo1agd3/production/643bf99e2bf633a8ee3567dffcc06a1386845f96-200x74.svg"
-						alt="Logo"
-					/>
+				<!-- <img src={bg} alt="Logo" /> -->
+				<img
+					src="https://cdn.sanity.io/images/lbo1agd3/production/643bf99e2bf633a8ee3567dffcc06a1386845f96-200x74.svg"
+					alt="Logo"
+				/>
 				<!-- </a> -->
-			</div>
-			<div>
-				<p>
-					<a href="mailto:example@example.com">info@abrlandscaping.com</a>
-				</p>
-				<p>
-					<a href="tel:+123456789">+353 86 896 6575</a>
-				</p>
-			</div>
-			<div class="social">
-				<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer nofollow" >
-					<Instagram width={32} height={32} />
-				</a>
-				<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer nofollow">
-					<Facebook width={32} height={32} />
-				</a>
+				<div>
+					<p>
+						<a href="mailto:example@example.com">info@abrlandscaping.com</a>
+					</p>
+					<p>
+						<a href="tel:+123456789">+353 86 896 6575</a>
+					</p>
+				</div>
+				<div class="social">
+					<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer nofollow">
+						<Instagram width={32} height={32} />
+					</a>
+					<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer nofollow">
+						<Facebook width={32} height={32} />
+					</a>
+				</div>
 			</div>
 		</div>
 		<div class="parts">
@@ -61,7 +61,13 @@
 	</div>
 	<div class="sub-footer">
 		<p>&copy; {currentYear} ABR Landscaping. All rights reserved.</p>
-		<p>Design &amp; Development: <a href="https://stan-skrivanek.vercel.app" target="_blank" rel="noopener" >Finediv Studio</a></p>
+		<p>
+			Design &amp; Development: <a
+				href="https://stan-skrivanek.vercel.app"
+				target="_blank"
+				rel="noopener">Finediv Studio</a
+			>
+		</p>
 	</div>
 </footer>
 
@@ -77,7 +83,7 @@
 		/* background: var(--clr-accent-light); */
 	}
 	.content__c {
-		grid-column: 3/-3;
+		grid-column: 2/-2;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -104,36 +110,31 @@
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem; /* Add spacing between list items */
-			/* & li:before{
-				content: '';
-				display: inline-block;
-				width: 12px;
-				height: 1px;
-				margin: 0 0.5rem;
-				background: var(--clr-orange);
-				transition: width 0.2s ease;
-			} */
 		}
 		& a {
 			text-decoration: none;
 			color: var(--color-text);
 			transition: color 0.2s ease;
-		
+
 			&:hover {
 				color: var(--clr-orange);
 			}
 		}
 	}
+	.part {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem; /* Add gap for vertical spacing */
+		/* flex-basis: 50%; */
+		justify-content: space-evenly;
+	}
 	.parts {
 		display: flex;
 		flex-direction: row;
-		gap: 10rem; /* Add gap for horizontal spacing */
+		gap: calc(4rem + 1vw); /* Add gap for horizontal spacing */
 		/* flex-basis: 50%; */
 		justify-content: space-evenly;
-		@media (max-width: 768px) {
-			flex-direction: column;
-			gap: 3rem; /* Adjust gap for vertical spacing */
-		}
+		align-items: flex-start;
 	}
 	.logo {
 		margin-bottom: 2rem;
@@ -141,7 +142,8 @@
 			width: 100%;
 			max-width: 120px;
 			height: auto;
-			@media (max-width: 768px) {
+			margin-bottom: 1rem;
+			@media (width < 768px) {
 				max-width: 100px; /* Adjust logo size for smaller screens */
 			}
 		}
@@ -152,7 +154,7 @@
 		margin-top: 1rem;
 	}
 	.sub-footer {
-		grid-column: 3/-3;
+		grid-column: 2/-2;
 		font-size: var(--fs-xxs);
 		display: flex; /* Use flexbox for alignment */
 		justify-content: space-between; /* Space out items */
@@ -161,14 +163,27 @@
 		padding-block: 1rem; /* Add some space above */
 		/* border-top: 1px solid #e5e7eb; Add separator line */
 		/* margin-top: 2rem; Add space above the sub-footer */
-		@media (max-width: 768px) {
-			grid-column: 3/-3; /* Adjust grid column for smaller screens */
+		@media (width < 1024px) {
+			grid-column: 1/-1; /* Adjust grid column for smaller screens */
 			justify-content: center; /* Center items on smaller screens */
 			text-align: center;
-			margin-top: 2rem;
+			margin-top: 1rem;
 		}
-		& a{
+		& a {
 			color: var(--clr-orange);
+		}
+		@media (width < 480px) {
+			grid-column: 2/-2;
+			font-size: 12px;
+		}
+	}
+
+	@media (width < 768px) {
+		.section-grid {
+			padding-top: 2rem;
+		}
+		.content__c {
+			grid-column: 2/-2;
 		}
 	}
 </style>

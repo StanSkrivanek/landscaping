@@ -229,10 +229,20 @@
 		<div class="testimonial">
 			{#each items as item, index (item.url)}
 				{#if index === currentSlideIndex}
-					<div class="projectType">{item.projectType}</div>
-					<div class="description">
-						<p>{item.testimonial}</p>
-						<p>{item.name}</p>
+					<div class="testimonial-item active">
+						<div class="projectType">{item.projectType}</div>
+						<div class="description">
+							<p>{item.testimonial}</p>
+							<p>{item.name}</p>
+						</div>
+					</div>
+				{:else}
+					<div class="testimonial-item">
+						<div class="projectType">{item.projectType}</div>
+						<div class="description">
+							<p>{item.testimonial}</p>
+							<p>{item.name}</p>
+						</div>
 					</div>
 				{/if}
 			{/each}
@@ -419,7 +429,7 @@
 		font-size: var(--fs-md);
 		line-height: 1.1;
 		letter-spacing: 0.05em;
-		margin-bottom: .75rem;
+		margin-bottom: 12px;
 		&:after {
 			content: '';
 			display: block;
@@ -433,7 +443,7 @@
 	.testimonial .description {
 		/* font-size: clamp(0.9rem, 2vw, 1.1rem); */
 		font-size: var(--fs-xs);
-		line-height: 1.4;
+		line-height: 1.2;
 		& :first-child {
 			margin-bottom: 1rem;
 		}
@@ -447,10 +457,78 @@
 	.testimonial {
 		grid-column: 1 / -1;
 		grid-row: 2 / 3;
+
 		padding: 1rem;
 		border-radius: 0.5rem;
 		color: var(--clr-bg);
 		background-color: rgba(0, 0, 0, 0.75);
+
+		/* --- Add these styles --- */
+		display: grid; /* Use grid to stack items */
+		/* Ensures the container sizes to the tallest item */
+		min-height: 0; /* Prevents potential intrinsic sizing issues */
+		position: relative; /* Optional, but good practice for stacking context */
+		overflow: hidden; /* Clip content if needed during transitions */
+	}
+
+	/* --- Add these new styles --- */
+	.testimonial-item {
+		/* Place all items in the same grid cell */
+		grid-area: 1 / 1 / 2 / 2;
+
+		/* Default state: hidden */
+		opacity: 0;
+		pointer-events: none; /* Prevent interaction when hidden */
+		visibility: hidden; /* Hide from accessibility tree when not active */
+
+		/* Smooth transition for fade effect */
+		transition:
+			opacity 0.4s ease-in-out,
+			visibility 0s linear 0.4s;
+
+		/* Inherit text alignment or set as needed */
+		text-align: left; /* Or center, etc. */
+	}
+
+	.testimonial-item.active {
+		/* Active state: visible */
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+		transition:
+			opacity 0.4s ease-in-out,
+			visibility 0s linear 0s;
+		position: relative; /* Ensure it's drawn on top if z-index issues arise */
+		z-index: 1;
+	}
+
+	/* Keep existing styles for .projectType and .description within .testimonial */
+	.testimonial .projectType {
+		font-size: var(--fs-md);
+		line-height: 1.1;
+		letter-spacing: 0.05em;
+		margin-bottom: 12px;
+		&:after {
+			content: '';
+			display: block;
+			width: 50px;
+			height: 2px;
+			background-color: var(--clr-accent);
+			margin-top: 0.5rem;
+		}
+	}
+	.testimonial .description {
+		font-size: var(--fs-xs);
+		line-height: 1.2;
+		& :first-child {
+			margin-bottom: 1rem;
+		}
+		& :last-child {
+			font-size: var(--fs-sm);
+			&:before {
+				content: '—  ';
+			}
+		}
 	}
 
 	/* --- Arrows Styling --- */
