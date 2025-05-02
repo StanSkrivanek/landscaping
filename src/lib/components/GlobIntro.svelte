@@ -47,18 +47,17 @@
 </section>
 
 <style>
-
-
 	.content__w {
 		/* Add your styles here */
 		grid-column: 2 / span 4;
 		& h2 {
-			font-size: var(--fs-xl);
+			font-size: var(--fs-xxl);
 			margin-bottom: 2rem;
-            font-family: var(--ff-regular);
-            & span {
-                color: var(--clr-accent);
-            }
+			max-width: 20ch;
+
+			& span {
+				color: var(--clr-accent);
+			}
 		}
 		& .content {
 			font-size: var(--fs-sm);
@@ -78,7 +77,8 @@
 		/* grid-template-rows: 2; Four columns for summary items */
 		padding: 1rem; /* Added padding for better spacing */
 		& .detail {
-		align-self: flex-start;
+		
+			align-self: flex-start;
 			justify-content: center;
 			display: flex;
 			flex-direction: column;
@@ -103,7 +103,7 @@
 
 		.content__w {
 			grid-column: 1 / -1;
-			max-width: 800px;
+			/* max-width: 800px; */
 			margin: 0 auto;
 		}
 
@@ -112,31 +112,30 @@
 			grid-template-columns: repeat(4, 1fr);
 			/* max-width: 800px; */
 			margin: 0 auto;
-             & .detail p:first-child {
-			font-size: calc(var(--fs-xxl) * 1.4);
+			& .detail p:first-child {
+				font-size: calc(var(--fs-xxl) * 1.4);
+			}
 		}
-	}
-	@media (max-width: 1024px) {
-		.section-grid {
-			grid-template-columns: 1fr;
-			gap: 2rem;
-			margin-block: 5rem;
-			padding: 2rem;
-		}
+		@media (max-width: 1024px) {
+			.section-grid {
+				grid-template-columns: 1fr;
+				gap: 2rem;
+				margin-block: 5rem;
+				padding: 2rem;
+			}
 
-		.content__w {
-			grid-column: 1 / -1;
-			/* max-width: 800px; */
-			margin: 0 auto;
-		}
+			.content__w {
+				grid-column: 1 / -1;
+				/* max-width: 800px; */
+				margin: 0 auto;
+			}
 
-		.summary__w {
-			grid-column: 1 / -1;
-			grid-template-columns: repeat(4, 1fr);
-			max-width: 800px;
-			margin: 0 auto;
-           
-		}
+			.summary__w {
+				grid-column: 1 / -1;
+				grid-template-columns: repeat(4, 1fr);
+				max-width: 800px;
+				margin: 0 auto;
+			}
 		}
 	}
 	/* Add additional breakpoint for even smaller screens */
@@ -148,11 +147,11 @@
 		}
 
 		.content__w h2 {
-			font-size: calc(var(--fs-xl) * 0.9);
+			/* font-size: calc(var(--fs-xl)); */
 		}
 
 		.summary__w .detail p:first-child {
-			font-size: calc(var(--fs-xxl) *1.6);
+			font-size: calc(var(--fs-xxl) * 1.6);
 		}
 	}
 	@media (max-width: 480px) {

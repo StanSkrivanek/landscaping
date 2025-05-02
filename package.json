@@ -40,7 +40,6 @@
 		"@sanity/client": "^6.29.0",
 		"@sanity/icons": "^3.7.0",
 		"@sanity/vision": "^3.86.1",
-		"esm-env": "^1.2.2",
 		"sanity": "^3.86.1",
 		"sanity-plugin-media": "^3.0.2"
 	}

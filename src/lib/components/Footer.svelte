@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Facebook from './icons/Facebook.svelte';
 	import Instagram from './icons/Instagram.svelte';
+
 	const currentYear = new Date().getFullYear();
 	// Some footer magic
 </script>
@@ -9,12 +10,13 @@
 	<div class="content__c">
 		<div class="part">
 			<div class="logo">
-				<a href="/">
+				<!-- <a href="/"> -->
+					<!-- <img src={bg} alt="Logo" /> -->
 					<img
 						src="https://cdn.sanity.io/images/lbo1agd3/production/643bf99e2bf633a8ee3567dffcc06a1386845f96-200x74.svg"
 						alt="Logo"
 					/>
-				</a>
+				<!-- </a> -->
 			</div>
 			<div>
 				<p>
@@ -25,10 +27,10 @@
 				</p>
 			</div>
 			<div class="social">
-				<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+				<a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer nofollow" >
 					<Instagram width={32} height={32} />
 				</a>
-				<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+				<a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer nofollow">
 					<Facebook width={32} height={32} />
 				</a>
 			</div>
@@ -59,7 +61,7 @@
 	</div>
 	<div class="sub-footer">
 		<p>&copy; {currentYear} ABR Landscaping. All rights reserved.</p>
-		<p>Created by <a href="https://stan-skrivanek.vercel.app">Finediv Studio</a></p>
+		<p>Design &amp; Development: <a href="https://stan-skrivanek.vercel.app" target="_blank" rel="noopener" >Finediv Studio</a></p>
 	</div>
 </footer>
 
@@ -72,7 +74,7 @@
 		color: var(--color-text);
 		text-align: center;
 		margin-block: 0;
-		/* background: var(--clr-accent); */
+		/* background: var(--clr-accent-light); */
 	}
 	.content__c {
 		grid-column: 3/-3;
@@ -81,7 +83,7 @@
 		justify-content: space-between;
 		text-align: left;
 		padding-block: 2rem;
-		background: var(--clr-bg);
+		/* background: var(--clr-bg); */
 		gap: 2rem; /* Add gap for horizontal spacing */
 		container-type: inline-size;
 		@media (max-width: 768px) {
@@ -165,7 +167,7 @@
 			text-align: center;
 			margin-top: 2rem;
 		}
-		& a {
+		& a{
 			color: var(--clr-orange);
 		}
 	}

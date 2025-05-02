@@ -1,51 +1,52 @@
 <script lang="ts">
 	import { BROWSER } from 'esm-env';
+	import {browser} from '$app/environment'
 	// Import tick if needed for class timing, though setTimeout might suffice
 
-let items = $state([
-        {
-            url: 'https://cdn.sanity.io/images/lbo1agd3/production/ec0e3c0f8328af7a6f79e07fb4fcbaef996bacb1-1000x688.jpg', // Placeholder - maybe a nice patio shot
-            projectType: 'Patio Installation',
-            testimonial:
-                'We are absolutely thrilled with our new patio! The team was professional, meticulous, and the final result is stunning. It has completely transformed our outdoor living space.',
-				name: "Mark & Lisa"
-        },
-        {
-            url: 'https://cdn.sanity.io/images/lbo1agd3/production/4e0d61ef665efb6c35468b23a2d63d2900941278-1000x688.jpg', // Placeholder - maybe a lush garden
-            projectType: 'Garden Makeover',
-            testimonial:
-                'Our garden was tired and overgrown. They listened to our ideas and created a beautiful, low-maintenance design that we love. Highly recommended for their creativity and hard work.',
-				name: "Jennifer S."
-        },
-        {
-            url: 'https://cdn.sanity.io/images/lbo1agd3/production/8172da50f52752c1063fe4d9d9dfc6922cba0d86-1000x688.jpg', // Placeholder - maybe a paved driveway
-            projectType: 'Driveway Paving',
-            testimonial:
-                'Excellent job on our new driveway. The quality of the paving is top-notch, and the crew was efficient and tidy. It has significantly improved our home\'s curb appeal.',
-				name: "David Chen"
-        },
-        {
-            url: 'https://cdn.sanity.io/images/lbo1agd3/production/6a09c087b2ece7598870e6babf9a4543ec00d210-1000x688.jpg', // Placeholder - maybe a neat lawn/hedges
-            projectType: 'Lawn & Hedge Maintenance',
-            testimonial:
-                'Reliable, friendly, and they always leave our property looking immaculate. Taking care of the lawn and hedges used to be a chore, but now we can just enjoy it.',
-				name: "The Robertsons"
-        },
-        {
-            url: 'https://cdn.sanity.io/images/lbo1agd3/production/46a114d9e78108025864536ff350c07a5c0432bd-810x401.webp', // Placeholder - maybe a retaining wall or steps
-            projectType: 'Retaining Wall & Steps',
-            testimonial:
-                'The new retaining wall and garden steps look fantastic and are built to last. They solved our slope problem beautifully. Very professional from start to finish.',
-				name: "Brian T."
-        },
-        {
-            url: 'https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp', // Placeholder - maybe a full landscape project
-            projectType: 'Full Landscape Design',
-            testimonial:
-                'From the initial design consultation to the final planting, the entire process was seamless. They transformed our blank canvas into a stunning landscape we enjoy every day.',
-				name: "Sarah W."
-        }
-    ]);
+	let items = $state([
+		{
+			url: 'https://cdn.sanity.io/images/lbo1agd3/production/ec0e3c0f8328af7a6f79e07fb4fcbaef996bacb1-1000x688.jpg', // Placeholder - maybe a nice patio shot
+			projectType: 'Patio Installation',
+			testimonial:
+				'We are absolutely thrilled with our new patio! The team was professional, meticulous, and the final result is stunning. It has completely transformed our outdoor living space.',
+			name: 'Mark & Lisa'
+		},
+		{
+			url: 'https://cdn.sanity.io/images/lbo1agd3/production/4e0d61ef665efb6c35468b23a2d63d2900941278-1000x688.jpg', // Placeholder - maybe a lush garden
+			projectType: 'Garden Makeover',
+			testimonial:
+				'Our garden was tired and overgrown. They listened to our ideas and created a beautiful, low-maintenance design that we love. Highly recommended for their creativity and hard work.',
+			name: 'Jennifer S.'
+		},
+		{
+			url: 'https://cdn.sanity.io/images/lbo1agd3/production/8172da50f52752c1063fe4d9d9dfc6922cba0d86-1000x688.jpg', // Placeholder - maybe a paved driveway
+			projectType: 'Driveway Paving',
+			testimonial:
+				"Excellent job on our new driveway. The quality of the paving is top-notch, and the crew was efficient and tidy. It has significantly improved our home's curb appeal.",
+			name: 'David Chen'
+		},
+		{
+			url: 'https://cdn.sanity.io/images/lbo1agd3/production/6a09c087b2ece7598870e6babf9a4543ec00d210-1000x688.jpg', // Placeholder - maybe a neat lawn/hedges
+			projectType: 'Lawn & Hedge Maintenance',
+			testimonial:
+				'Reliable, friendly, and they always leave our property looking immaculate. Taking care of the lawn and hedges used to be a chore, but now we can just enjoy it.',
+			name: 'The Robertsons'
+		},
+		{
+			url: 'https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp', // Placeholder - maybe a retaining wall or steps
+			projectType: 'Retaining Wall & Steps',
+			testimonial:
+				'The new retaining wall and garden steps look fantastic and are built to last. They solved our slope problem beautifully. Very professional from start to finish.',
+			name: 'Brian T.'
+		},
+		{
+			url: 'https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp', // Placeholder - maybe a full landscape project
+			projectType: 'Full Landscape Design',
+			testimonial:
+				'From the initial design consultation to the final planting, the entire process was seamless. They transformed our blank canvas into a stunning landscape we enjoy every day.',
+			name: 'Sarah W.'
+		}
+	]);
 
 	let slider: HTMLDivElement | undefined = $state();
 	// Make autoRunInterval a regular variable, not $state, to avoid potential effect loops
@@ -79,7 +80,7 @@ let items = $state([
 
 	// Helper function to safely clear the interval
 	function clearIntervalIfNeeded() {
-		if (BROWSER && autoRunInterval) {
+		if (browser && autoRunInterval) {
 			clearInterval(autoRunInterval);
 			autoRunInterval = undefined; // Reset the variable
 		}
@@ -88,7 +89,7 @@ let items = $state([
 	// Helper function to safely start the interval
 	function startInterval() {
 		clearIntervalIfNeeded(); // Ensure any existing interval is cleared first
-		if (BROWSER) {
+		if (browser) {
 			autoRunInterval = setInterval(() => {
 				// Check flags inside the interval callback before triggering
 				if (!isAnimating && !isPaused) {
@@ -101,7 +102,7 @@ let items = $state([
 	// Function to reset the interval timer (e.g., after manual interaction)
 	function resetInterval() {
 		// Only reset if the carousel is not paused
-		if (BROWSER && !isPaused) {
+		if (browser && !isPaused) {
 			startInterval(); // This clears the old timer and starts a new one
 		}
 	}
@@ -135,7 +136,7 @@ let items = $state([
 	// --- Auto Run Control using $effect ---
 	$effect(() => {
 		// This effect manages the interval based on the isPaused state
-		if (BROWSER) {
+		if (browser) {
 			if (isPaused) {
 				clearIntervalIfNeeded(); // Clear interval when paused
 			} else {
@@ -152,75 +153,84 @@ let items = $state([
 
 	// --- Pause/Resume on Hover ---
 	function pauseAutoRun() {
-		if (BROWSER) {
+		if (browser) {
 			isPaused = true; // Set paused state, the $effect will clear the interval
 		}
 	}
 
 	function resumeAutoRun() {
-		if (BROWSER) {
+		if (browser) {
 			isPaused = false; // Clear paused state, the $effect will start the interval
 			// resetInterval(); // Optionally restart timer delay immediately on mouse leave
 		}
 	}
+	// --- Window Resize Handling ---
+	let innerWidth = $state(0);
 </script>
-<section class="section-grid">
-<div
-	class="slider"
-	bind:this={slider}
-	onmouseenter={pauseAutoRun}
-	onmouseleave={resumeAutoRun}
-	role="region"
-	aria-roledescription="carousel"
-	aria-label="Image Carousel - Split Effect"
->
-	<!-- list item -->
-	{#each items as item, index (item.url)}
-		<div
-			class={getClass(index)}
-			aria-hidden={index !== currentSlideIndex}
-			aria-roledescription="slide"
-			style={index === previousSlideIndex ? `--bg-image: url(${item.url})` : ''}
-		>
-			<!-- Image is used as fallback and for dimensions, but hidden during split -->
-			<img src={item.url} alt={item.projectType} />
 
-			<div class="content">
-				<div class="projectType">{item.projectType}</div>
-				<div class="description">
-					<p>{item.testimonial}</p>
-					<p>{item.name}</p>
+<svelte:window bind:innerWidth />
+<section class="section-grid">
+	<div>
+		width: {innerWidth}
+	</div>
+	<div
+		class="slider"
+		bind:this={slider}
+		onmouseenter={pauseAutoRun}
+		onmouseleave={resumeAutoRun}
+		role="region"
+		aria-roledescription="carousel"
+		aria-label="Image Carousel - Split Effect"
+	>
+		<!-- list item -->
+		{#each items as item, index (item.url)}
+			<div
+				class={getClass(index)}
+				aria-hidden={index !== currentSlideIndex}
+				aria-roledescription="slide"
+				style={index === previousSlideIndex ? `--bg-image: url(${item.url})` : ''}
+			>
+				<!-- Image is used as fallback and for dimensions, but hidden during split -->
+				<img src={item.url} alt={item.projectType} />
+
+				<div class="content">
+					<div class="projectType">{item.projectType}</div>
+					<div class="description">
+						<p>{item.testimonial}</p>
+						<p>{item.name}</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	{/each}
+		{/each}
 
-	<div class="arrows">
-		<button aria-label="Previous slide" onclick={prevSlide} disabled={isAnimating}>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-			</svg>
-		</button>
-		<button aria-label="Next slide" onclick={nextSlide} disabled={isAnimating}>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-			</svg>
-		</button>
+		<div class="arrows">
+			<button aria-label="Previous slide" onclick={prevSlide} disabled={isAnimating}>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+				</svg>
+			</button>
+			<button aria-label="Next slide" onclick={nextSlide} disabled={isAnimating}>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+				</svg>
+			</button>
+		</div>
 	</div>
-</div>
 </section>
+{#if innerWidth > 768}{/if}
+
 <style>
 	:root {
 		--speed: 1000ms; /* Animation duration - match JS const */
@@ -232,8 +242,8 @@ let items = $state([
 		position: relative;
 		width: 100%;
 		grid-column: 1 / -1;
-		max-height: 900px; /* Or specific height */
-		aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+		/* max-height: 900px; Or specific height */
+		aspect-ratio: 16/9; /* Maintain aspect ratio */
 		/* border-radius: 0.5rem; */
 		overflow: hidden;
 	}
@@ -295,7 +305,7 @@ let items = $state([
 		background-image: var(--bg-image); /* Set via inline style */
 		/* Make the background twice as wide as the pseudo-element */
 		/* so each half shows the correct portion of the original image */
-		background-size: 200% auto;
+		background-size: 200% auto; /* Prevents flicker on split */
 		background-repeat: no-repeat;
 		z-index: 3; /* Above hidden image, below content */
 		will-change: transform; /* Optimize animation */
@@ -350,7 +360,7 @@ let items = $state([
 	.content {
 		width: min(80vw, 450px); /* Responsive width */
 		position: absolute;
-		bottom: 10%; /* Position from bottom */
+		bottom: 5%; /* Position from bottom */
 		right: 5%; /* Position from left */
 		z-index: 4; /* Content above splitting pseudo-elements */
 		color: white;
@@ -358,7 +368,7 @@ let items = $state([
 		background-color: rgba(0, 0, 0, 0.345);
 		backdrop-filter: blur(8px); /* Optional: frosted glass effect */
 		border-radius: 0.5rem;
-		padding: 1.5rem;
+		padding: 1.4rem;
 		opacity: 0; /* Hidden by default, start position for incoming */
 		transform: translateY(24px); /* Start position for incoming, end position for outgoing */
 		/* Default transition for INCOMING content */
@@ -371,6 +381,9 @@ let items = $state([
 		gap: 0.8rem; /* Space between projectType/desc */
 		pointer-events: none; /* Prevent interaction when hidden */
 		will-change: opacity, transform;
+		@media (width < 768px) {
+			width: 90%;
+		}
 	}
 
 	/* Animate INCOMING content */
@@ -396,7 +409,7 @@ let items = $state([
 		font-size: var(--fs-md);
 		line-height: 1.1;
 		letter-spacing: 0.05em;
-		&:after{
+		&:after {
 			content: '';
 			display: block;
 			width: 50px;
@@ -414,9 +427,8 @@ let items = $state([
 		}
 		& :last-child {
 			font-size: var(--fs-sm);
-			&:before{
+			&:before {
 				content: '—  ';
-				
 			}
 		}
 	}
@@ -435,9 +447,9 @@ let items = $state([
 	}
 
 	.arrows button {
-		width: 44px;
-		height: 44px;
-		border-radius: 50%;
+		width: var(--fs-xxxl);
+		height: var(--fs-xxxl);
+		border-radius: 0.5rem;
 		background-color: rgba(255, 255, 255, 0.3);
 		border: none;
 		cursor: pointer;
@@ -460,5 +472,23 @@ let items = $state([
 		height: 24px;
 		stroke: #fff; /* White arrows */
 		stroke-width: 2; /* Slightly thicker */
+	}
+	@media (width> 320px) and (width < 620px) {
+		.slider {
+			/* aspect-ratio:4/3; */
+			& .arrows button {
+				width: var(--fs-xxxxxl);
+				height: var(--fs-xxxxxl);
+			}
+			.content {
+				visibility: hidden;
+			}
+			& .projectType {
+				font-size: var(--fs-sm);
+			}
+			& .description {
+				font-size: var(--fs-xs);
+			}
+		}
 	}
 </style>

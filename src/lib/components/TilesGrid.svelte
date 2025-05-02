@@ -69,8 +69,8 @@
         
 		& h2 {
 			grid-column: 1 / -1;
-			font-size: var(--fs-xxxl);
-			margin-bottom: 2rem;
+			font-size: var(--fs-xxl);
+			margin-bottom: 1rem;
 			& span {
 				color: var(--clr-accent);
 				letter-spacing: 0.08rem;

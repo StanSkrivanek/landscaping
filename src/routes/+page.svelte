@@ -19,8 +19,9 @@
 	<GlobIntro />
 	<TilesGrid {items} />
 	<section class="section-grid">
-		<div class="text-center">
-			<p>WE CREATE <span>SPACES THAT WILL NURTURE YOUR HEART</span>, SOUL AND MIND</p>
+		<div class="text-block">
+			<p><span>People says </span> we craft spaces that nurture heart, soul, and mind</p>
+			<!-- <p>WE CREATE <span>SPACES THAT WILL NURTURE YOUR HEART</span>, SOUL AND MIND</p> -->
 		</div>
 	</section>
 	<ImgCarousel />
@@ -32,7 +33,7 @@
 
 <!-- STYLE -->
 <style>
-	.text-center {
+	.text-block {
 		display: flex;
 		margin-block: 5rem;
 		justify-content: center;

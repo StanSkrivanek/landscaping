@@ -102,6 +102,7 @@
 			alt="Decorative graphic"
 		/>
 	</div>
+	
 </section>
 
 <style>

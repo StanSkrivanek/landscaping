@@ -131,6 +131,7 @@ h6 {
 	--clr-orange: #f05d40;
 
 	--clr-accent: #70ceb2;
+	--clr-accent-light: #e6fdf2;
 	--clr-accent-mid: #57afa8;
 	--clr-accent-dark: #3c6e71;
 
@@ -199,9 +200,18 @@ section {
 	/* padding: 2rem; */
 	background-color: var(--clr-primary);
 	color: var(--clr-text);
-	margin-block: 10rem;
+	margin-block: calc(6rem + 2vw);
 	/* Enable container queries */
 	container-type: inline-size;
+	@media (width < 1024px) {
+		margin-block: calc(3.5rem + 1vw);
+	}
+	@media (width < 960px) {
+		margin-block: calc(3rem + 1vw);;
+	}
+	@media (width < 480px) {
+		margin-block: calc(2rem + 1.5vw);;
+	}
 }
 
 h1,
