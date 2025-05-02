@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { BROWSER } from 'esm-env';
-	import {browser} from '$app/environment'
+	import { browser } from '$app/environment';
 	// Import tick if needed for class timing, though setTimeout might suffice
 
 	let items = $state([
@@ -170,9 +169,6 @@
 
 <svelte:window bind:innerWidth />
 <section class="section-grid">
-	<div>
-		width: {innerWidth}
-	</div>
 	<div
 		class="slider"
 		bind:this={slider}
@@ -192,14 +188,15 @@
 			>
 				<!-- Image is used as fallback and for dimensions, but hidden during split -->
 				<img src={item.url} alt={item.projectType} />
-
-				<div class="content">
-					<div class="projectType">{item.projectType}</div>
-					<div class="description">
-						<p>{item.testimonial}</p>
-						<p>{item.name}</p>
+				{#if innerWidth >= 768}
+					<div class="content">
+						<div class="projectType">{item.projectType}</div>
+						<div class="description">
+							<p>{item.testimonial}</p>
+							<p>{item.name}</p>
+						</div>
 					</div>
-				</div>
+				{/if}
 			</div>
 		{/each}
 
@@ -228,8 +225,20 @@
 			</button>
 		</div>
 	</div>
+	{#if innerWidth < 768}
+		<div class="testimonial">
+			{#each items as item, index (item.url)}
+				{#if index === currentSlideIndex}
+					<div class="projectType">{item.projectType}</div>
+					<div class="description">
+						<p>{item.testimonial}</p>
+						<p>{item.name}</p>
+					</div>
+				{/if}
+			{/each}
+		</div>
+	{/if}
 </section>
-{#if innerWidth > 768}{/if}
 
 <style>
 	:root {
@@ -363,7 +372,7 @@
 		bottom: 5%; /* Position from bottom */
 		right: 5%; /* Position from left */
 		z-index: 4; /* Content above splitting pseudo-elements */
-		color: white;
+		color: var(--clr-bg);
 		/* text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); */
 		background-color: rgba(0, 0, 0, 0.345);
 		backdrop-filter: blur(8px); /* Optional: frosted glass effect */
@@ -405,10 +414,12 @@
 		pointer-events: none; /* Disable interaction immediately */
 	}
 
-	.content .projectType {
+	.content .projectType,
+	.testimonial .projectType {
 		font-size: var(--fs-md);
 		line-height: 1.1;
 		letter-spacing: 0.05em;
+		margin-bottom: .75rem;
 		&:after {
 			content: '';
 			display: block;
@@ -418,7 +429,8 @@
 			margin-top: 0.5rem;
 		}
 	}
-	.content .description {
+	.content .description,
+	.testimonial .description {
 		/* font-size: clamp(0.9rem, 2vw, 1.1rem); */
 		font-size: var(--fs-xs);
 		line-height: 1.4;
@@ -431,6 +443,14 @@
 				content: '—  ';
 			}
 		}
+	}
+	.testimonial {
+		grid-column: 1 / -1;
+		grid-row: 2 / 3;
+		padding: 1rem;
+		border-radius: 0.5rem;
+		color: var(--clr-bg);
+		background-color: rgba(0, 0, 0, 0.75);
 	}
 
 	/* --- Arrows Styling --- */
@@ -470,7 +490,7 @@
 	.arrows button svg {
 		width: 24px;
 		height: 24px;
-		stroke: #fff; /* White arrows */
+		stroke: var(--clr-bg); /* White arrows */
 		stroke-width: 2; /* Slightly thicker */
 	}
 	@media (width> 320px) and (width < 620px) {
