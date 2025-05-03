@@ -1,10 +1,10 @@
 <script>
-	import CustomHeading from '$lib/portableText/CustomHeading.svelte';
-	import CustomParagraph from '$lib/portableText/CustomParagraph.svelte';
+	import CustomHeading from '$lib/components/portableText/CustomHeading.svelte';
+	import CustomParagraph from '$lib/components/portableText/CustomParagraph.svelte';
 	import { PortableText } from '@portabletext/svelte';
-	const { heroImg, slogan, introduction } = $props();
-	// $inspect('heroImg', heroImg); // Added logging for debugging purposes
-	$inspect('introduction', introduction); // Added logging for debugging purposes
+	const { heroImg, slogan, portableText } = $props();
+
+	// console.log('🚀 ~ introduction HERO:', introduction);
 </script>
 
 <div class="hero" style="--image-url: url({heroImg});">
@@ -12,23 +12,28 @@
 		<h1>{slogan}</h1>
 	</div>
 </div>
-{#if introduction}
-	<div class="hero-content">
-		<h1>TEXT</h1>
+
+<section class="section-grid">
+	<article class="hero-content">
 		<PortableText
-			value={introduction}
+			value={portableText}
 			onMissingComponent={false}
 			components={{
 				block: {
-					normal: CustomParagraph,
 					h1: CustomHeading,
 					h2: CustomHeading,
-					h3: CustomHeading
+					h3: CustomHeading,
+					normal: CustomParagraph
+				},
+				types: {
+					block: CustomParagraph
 				}
 			}}
 		/>
-	</div>
-{/if}
+	</article>
+</section>
+
+<!-- {#if introduction} -->
 
 <style>
 	.hero {
@@ -61,18 +66,15 @@
 		}
 	}
 	.hero-content {
-		grid-column: 2 / span 4;
+		grid-column: 1 / -1;
 		align-self: self-end;
-		margin-bottom: 3rem;
+		/* margin-bottom: 3rem; */
+		margin: 0 auto;
 		z-index: 1;
 		pointer-events: auto;
+		max-width: 72ch;
 	}
-	.hero-content p {
-		color: var(--clr-text-light);
-		font-size: var(--fs-lg);
-		line-height: 1.5;
-		max-width: 40ch;
-	}
+
 
 	/* container query */
 	@media (width < 1970px) {

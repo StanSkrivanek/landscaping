@@ -1,17 +1,17 @@
 <script>
 	import Hero from '$lib/components/Hero.svelte';
-	import TilesGrid from '$lib/components/TilesGrid.svelte';
-	
+	import { PortableText } from '@portabletext/svelte';
 	const { data } = $props();
-	$inspect('data', data); // Added logging for debugging purposes
-	// let loading = data.isLoading;
+	// console.log("🚀 ~ data:", data)
+
 	const heroImg = data.hero.mainImage;
 	const slogan = data.hero.slogan;
-	const introduction = data.hero.introduction; // Optional chaining to avoid errors if content is undefined
+	const portableText = data.hero.introduction; // Optional chaining to avoid errors if content is undefined
 	const items = data.services;
+	import TilesGrid from '$lib/components/TilesGrid.svelte';
 </script>
 
-<Hero {heroImg} {slogan} {introduction} />
+<Hero {heroImg} {slogan} {portableText} />
 
 <main>
 	<TilesGrid {items} />

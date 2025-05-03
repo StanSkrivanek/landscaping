@@ -24,7 +24,7 @@ export const getFiveServices = async () => {
         }`;
 	try {
 		const services = await client.fetch(query);
-		console.log('Fetched services:', services);
+		// console.log('Fetched services:', services);
 		return services;
 	} catch (err) {
 		console.error('Error fetching recipes:', err);
@@ -44,7 +44,7 @@ export const getAllServices = async () => {
 		}`;
 	try {
 		const services = await client.fetch(query);
-		console.log('Fetched services:', services);
+		// console.log('Fetched services:', services);
 		return services;
 	} catch (err) {
 		console.error('Error fetching recipes:', err);
@@ -60,12 +60,12 @@ export const getHero = async (page: string) => {
 			"slogan": slogan,
 			"mainImage": mainImage.asset->url,
 			"introduction": introduction[]{
-				"text": children[].text
+			...,
 			}
 	}`;
 	try {
 		const hero = await client.fetch(query, { page });
-		console.log('Fetched hero:', hero);
+		// console.log('Fetched hero:', hero);
 		return hero;
 	} catch (err) {
 		console.error('Error fetching recipes:', err);

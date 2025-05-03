@@ -30,6 +30,9 @@ importers:
       '@eslint/js':
         specifier: ^9.18.0
         version: 9.25.1
+      '@portabletext/svelte':
+        specifier: ^3.0.0
+        version: 3.0.0(svelte@5.28.2)
       '@sveltejs/adapter-vercel':
         specifier: ^5.6.3
         version: 5.7.0(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.3(@types/node@22.14.1)(yaml@2.7.1)))(svelte@5.28.2)(vite@6.3.3(@types/node@22.14.1)(yaml@2.7.1)))(rollup@4.40.0)
@@ -58,7 +61,7 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3(prettier@3.5.3)(svelte@5.28.2)
       svelte:
-        specifier: ^5.0.0
+        specifier: ^5.28.2
         version: 5.28.2
       svelte-check:
         specifier: ^4.0.0
@@ -1587,6 +1590,11 @@ packages:
     engines: {node: ^14.13.1 || >=16.0.0}
     peerDependencies:
       react: ^17 || ^18 || >=19.0.0-0
+
+  '@portabletext/svelte@3.0.0':
+    resolution: {integrity: sha512-1PTbasjgyYdA/vpt4BCs3Nc0Fr8pqJQRuI6llhpNe+JgZ1EoSstzzjkSSGn9TtPW7yPls5i/7QksqhYTjUDocw==}
+    peerDependencies:
+      svelte: ^5.0.0
 
   '@portabletext/to-html@2.0.14':
     resolution: {integrity: sha512-wW2et59PoOT/mc56C4U3z+DKAx1yjieN/gp2q9szTfTwusMpb6mclR9+EPIfGrcQWdwGn6PEN7nxVFXnqlZ/0A==}
@@ -6840,6 +6848,11 @@ snapshots:
       '@portabletext/toolkit': 2.0.17
       '@portabletext/types': 2.0.13
       react: 19.1.0
+
+  '@portabletext/svelte@3.0.0(svelte@5.28.2)':
+    dependencies:
+      '@portabletext/toolkit': 2.0.17
+      svelte: 5.28.2
 
   '@portabletext/to-html@2.0.14':
     dependencies:
