@@ -11,12 +11,12 @@
 	// $inspect('data', data); // Added logging for debugging purposes
 	// let loading = data.isLoading;
 	const heroImg = data.hero.mainImage;
-	const slogan = data.hero.slogan;
-	const introduction = data.hero?.introduction;
+	const headline = data.hero.headline;
+	const portableText = data.hero?.introduction;
 	const items = data.services;
 </script>
 
-<Hero {heroImg} {slogan} {introduction} />
+<Hero {heroImg} {headline} {portableText} />
 <!-- <section> -->
 <main>
 	<GlobIntro />

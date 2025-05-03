@@ -52,12 +52,43 @@ export const getAllServices = async () => {
 	}
 };
 
+export const getService = async (slug: string) => {
+	const query = `*[_type == "service" && slug.current == $slug][0]{
+		"id": _id,
+		title,
+		headline,
+		"slug": slug.current,
+		"description": description[]{
+				...,
+			},
+		"thumb": thumbnail.asset->url,
+		"mainImage": mainImage.asset->url,
+		"gallery": gallery[]{
+			"imageUrl": asset->url
+		}
+	}`;
+	try {
+		const service = await client.fetch(query, { slug });
+		return service;
+	} catch (err) {
+		console.error('Error fetching recipes:', err);
+		return [];
+	}
+};
+
+// getService -> shorts
+// "shorts": shortDescription[]{
+// 	"shortText": children[]{
+// 		text
+// 	}
+// },
+
 // get hero for current page
 export const getHero = async (page: string) => {
 	const query = `*[_type == "hero" && title == $page][0]{
 		"id": _id,
 			"page": title,
-			"slogan": slogan,
+			"headline": headline,
 			"mainImage": mainImage.asset->url,
 			"introduction": introduction[]{
 			...,
@@ -71,4 +102,4 @@ export const getHero = async (page: string) => {
 		console.error('Error fetching recipes:', err);
 		return [];
 	}
-}
+};

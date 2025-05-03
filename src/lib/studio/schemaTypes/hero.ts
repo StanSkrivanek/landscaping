@@ -13,10 +13,10 @@ const pageHero = defineType({
 			description: 'Enter the page for which this hero is intended '
 		}),
 		defineField({
-			name: 'slogan',
-			title: 'Hero Title',
+			name: 'headline',
+			title: 'Hero headline',
 			type: 'string',
-			description: 'Enter the Hero title (e.g., "Landscaping")'
+			description: 'Enter the Hero headline'
 		}),
 		defineField({
 			name: 'mainImage',

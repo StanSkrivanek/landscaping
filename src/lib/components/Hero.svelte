@@ -2,14 +2,14 @@
 	import CustomHeading from '$lib/components/portableText/CustomHeading.svelte';
 	import CustomParagraph from '$lib/components/portableText/CustomParagraph.svelte';
 	import { PortableText } from '@portabletext/svelte';
-	const { heroImg, slogan, portableText } = $props();
+	const { heroImg, headline, portableText } = $props();
 
 	// console.log('🚀 ~ introduction HERO:', introduction);
 </script>
 
 <div class="hero" style="--image-url: url({heroImg});">
 	<div class="hero-headline">
-		<h1>{slogan}</h1>
+		<h1>{headline}</h1>
 	</div>
 </div>
 
@@ -58,7 +58,7 @@
 		grid-column: 2 / span 4;
 		align-self: self-end;
 		margin-bottom: 3rem;
-		/* background-color: black; */
+		text-shadow: 6px 4px 4px rgba(0, 0, 0, 0.5);
 
 		& h1 {
 			color: var(--clr-text-light);
