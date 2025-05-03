@@ -83,7 +83,14 @@ const service = defineType({
 				layout: 'grid'
 			},
 			description: 'Add 6 images to the gallery'
-		})
+		}),
+		defineField({
+			name: 'position',
+			title: 'Position',
+			type: 'number',
+			description: 'Enter the position of the service in the list (1-...)',
+			
+		}),
 		// defineField({
 		//     name: 'icon',
 		//     title: 'Service Icon',

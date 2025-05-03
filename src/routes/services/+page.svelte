@@ -9,10 +9,14 @@
 	const portableText = data.hero.introduction; // Optional chaining to avoid errors if content is undefined
 	const items = data.services;
 	import TilesGrid from '$lib/components/TilesGrid.svelte';
+	import CtaBlock from '$lib/components/CtaBlock.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <Hero {heroImg} {slogan} {portableText} />
 
 <main>
 	<TilesGrid {items} />
+	<CtaBlock />
 </main>
+<Footer />

@@ -68,7 +68,7 @@
 	.hero-content {
 		grid-column: 1 / -1;
 		align-self: self-end;
-		font-size: var(--fs-md);
+		font-size: var(--fs-sm);
 		margin: 0 auto;
 		z-index: 1;
 		pointer-events: auto;

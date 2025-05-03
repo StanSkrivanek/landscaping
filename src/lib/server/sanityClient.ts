@@ -13,7 +13,7 @@ const client = createClient({
 	// ignoreBrowserTokenWarning: true, // Uncomment this line if you need to ignore the warning
 });
 export const getFiveServices = async () => {
-	const query = `*[_type == "service"][0...5]{
+	const query = `*[_type == "service"][0...5] | order(position asc){
         "id": _id,
             "slug": slug.current,
             title,
@@ -33,13 +33,13 @@ export const getFiveServices = async () => {
 };
 
 export const getAllServices = async () => {
-	const query = `*[_type == "service"]{
+	const query = `*[_type == "service"] | order(position asc){
 		"id": _id,
 			"slug": slug.current,
 			title,
 			"thumb": thumbnail.asset->url,
 			"shorts": shortDescription[]{
-				"text": children[].text
+				 "text": children[].text
 			},
 		}`;
 	try {
