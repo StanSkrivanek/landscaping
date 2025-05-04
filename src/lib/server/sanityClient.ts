@@ -158,7 +158,11 @@ export const getProjectBySlug = async (slug: string) => {
 			"mainImage": mainImage.asset->url,
 			"gallery": gallery[]{
 				"imageUrl": asset->url
-			}
+			},
+			"img1": image1.asset->url,
+			"img2": image2.asset->url,
+			"img3": image3.asset->url,
+			"img4": image4.asset->url,
 		}`;
 	try {
 		const projects = await client.fetch(query, { slug });
