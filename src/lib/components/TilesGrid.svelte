@@ -1,7 +1,10 @@
 <script>
 	import { page } from "$app/state";
 
-	let { items } = $props();
+	let { items, rootPath } = $props();
+
+
+	
 </script>
 
 <section class="section-grid">
@@ -9,7 +12,7 @@
 	<div class="tiles-grid">
 		{#each items as item}
 			<div class="tile-card">
-				<a href={item.slug} aria-label={`Go to ${item.title}`}>
+				<a href={`${rootPath}/item.slug`} aria-label={`Go to ${item.title}`}>
 					<div class="arrow-icon">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

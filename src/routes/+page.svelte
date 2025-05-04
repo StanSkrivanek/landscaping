@@ -14,13 +14,15 @@
 	const headline = data.hero.headline;
 	const portableText = data.hero?.introduction;
 	const items = data.services;
+	console.log("🚀 ~ items:", items)
+	
 </script>
 
 <Hero {heroImg} {headline} {portableText} />
 <!-- <section> -->
 <main>
 	<GlobIntro />
-	<TilesGrid {items} />
+	<TilesGrid {items} rootPath="/services"  />
 	<section class="section-grid">
 		<div class="text-block">
 			<p><span>People says </span> we craft spaces that nurture heart, soul, and mind</p>
