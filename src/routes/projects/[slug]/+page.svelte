@@ -61,7 +61,6 @@
 		grid-template-columns: repeat(10, 1fr);
 		grid-column: 1 / -1;
 		height: 86dvh;
-		/* gap: 16px; */
 		background-image: var(--image-url);
 		background-size: cover;
 		background-position: center;
@@ -73,11 +72,10 @@
 	.project-grid {
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: repeat(2, minmax(600px, 800px));
-		margin-bottom: 2rem;
-        width: 100vw;
-        /* max-width: 2400px; */
-        margin: 0 auto;
+		/* Make row height responsive to viewport width */
+		grid-auto-rows: minmax(min-content, calc(30vw));
+		max-width: 100%;
+		margin: 0 auto;
 	}
 	.project-data__c {
 		position: relative;
@@ -85,7 +83,6 @@
 		flex-direction: column;
 		justify-content: space-between;
 		grid-column: 1 / span 3;
-		
 		color: var(--clr-text-light);
 		background-color: black;
 
@@ -100,8 +97,7 @@
 		position: absolute;
 		bottom: 100%;
 		width: 100%;
-		/* z-index: 1; */
-		padding: 2rem;
+		padding: clamp(1rem, 3vw, 2rem);
 		color: var(--clr-text-light);
 		background-color: black;
 
@@ -117,10 +113,10 @@
 		}
 	}
 	.data-overview {
-		padding: 2rem;
+		padding: clamp(1rem, 3vw, 2rem);
 	}
 	.data-contact {
-		padding: 2rem;
+		padding: clamp(1rem, 3vw, 2rem);
 		img {
 			max-width: 240px;
 			height: auto;
@@ -131,43 +127,118 @@
 			font-size: var(--fs-sm);
 		}
 	}
-    .project-img-1 {
-        grid-column: 4 / -1;
-     
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
-    .project-img-2 {
-        grid-column: 1 / span 7;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
-    .project-img-3 {
-        grid-column: 8 / -1;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
-    .project-img-4 {
-        grid-column:  1/ -1;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
+	.project-img-1 {
+		grid-column: 4 / -1;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+	.project-img-2 {
+		grid-column: 1 / span 7;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+	.project-img-3 {
+		grid-column: 8 / -1;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+	.project-img-4 {
+		grid-column: 1/ -1;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	/* Responsive layouts using modern CSS */
+	@media (width < 1200px) {
+		.project-grid {
+			grid-template-columns: repeat(8, 1fr);
+		}
+
+		.project-data__c {
+			grid-column: 1 / span 4;
+		}
+
+		.project-img-1 {
+			grid-column: 5 / -1;
+		}
+
+		.project-img-2 {
+			grid-column: 1 / span 5;
+		}
+
+		.project-img-3 {
+			grid-column: 6 / -1;
+		}
+	}
+
+	@media (width < 768px) {
+		.project-grid {
+			grid-template-columns: repeat(4, 1fr);
+			/* Adjust row height for smaller screens */
+			grid-auto-rows: minmax(min-content, calc(50vw));
+			grid-auto-rows: minmax(min(400px, 40vh), auto);
+		}
+
+		.project-data__c {
+			grid-column: 1 / -1;
+			position: relative;
+		}
+
+		.data-location {
+			position: static;
+		}
+
+		.project-img-1 {
+			grid-column: 1 / -1;
+		}
+
+		.project-img-2 {
+			grid-column: 1 / -1;
+		}
+
+		.project-img-3 {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@media (width < 480px) {
+		.hero {
+			height: 50vh;
+		}
+
+		.project-grid {
+			/* Further adjust row height for mobile */
+			grid-auto-rows: minmax(min-content, calc(70vw));
+			grid-auto-rows: minmax(min(300px, 40vh), auto);
+		}
+
+		.data-location,
+		.data-overview,
+		.data-contact {
+			padding: 1rem;
+		}
+
+		.data-contact img {
+			max-width: 180px;
+		}
+	}
 
 	/* container query */
 	@media (width < 1970px) {
@@ -187,24 +258,11 @@
 		.hero {
 			height: 600px;
 		}
-		/* .hero-headline {
-			margin-bottom: 2.5rem;
-			& h1 {
-				font-size: var(--fs-xl);
-			}
-		} */
 	}
 
 	@media (width < 480px) {
 		.hero {
 			height: 400px;
 		}
-		/* .hero-headline {
-			grid-column: 2 / -2;
-			margin-bottom: 2rem;
-			& h1 {
-				font-size: var(--fs-lg);
-			}
-		} */
 	}
 </style>
