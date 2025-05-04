@@ -13,8 +13,6 @@
 	let { indexInParent, global, value } = $derived(portableText);
 	let { ptBlocks } = $derived(global);
 	let { style } = $derived(value);
-
-	console.log('🚀 ~ CustomH1Component');
 </script>
 
 {#if style === 'normal'}

@@ -52,7 +52,7 @@ export const getAllServices = async () => {
 	}
 };
 
-export const getService = async (slug: string) => {
+export const getServiceBySlug = async (slug: string) => {
 	const query = `*[_type == "service" && slug.current == $slug][0]{
 		"id": _id,
 		title,

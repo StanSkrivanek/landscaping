@@ -31,24 +31,24 @@
 
 <!-- If preceded by heading, have a higher margin top -->
 <div class="relative {precededByHeading ? 'mt-10' : 'mt-4'}" id={anchorId}>
-  <a href="#{anchorId}">
+  <!-- <a href="#{anchorId}">
     <span class="sr-only">Link to this heading</span>
     🔗
-  </a>
+  </a> -->
   {#if style === 'h1'}
-    <h1 class="text-4xl font-black">
+    <h1 style="margin-bottom: 2.5rem;">
       {@render children()}
     </h1>
   {:else if style === 'h2'}
-    <h2 class="text-3xl">
+    <h2 style="margin-bottom: 2rem;">
       {@render children()}
     </h2>
   {:else if style === 'h3'}
-    <h3 class="text-xl">
+    <h3 style="margin-bottom: 1.5rem;">
       {@render children()}
     </h3>
   {:else}
-    <h4 class="text-lg text-gray-600">
+    <h4 style="margin-bottom: 1.25rem;">
       {@render children()}
     </h4>
   {/if}

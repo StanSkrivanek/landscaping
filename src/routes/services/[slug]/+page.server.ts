@@ -1,12 +1,11 @@
-import { getHero, getService } from '$lib/server/sanityClient';
+import { getServiceBySlug } from '$lib/server/sanityClient';
 
 export async function load({ params }) {
-	const service = await getService(params.slug);
-	const hero = await getHero(params.slug);
-	console.log(service);
+	const service = await getServiceBySlug(params.slug);
+	console.log("🚀 ~ load ~ service:", service)
 	return {
-		isLoading: false,
+		// isLoading: false,
 		service,
-		hero
+		
 	};
 }

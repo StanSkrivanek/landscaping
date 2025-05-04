@@ -1,35 +1,35 @@
 /* ---------------------------------------------------- Fonts */
 @font-face {
 	font-family: 'Haas Medium';
-	src: url('fonts/NeueHaasDisplayMedium.woff') format('woff');
+	src: url('/fonts/NeueHaasDisplayMedium.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Haas Roman';
-	src: url('fonts/NeueHaasDisplayRoman.woff') format('woff');
+	src: url('/fonts/NeueHaasDisplayRoman.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Haas Light';
-	src: url('fonts/NeueHaasDisplayLight.woff') format('woff');
+	src: url('/fonts/NeueHaasDisplayLight.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Haas Thin';
-	src: url('fonts/NeueHaasDisplayThin.woff') format('woff');
+	src: url('/fonts/NeueHaasDisplayThin.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Organetto';
-	src: url('fonts/Organetto-Regular.woff') format('woff');
+	src: url('/fonts/Organetto-Regular.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
