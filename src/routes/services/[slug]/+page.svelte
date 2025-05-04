@@ -5,7 +5,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 
 	const { data } = $props();
-	console.log('🚀 ~ SLUG data:', data);
+	// console.log('🚀 ~ SLUG data:', data);
 
 	const heroImg = data.service.mainImage;
 	const headline = data.service.headline;

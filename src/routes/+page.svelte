@@ -8,6 +8,7 @@
 	import TilesGrid from '$lib/components/TilesGrid.svelte';
 
 	const { data } = $props();
+	console.log("🚀 ~ data HOME:", data)
 	// $inspect('data', data); // Added logging for debugging purposes
 	// let loading = data.isLoading;
 	const heroImg = data.hero.mainImage;

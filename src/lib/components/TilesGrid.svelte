@@ -1,14 +1,18 @@
 <script>
-	import { page } from "$app/state";
+	import { page } from '$app/state';
 
 	let { items, rootPath } = $props();
-
-
-	
+	console.log('🚀 ~ items:', items);
 </script>
 
 <section class="section-grid">
+	{#if page.url.pathname === '/services'}
 	<h2><span>Services</span> we offer</h2>
+	{:else if page.url.pathname === '/projects'}
+		<h2>our <span>Portfolio</span></h2>
+	{:else}
+		<h2><span>ELSE</span> HEADER</h2>
+	{/if}
 	<div class="tiles-grid">
 		{#each items as item}
 			<div class="tile-card">
@@ -31,42 +35,50 @@
 				</a>
 				<img src={item.thumb} alt="" />
 				<div class="tile-content">
-					<h2>{item.title}</h2>
-					{#each item.shorts as short}
-						<p>{short.text}</p>
-					{/each}
+					{#if item.title}
+						<h2>{item.title}</h2>
+					{:else}
+						<h2>{item.location}</h2>
+					{/if}
+					{#if item.shorts}
+						{#each item.shorts as short}
+							<p>{short.text}</p>
+						{/each}
+					{:else}
+						<p>{item.premiseType.type}</p>
+					{/if}
 				</div>
 			</div>
 		{/each}
 		<!-- if url is homepage -->
-		 {#if page.url.pathname === '/'}
-		<div class="tile-card last">
-			<p>check our comprehensive range of services</p>
-			<!-- <p>all services</p> -->
-			<a href="/services" aria-label={`Go to Services`}>
-				<!-- <div class="logo">
+		{#if page.url.pathname === '/'}
+			<div class="tile-card last">
+				<p>{`check our comprehensive range of ${rootPath}`}</p>
+				<!-- <p>all services</p> -->
+				<a href={rootPath} aria-label={`Go to ${rootPath}`}>
+					<!-- <div class="logo">
 					<img
 						src="https://cdn.sanity.io/images/lbo1agd3/production/5f8e2a82c1890a731881ab5bafad52be906eec6b-213x227.svg"
 						alt=""
 					/>
 				</div> -->
-				<div class="arrow-icon">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="64"
-						height="64"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
-						><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg
-					>
-				</div>
-			</a>
-		</div>
+					<div class="arrow-icon">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="64"
+							height="64"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="lucide lucide-arrow-up-right-icon lucide-arrow-up-right"
+							><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg
+						>
+					</div>
+				</a>
+			</div>
 		{/if}
 	</div>
 </section>
@@ -140,7 +152,7 @@
 	.tile-card.last {
 		position: relative;
 		padding: 40px;
-	
+
 		/* overflow: hidden; */
 		& p {
 			font-size: var(--fs-xxl);
@@ -153,7 +165,6 @@
 			z-index: 1;
 			width: 16ch;
 			text-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
-
 		}
 		&::after {
 			content: '';
@@ -190,7 +201,6 @@
 		font-size: var(--fs-xs);
 		font-family: var(--ff-light);
 		letter-spacing: 0.08rem;
-		
 	}
 	.arrow-icon {
 		position: absolute;

@@ -164,7 +164,7 @@
 			&:hover,
 			&:active,
 			&:focus {
-				color: var(--clr-accent);
+				color: var(--clr-orange);
 			}
 			& span {
 				position: absolute;

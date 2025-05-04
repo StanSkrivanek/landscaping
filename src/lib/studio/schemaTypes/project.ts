@@ -3,14 +3,30 @@ import { SparkleIcon } from '@sanity/icons';
 const project = defineType({
 	name: 'project',
 	title: 'Project',
-    icon: SparkleIcon,
+	icon: SparkleIcon,
 	type: 'document',
 	fields: [
 		// reference to premise type
 		defineField({
-			name: 'projectRef',
+			name: 'title',
 			title: 'Project Ref title',
-			type: 'string'
+			type: 'string',
+			description: 'Project identifier in format (month-year-location) e.g. "01-2023-macroom"',
+			validation: (rule) => rule.required().min(5).max(50).error('Max 50 characters.')
+		}),
+		defineField({
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: {
+				source: 'title',
+				maxLength: 96,
+				// slugify: (input) => input
+				slugify: (input) => input
+					.toLowerCase()
+					.replace(/\s+/g, '-')
+					.slice(0, 96)
+			}
 		}),
 		defineField({
 			name: 'premiseType',
@@ -18,7 +34,6 @@ const project = defineType({
 			type: 'reference',
 			to: [{ type: 'premise' }]
 		}),
-        
 
 		defineField({
 			name: 'location',
@@ -34,6 +49,17 @@ const project = defineType({
 			validation: (rule) => rule.required().min(50).max(320).error('Max 320 characters.')
 		}),
 
+		defineField({
+			name: 'thumbnail',
+			title: 'Thumbnail',
+			type: 'image',
+			options: {
+				hotspot: true
+			},
+			description: 'This image will be used as a thumbnail for the project',
+			validation: (rule) => rule.required().error('Thumbnail is required.')
+
+		}),
 		// main image
 		defineField({
 			name: 'mainImage',
