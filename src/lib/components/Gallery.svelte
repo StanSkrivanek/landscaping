@@ -5,6 +5,9 @@
 	let currentImageIndex = $state(0);
 
 	// Open lightbox with the clicked image
+	/**
+	 * @param {number} index
+	 */
 	function openLightbox(index) {
 		currentImageIndex = index;
 		lightboxOpen = true;
@@ -29,6 +32,9 @@
 	}
 
 	// Handle keyboard navigation
+	/**
+	 * @param {{ key: any; }} e
+	 */
 	function handleKeydown(e) {
 		if (!lightboxOpen) return;
 
