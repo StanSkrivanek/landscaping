@@ -187,14 +187,17 @@
 		grid-column: 1 / -1;
 		display: flex;
 		justify-content: space-between;
-		padding: 2rem 4rem;
 		background-color: black;
 		a {
+			padding: 2rem 4rem;
 			color: var(--clr-text-light);
 			font-size: var(--fs-xxxxl);
 			text-decoration: none;
 			font-family: var(--ff-org);
+			/* background-color: var(--clr-accent); */
+			background-color: burlywood;
 			&:hover {
+				background-color: var(--clr-orange);
 				text-decoration: underline;
 			}
 		}
