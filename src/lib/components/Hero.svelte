@@ -12,7 +12,7 @@
 		<h1>{headline}</h1>
 	</div>
 </div>
-
+{#if portableText}
 <section class="section-grid">
 	<article class="hero-content">
 		<PortableText
@@ -32,7 +32,7 @@
 		/>
 	</article>
 </section>
-
+{/if}
 <!-- {#if introduction} -->
 
 <style>

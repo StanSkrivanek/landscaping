@@ -11,7 +11,7 @@
 	{:else if page.url.pathname === '/projects'}
 		<h2>our <span>Portfolio</span></h2>
 	{:else}
-		<h2><span>ELSE</span> HEADER</h2>
+		<h2><span>Services</span> we offer</h2>
 	{/if}
 	<div class="tiles-grid">
 		{#each items as item}
@@ -56,12 +56,7 @@
 				<p>{`check our comprehensive range of ${rootPath}`}</p>
 				<!-- <p>all services</p> -->
 				<a href={rootPath} aria-label={`Go to ${rootPath}`}>
-					<!-- <div class="logo">
-					<img
-						src="https://cdn.sanity.io/images/lbo1agd3/production/5f8e2a82c1890a731881ab5bafad52be906eec6b-213x227.svg"
-						alt=""
-					/>
-				</div> -->
+
 					<div class="arrow-icon">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +166,7 @@
 			position: absolute;
 			inset: 0;
 			background-color: var(--clr-accent);
-			background-image: url('svg/garden-h.svg');
+			background-image: url('/svg/garden-h.svg');
 			background-size: cover;
 			background-repeat: no-repeat;
 

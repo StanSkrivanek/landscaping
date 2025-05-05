@@ -83,6 +83,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		grid-column: 1 / span 3;
+		min-width: 480px;
 		color: var(--clr-text-light);
 		background-color: black;
 
@@ -193,7 +194,7 @@
 			grid-template-columns: repeat(4, 1fr);
 			/* Adjust row height for smaller screens */
 			grid-auto-rows: minmax(min-content, calc(50vw));
-			grid-auto-rows: minmax(min(400px, 40vh), auto);
+			/* grid-auto-rows: minmax(min(400px, 40vh), auto); */
 		}
 
 		.project-data__c {
@@ -226,9 +227,11 @@
 		.project-grid {
 			/* Further adjust row height for mobile */
 			grid-auto-rows: minmax(min-content, calc(70vw));
-			grid-auto-rows: minmax(min(300px, 40vh), auto);
+			/* grid-auto-rows: minmax(min(300px, 40vh), auto); */
 		}
-
+		.project-data__c {
+			min-width: 100%;
+		}
 		.data-location,
 		.data-overview,
 		.data-contact {
