@@ -9,9 +9,9 @@ const project = defineType({
 		// reference to premise type
 		defineField({
 			name: 'title',
-			title: 'Project Ref title',
+			title: 'Projecttitle',
 			type: 'string',
-			description: 'Project identifier in format (month-year-location) e.g. "01-2023-macroom"',
+			description: 'Project title for H1',
 			validation: (rule) => rule.required().min(5).max(50).error('Max 50 characters.')
 		}),
 		defineField({

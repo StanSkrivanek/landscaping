@@ -12,12 +12,15 @@
 	<div class="grid">
 		<div class="project-grid">
 			<div class="project-data__c">
-				<div class="data-location">
-					<h2>Location</h2>
-					<p>{data.project.location}</p>
-					<p>{data.project.premiseType.type}</p>
+				<div class="data-title">
+					<h1>{data.project.title}</h1>
 				</div>
 				<div class="data-overview">
+					<div class="location">
+						<h2>Location</h2>
+						<p>{data.project.location}</p>
+						<p>{data.project.premiseType.type}</p>
+					</div>
 					<h2>Overview</h2>
 					<p>{data.project.overview}</p>
 				</div>
@@ -89,32 +92,43 @@
 
 		& h2 {
 			color: var(--clr-text-light);
+			font-size: var(--fs-lg);
 			margin-bottom: 0.75rem;
 		}
 	}
 
-	.data-location {
+	.data-title {
 		flex: 1;
 		position: absolute;
 		bottom: 100%;
 		width: 100%;
 		padding: clamp(1rem, 3vw, 2rem);
+		padding-top: 3.5rem;
 		color: var(--clr-text-light);
 		background-color: black;
 
-		& h2 {
+		& h1 {
 			color: var(--clr-text-light);
-			letter-spacing: 0.1rem;
-			font-size: var(--fs-lg);
-			margin-bottom: 0.75rem;
+			letter-spacing: 0.05rem;
+			
+			font-size: var(--fs-xxl);
+			margin-bottom: clamp(1rem, 3vw, 3rem);
+			&:after {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 2px;
+				background-color: var(--clr-accent);
+				margin-top: 1.5rem;
+			}
 		}
-		& p {
-			color: var(--clr-text-light);
-			font-size: var(--fs-xs);
-		}
+		
 	}
 	.data-overview {
 		padding: clamp(1rem, 3vw, 2rem);
+		& .location {
+			margin-bottom: 2rem;
+		}
 	}
 	.data-contact {
 		padding: clamp(1rem, 3vw, 2rem);

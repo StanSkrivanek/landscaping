@@ -147,6 +147,7 @@ export const getAllProjects = async () => {
 export const getProjectBySlug = async (slug: string) => {
 	const query = `*[_type == "project" && slug.current == $slug][0]{
 			"id": _id,
+			title,
 			"slug": slug.current,
 			"premiseType": premiseType{
 				_type == "reference" =>  @->{type},
