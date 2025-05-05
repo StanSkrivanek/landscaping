@@ -4,7 +4,8 @@
 
 	const { data } = $props();
 	console.log('🚀 ~ data PROJECT:', data);
-	const heroImg = data.project.mainImage;
+	const heroImg = $derived(data.project.mainImage);
+	// Assuming data.prevProject and data.nextProject exist and have slug/title
 </script>
 
 <div class="hero" style="--image-url: url({heroImg});"></div>
@@ -51,6 +52,10 @@
 			<div class="project-img-4">
 				<img src={data.project.img4} alt="Main view of project" />
 			</div>
+			<div class="prev-next">
+				<a href="/projects/{data.prev}">PREV</a>
+				<a href="/projects/{data.next}">NEXT</a>
+			</div>
 		</div>
 		<CtaBlock />
 	</div>
@@ -76,7 +81,7 @@
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);
 		/* Make row height responsive to viewport width */
-		grid-auto-rows: minmax(min-content, calc(30vw));
+		/* grid-auto-rows: minmax(min-content, calc(30vw)); */
 		max-width: 100%;
 		margin: 0 auto;
 	}
@@ -110,7 +115,7 @@
 		& h1 {
 			color: var(--clr-text-light);
 			letter-spacing: 0.05rem;
-			
+
 			font-size: var(--fs-xxl);
 			margin-bottom: clamp(1rem, 3vw, 3rem);
 			&:after {
@@ -122,7 +127,6 @@
 				margin-top: 1.5rem;
 			}
 		}
-		
 	}
 	.data-overview {
 		padding: clamp(1rem, 3vw, 2rem);
@@ -179,7 +183,22 @@
 			object-position: center;
 		}
 	}
-
+	.prev-next {
+		grid-column: 1 / -1;
+		display: flex;
+		justify-content: space-between;
+		padding: 2rem 4rem;
+		background-color: black;
+		a {
+			color: var(--clr-text-light);
+			font-size: var(--fs-xxxxl);
+			text-decoration: none;
+			font-family: var(--ff-org);
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
 	/* Responsive layouts using modern CSS */
 	@media (width < 1200px) {
 		.project-grid {
@@ -207,7 +226,7 @@
 		.project-grid {
 			grid-template-columns: repeat(4, 1fr);
 			/* Adjust row height for smaller screens */
-			grid-auto-rows: minmax(min-content, calc(50vw));
+			/* grid-auto-rows: minmax(min-content, calc(50vw)); */
 			/* grid-auto-rows: minmax(min(400px, 40vh), auto); */
 		}
 
@@ -216,9 +235,9 @@
 			position: relative;
 		}
 
-		.data-location {
+		/* .data-location {
 			position: static;
-		}
+		} */
 
 		.project-img-1 {
 			grid-column: 1 / -1;
@@ -246,7 +265,7 @@
 		.project-data__c {
 			min-width: 100%;
 		}
-		.data-location,
+		/* .data-location, */
 		.data-overview,
 		.data-contact {
 			padding: 1rem;

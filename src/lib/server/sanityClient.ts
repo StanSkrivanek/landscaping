@@ -13,10 +13,9 @@ const client = createClient({
 	// ignoreBrowserTokenWarning: true, // Uncomment this line if you need to ignore the warning
 });
 
-// -------------------------------------------------------- 
+// --------------------------------------------------------
 // 	QUERIES
 // --------------------------------------------------------
-
 
 // --- PAGES ---
 
@@ -117,8 +116,6 @@ export const getServiceBySlug = async (slug: string) => {
 // 	}
 // },
 
-
-
 // --- PROJECTS ---
 
 // get all Projects
@@ -137,6 +134,20 @@ export const getAllProjects = async () => {
 		const projects = await client.fetch(query);
 		// console.log('Fetched projects:', projects);
 		return projects;
+	} catch (err) {
+		console.error('Error fetching recipes:', err);
+		return [];
+	}
+};
+export const getAllProjectsSlugs = async () => {
+	const query = `*[_type == "project"]{
+			"id": _id,
+			"slug": slug.current,
+}`;
+	try {
+		const allProjectsSlugs = await client.fetch(query);
+		// console.log('Fetched projects:', projects);
+		return allProjectsSlugs;
 	} catch (err) {
 		console.error('Error fetching recipes:', err);
 		return [];

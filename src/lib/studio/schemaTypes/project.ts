@@ -45,8 +45,8 @@ const project = defineType({
 			name: 'overview',
 			title: 'job Overview',
 			type: 'text',
-			description: 'Enter a short overview of the job (320 char max)',
-			validation: (rule) => rule.required().min(50).max(320).error('Max 320 characters.')
+			description: 'Enter a short overview of the job (480 char max)',
+			validation: (rule) => rule.required().min(50).max(600).error('Max 320 characters.')
 		}),
 
 		defineField({
