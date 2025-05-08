@@ -4,7 +4,6 @@
 	import { PortableText } from '@portabletext/svelte';
 	const { heroImg, headline, portableText } = $props();
 
-	// console.log('🚀 ~ introduction HERO:', introduction);
 </script>
 
 <div class="hero" style="--image-url: url({heroImg});">

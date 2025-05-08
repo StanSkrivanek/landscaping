@@ -4,7 +4,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
-	// console.log('🚀 ~ data PROJECT:', data);
+
 	const heroImg = $derived(data.project.mainImage);
 	// SEO data
 	const title = data.project.title;

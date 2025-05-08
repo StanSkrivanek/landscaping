@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/state'; // Using your existing import for page store
-	// console.log('🚀 ~ SEO page:', page);
 	let { title, description } = $props();
 
-	let heroImg = $derived(page.data?.hero?.mainImage || '/img/abr-landscaping-hero.webp'); // Fallback to default if not provided
 	// Reactive derived values for URLs and names
-	const currentUrl = $derived(page.url.href);
 	const siteName = 'ABR Landscaping';
+	const currentUrl = $derived(page.url.href);
+	let heroImg = $derived(page.data?.hero?.mainImage || '/img/abr-landscaping-hero.webp'); // Fallback to default if not provided
 	const organizationLogoUrl = $derived(`${page.url.origin}/abr-favicon.png`); // Assuming abr-favicon.png is in static
 
 	// Ensures heroImg is an absolute URL for SEO tags
@@ -45,17 +44,10 @@
 			}
 		}
 	});
-
-	// Optional: Example of how to update $state variables from $page.data
-	// $effect(() => {
-	//     if ($page.data?.title) title = $page.data.title;
-	//     if ($page.data?.description) description = $page.data.description;
-	//     if ($page.data?.heroImg) heroImg = $page.data.heroImg;
-	// });
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{title} | ABR Landscaping</title>
 	<meta name="description" content={description} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />

@@ -9,8 +9,7 @@
 	import TilesGrid from '$lib/components/TilesGrid.svelte';
 
 	const { data } = $props();
-// $inspect('data', data); // Added logging for debugging purposes
-
+	// Extracting data from the props
 	const heroImg = data.hero.mainImage;
 	const headline = data.hero.headline;
 	const portableText = data.hero?.introduction;

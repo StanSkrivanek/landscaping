@@ -6,7 +6,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
-	console.log('🚀 ~ SLUG data:', data);
+
 
 	const heroImg = $derived(data.service.mainImage);
 	const headline = $derived(data.service.headline);
