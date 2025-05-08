@@ -1,13 +1,21 @@
 <script>
 	import CtaBlock from '$lib/components/CtaBlock.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
-	console.log('🚀 ~ data PROJECT:', data);
+	// console.log('🚀 ~ data PROJECT:', data);
 	const heroImg = $derived(data.project.mainImage);
-	// Assuming data.prevProject and data.nextProject exist and have slug/title
-</script>
+	// SEO data
+	const title = data.project.title;
+	const location = data.project.location;
 
+	const description = data.project.overview;
+</script>
+<Seo
+	{title}
+	description={`${title} in ${location}`}
+/>
 <div class="hero" style="--image-url: url({heroImg});"></div>
 <main>
 	<div class="grid">

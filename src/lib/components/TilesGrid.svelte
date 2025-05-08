@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 
 	let { items, rootPath } = $props();
-	console.log('🚀 ~ items:', items);
+	// console.log('🚀 ~ items:', items);
 </script>
 
 <section class="section-grid">

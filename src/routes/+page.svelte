@@ -5,25 +5,27 @@
 	import GlobIntro from '$lib/components/GlobIntro.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import ImgCarousel from '$lib/components/ImgCarousel.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import TilesGrid from '$lib/components/TilesGrid.svelte';
 
 	const { data } = $props();
-	console.log("🚀 ~ data HOME:", data)
-	// $inspect('data', data); // Added logging for debugging purposes
-	// let loading = data.isLoading;
+// $inspect('data', data); // Added logging for debugging purposes
+
 	const heroImg = data.hero.mainImage;
 	const headline = data.hero.headline;
 	const portableText = data.hero?.introduction;
 	const items = data.services;
-
-	
 </script>
 
+<Seo
+	title="Home"
+	description="ABR Landscaping | Landscaping services in Cork county that nurture heart, soul, and mind."
+/>
 <Hero {heroImg} {headline} {portableText} />
 
 <main>
 	<GlobIntro />
-	<TilesGrid {items} rootPath="/services"  />
+	<TilesGrid {items} rootPath="/services" />
 	<section class="section-grid">
 		<div class="text-block">
 			<p><span>People says </span> we craft spaces that nurture heart, soul, and mind</p>

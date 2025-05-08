@@ -3,16 +3,22 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Gallery from '$lib/components/Gallery.svelte';
 	import Hero from '$lib/components/Hero.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
-	console.log('🚀 ~ SLUG data:', data);
+	// console.log('🚀 ~ SLUG data:', data);
 
 	const heroImg = $derived(data.service.mainImage);
 	const headline = $derived(data.service.headline);
 	const portableText = $derived(data.service.description); // Optional chaining to avoid errors if content is undefined
-	// const items = data.service;
+	const item = data.service;
+	console.log('🚀 ~ item:', item);
+	// SEO data
+	const title = item.title;
+	const description = item.headline;
 </script>
 
+<Seo {title} {description} />
 <Hero {heroImg} {headline} {portableText} />
 
 <main>
@@ -33,7 +39,6 @@
 <Footer />
 
 <style>
-	
 	.all-services {
 		grid-column: 1 / -1;
 		display: grid;
