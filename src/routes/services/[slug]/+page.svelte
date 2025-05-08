@@ -19,11 +19,11 @@
 		} else {
 			return shorts
 				.map((/** @type {{ shortList: string; }} */ short) => short.shortList)
-				.join(', ');
+				.join(', ')
+				.toLowerCase();
 		}
 	}
 	const shortDescription = getShortsList();
-	console.log('🚀 ~ shortDescription:', shortDescription);
 	// SEO data
 	const title = $derived(item.title);
 	const description = $derived(item.headline);
@@ -31,7 +31,7 @@
 
 <Seo
 	{title}
-	description={`${description}. Our range of ${title} services include ${getShortsList()}`}
+	description={`${description}. Our range of ${title} services include ${shortDescription}`}
 />
 <Hero {heroImg} {headline} {portableText} />
 
