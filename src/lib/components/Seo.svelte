@@ -28,7 +28,7 @@
 		'@context': 'https://schema.org',
 		'@type': 'WebPage',
 		name: `ABR Landscaping | ${title || 'Home'}`,
-		description: `ABR Landscaping | ${description || 'Landscaping services in Cork county that nurture heart, soul, and mind.'}`,
+		description: `ABR Landscaping | ${description || 'ABR Landscaping | Landscaping services in Cork county that nurture heart, soul, and mind.'}`,
 		url: currentUrl,
 		image: absoluteHeroImg,
 		mainEntityOfPage: {

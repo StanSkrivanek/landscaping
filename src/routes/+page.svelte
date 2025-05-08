@@ -19,7 +19,7 @@
 
 <Seo
 	title="Home"
-	description="ABR Landscaping | Landscaping services in Cork county that nurture heart, soul, and mind."
+	description="Landscaping services in Cork county that nurture heart, soul, and mind."
 />
 <Hero {heroImg} {headline} {portableText} />
 
