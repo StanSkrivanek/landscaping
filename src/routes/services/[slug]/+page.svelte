@@ -11,23 +11,28 @@
 	const heroImg = $derived(data.service.mainImage);
 	const headline = $derived(data.service.headline);
 	const portableText = $derived(data.service.description); // Optional chaining to avoid errors if content is undefined
-	const item = data.service;
-	const shorts = data.service.shortDescription;
+	const item = $derived(data.service);
+	const shorts = $derived(data.service.shortDescription);
 	function getShortsList() {
 		if (!shorts || shorts.length === 0) {
 			return 'No short description available';
 		} else {
-			return shorts.map((/** @type {{ shortList: string; }} */ short) => short.shortList).join(', ');
+			return shorts
+				.map((/** @type {{ shortList: string; }} */ short) => short.shortList)
+				.join(', ');
 		}
 	}
 	const shortDescription = getShortsList();
 	console.log('🚀 ~ shortDescription:', shortDescription);
 	// SEO data
-	const title = item.title;
-	const description = item.headline;
+	const title = $derived(item.title);
+	const description = $derived(item.headline);
 </script>
 
-<Seo {title} description={`${description}. Our range of ${title} services include ${getShortsList()}` } />
+<Seo
+	{title}
+	description={`${description}. Our range of ${title} services include ${getShortsList()}`}
+/>
 <Hero {heroImg} {headline} {portableText} />
 
 <main>
