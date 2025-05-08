@@ -9,8 +9,6 @@
 	// SEO data
 	const title = data.project.title;
 	const location = data.project.location;
-
-	const description = data.project.overview;
 </script>
 <Seo
 	{title}

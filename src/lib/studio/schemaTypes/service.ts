@@ -39,7 +39,7 @@ const service = defineType({
 					type: 'block'
 				}
 			],
-			description: 'Enter a short description of the service (e.g., "Landscaping")'
+			description: 'Enter 3 short descriptions of the service as list items'
 		}),
 		//  rich text description
 		defineField({
@@ -55,15 +55,15 @@ const service = defineType({
 			// validation: (rule) => rule.required().min(50).max(320).error('Max 320 characters.')
 		}),
 
-        // thumbnail image
-        defineField({
-            name: 'thumbnail',
-            title: 'Service Thumbnail',
-            type: 'image',
-            options: {
-                hotspot: true
-            }
-        }),
+		// thumbnail image
+		defineField({
+			name: 'thumbnail',
+			title: 'Service Thumbnail',
+			type: 'image',
+			options: {
+				hotspot: true
+			}
+		}),
 		// main image
 		defineField({
 			name: 'mainImage',
@@ -88,9 +88,8 @@ const service = defineType({
 			name: 'position',
 			title: 'Position',
 			type: 'number',
-			description: 'Enter the position of the service in the list (1-...)',
-			
-		}),
+			description: 'Enter the position of the service in the list (1-...)'
+		})
 		// defineField({
 		//     name: 'icon',
 		//     title: 'Service Icon',

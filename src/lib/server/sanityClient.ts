@@ -91,6 +91,9 @@ export const getServiceBySlug = async (slug: string) => {
 		title,
 		headline,
 		"slug": slug.current,
+		"shortDescription": shortDescription[]{
+			"shortList":children[].text[0]
+		},
 		"description": description[]{
 				...,
 			},
