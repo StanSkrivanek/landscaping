@@ -134,6 +134,7 @@ h6 {
 	--clr-accent-light: #e6fdf2;
 	--clr-accent-mid: #57afa8;
 	--clr-accent-dark: #3c6e71;
+	--clr-accent-dark-05: #05362cb1;
 
 	--ff-thin: 'Haas Thin', sans-serif;
 	--ff-light: 'Haas Light', sans-serif;
@@ -141,9 +142,9 @@ h6 {
 	--ff-medium: 'Haas Medium', sans-serif;
 	--ff-org: 'Organetto', sans-serif;
 
-	/* VIEWPORT */
+	/* VIEWPORT */ 
 
-	--step--3: clamp(0.625rem, 1.1875rem + -0.3101vw, 1.1rem);
+	--step--3: clamp(0.625rem, 1.1875rem + -0.3101vw, 1.1341rem);
 	--step--2: clamp(0.84rem, 1.2304rem + -0.3101vw, 1.1528rem);
 	--step--1: clamp(1.05rem, 1.2747rem + -0.1785vw, 1.2301rem);
 	--step-0: clamp(1.3125rem, 1.3125rem + 0vw, 1.3125rem);

@@ -10,11 +10,13 @@
 	const title = data.project.title;
 	const location = data.project.location;
 </script>
-<Seo
-	{title}
-	description={`${title} in ${location}`}
-/>
+<!-- SEO -->
+<Seo {title} description={`${title} in ${location}`} />
+
+<!-- Hero Section -->
 <div class="hero" style="--image-url: url({heroImg});"></div>
+
+<!-- Content -->
 <main>
 	<div class="grid">
 		<div class="project-grid">
@@ -59,13 +61,15 @@
 				<img src={data.project.img4} alt="Main view of project" />
 			</div>
 			<div class="prev-next">
-				<a href="/projects/{data.prev}">PREV</a>
-				<a href="/projects/{data.next}">NEXT</a>
+				<a href="/projects/{data.prev}"><span class="prev">PREV</span></a>
+				<a href="/projects/{data.next}"><span class="next">NEXT</span></a>
 			</div>
 		</div>
 		<CtaBlock />
 	</div>
 </main>
+
+<!-- Footer -->
 <Footer />
 
 <style>
@@ -193,18 +197,33 @@
 		grid-column: 1 / -1;
 		display: flex;
 		justify-content: space-between;
-		background-color: black;
+		/* background-color: black; */
 		a {
 			padding: 2rem 4rem;
 			color: var(--clr-text-light);
 			font-size: var(--fs-xxxxl);
 			text-decoration: none;
 			font-family: var(--ff-org);
-			/* background-color: var(--clr-accent); */
-			background-color: burlywood;
+			/* background-color: burlywood; */
+			background-color: var(--clr-accent-dark);
+			transition:
+				background-color 0.3s ease-out,
+				text-decoration 0.3s ease-out;
+			/* border-bottom-left-radius: 0.5rem; */
+			& span {
+				display: inline-block; /* Add this line */
+				transition: transform 0.3s ease-out; /* Optional: add transition for the skew */
+				will-change: transform; /* Hint for browser optimization */
+			}
 			&:hover {
 				background-color: var(--clr-orange);
-				text-decoration: underline;
+				/* text-decoration: underline; */
+				& span.prev {
+					transform: skew(15deg);
+				}
+				& span.next {
+					transform: skew(-15deg);
+				}
 			}
 		}
 	}

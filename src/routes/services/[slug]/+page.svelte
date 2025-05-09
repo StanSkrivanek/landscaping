@@ -6,7 +6,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
-
+	console.log('🚀 ~ data:', data);
 
 	const heroImg = $derived(data.service.mainImage);
 	const headline = $derived(data.service.headline);
@@ -40,10 +40,16 @@
 		<Gallery items={data.service.gallery} />
 	{/if}
 	<section>
+		<div class="heading-block">
+			<h2>SERVICES</h2>
+		</div>
 		<div class="all-services">
 			{#each data.allServices as service}
 				<div class="service-item">
-					<a href="/services/{service.slug}"><p>{service.title}</p></a>
+					<a href="/services/{service.slug}"
+						><p>{service.title}</p>
+						<img src={service.thumb} alt="" />
+					</a>
 				</div>
 			{/each}
 		</div>
@@ -53,27 +59,79 @@
 <Footer />
 
 <style>
+	section {
+		.heading-block {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 2rem;
+		}
+		.heading-block h2 {
+			font-size: var(--fs-xxxxl);
+			color: var(--clr-accent-dark);
+			/* text-align: center; */
+			text-transform: uppercase;
+			font-family: var(--ff-org);
+			font-style: italic;
+			position: relative;
+		}
+		.heading-block h2:before {
+			content: 'Our';
+			position: absolute;
+			top: -1rem;
+			left: 0%;
+			width: 100%;
+			pointer-events: none;
+			color: var(--clr-orange);
+			font-size: var(--fs-xl);
+			font-family: var(--ff-thin);
+			font-style: italic;
+			z-index: -1;
+		}
+
+	}
+
 	.all-services {
 		grid-column: 1 / -1;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
 		gap: 8px;
-		margin-top: -2rem;
+		/* margin-top: -2rem; */
 	}
 	.service-item {
+		position: relative;
 		grid-column: span 2;
-		padding: 1rem;
+		/* padding: 1rem; */
 		text-align: center;
 		border-radius: 8px;
 		cursor: pointer;
-		transition: background-color 0.3s;
-		background-color: #f0f0f0; /* Add a default background color */
-		&:hover {
-			background-color: #e0e0e0; /* Change background color on hover */
+		
+		&:hover p{
+			background-color: var(--clr-accent-dark);
 		}
 		& p {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 0.5rem 1rem;
+			border-radius: 0.25rem;
+			font-size: var(--fs-xxs);
+			font-family: var(--ff-org);
+			text-transform: uppercase;
+			color: #fff;
+			background-color: var(--clr-accent-dark-05);
 			white-space: nowrap;
-			font-size: var(--fs-sm);
+			transition: background-color 0.3s;
+		}
+		& img {
+			width: 100%;
+			height: 100%;
+			border-radius: 0.25rem;
+			/* cover */
+			object-fit: cover;
+			object-position: center;
+			/* Add a transition effect */
 		}
 	}
 </style>
