@@ -21,6 +21,9 @@ export default defineConfig({
 						S.divider(),
 						S.documentTypeListItem('premise').title('Premise Types'),
 						S.documentTypeListItem('hero').title('Hero Sections'),
+						S.documentTypeListItem('faq').title('FAQs'),
+						S.documentTypeListItem('testimonial').title('Testimonials'),
+						S.divider(),
 						S.documentTypeListItem('media.tag').title('Tags')
 					])
 		}),

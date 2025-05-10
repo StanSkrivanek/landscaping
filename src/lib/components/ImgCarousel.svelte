@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import ResponsiveImg from './ResponsiveImg.svelte';
 	// Import tick if needed for class timing, though setTimeout might suffice
-
+	// const props = $props();
+	// console.log("🚀 ImgCarousel ~ props:", props)
+	
 	let items = $state([
 		{
 			url: 'https://cdn.sanity.io/images/lbo1agd3/production/ec0e3c0f8328af7a6f79e07fb4fcbaef996bacb1-1000x688.jpg', // Placeholder - maybe a nice patio shot

@@ -16,8 +16,6 @@ const client = createClient({
 	// ignoreBrowserTokenWarning: true, // Uncomment this line if you need to ignore the warning
 });
 
-
-
 // --------------------------------------------------------
 // 	QUERIES
 // --------------------------------------------------------
@@ -117,13 +115,6 @@ export const getServiceBySlug = async (slug: string) => {
 	}
 };
 
-// getService -> shorts
-// "shorts": shortDescription[]{
-// 	"shortText": children[]{
-// 		text
-// 	}
-// },
-
 // --- PROJECTS ---
 
 // get all Projects
@@ -188,6 +179,24 @@ export const getProjectBySlug = async (slug: string) => {
 		const projects = await client.fetch(query, { slug });
 		// console.log('Fetched projects:', projects);
 		return projects;
+	} catch (err) {
+		console.error('Error fetching recipes:', err);
+		return [];
+	}
+};
+
+// testimonials
+export const getAllTestimonials = async () => {
+	const query = `*[_type == "testimonial" && isFeatured == true]{
+		"id": _id,
+		"title": title,
+		"slug": slug.current,
+		"testimony": testimony,
+		"img": sliderImage.asset->url
+	}`;
+	try {
+		const testimonials = await client.fetch(query);
+		return testimonials;
 	} catch (err) {
 		console.error('Error fetching recipes:', err);
 		return [];
