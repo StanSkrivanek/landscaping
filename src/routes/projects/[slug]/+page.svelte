@@ -23,7 +23,7 @@
         <ResponsiveImg
             image={heroImg}
             alt={`${title} hero background`}
-            class="hero-background-image"        
+            className="hero-background-image"        
             loading="eager"
             fetchpriority="high"
         />
@@ -87,16 +87,6 @@
 <Footer />
 
 <style>
-	.hero :global(img.hero-background-image) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        z-index: -1; 
-    }
 
 	.project-grid {
 		display: grid;

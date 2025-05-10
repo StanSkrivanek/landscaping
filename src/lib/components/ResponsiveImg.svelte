@@ -5,14 +5,17 @@
 		image: string; // URL or image object
 		alt: string; // Alt text for the image
 		sizes?: string; // Sizes attribute for responsive images
-		class?: string; // Optional class for styling
-		loading?: string; // Loading attribute for image (lazy |eager)
-		fetchpriority?: string; // Fetch priority for the image
+		className?: string; // Optional class for styling
+		loading?: 'eager' | 'lazy'; // Loading attribute for image (lazy |eager)
+		fetchpriority?: 'auto' | 'high' | 'low' | null | undefined; // Fetch priority for the image
 	}
 
 	const {
 		image,
-		alt,
+		className,
+		loading = 'lazy',
+		fetchpriority = 'auto',
+		alt = '',
 		sizes = '(max-width: 600px) 400px, (max-width: 1024px) 800px, (max-width: 1680px) 1440px, 2400px'
 	}: ResponsiveImgAttributes = $props();
 
@@ -45,7 +48,9 @@
 	{sizes}
 	src={fallback}
 	{alt}
-	loading="lazy"
+	class={className}
+	{loading}
+	{fetchpriority}
 />
 
 <style>
@@ -54,5 +59,16 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
+	}
+
+	:global(img.background-image) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		z-index: -1;
 	}
 </style>

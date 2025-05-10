@@ -2,36 +2,47 @@
 	import CustomHeading from '$lib/components/portableText/CustomHeading.svelte';
 	import CustomParagraph from '$lib/components/portableText/CustomParagraph.svelte';
 	import { PortableText } from '@portabletext/svelte';
+	import ResponsiveImg from './ResponsiveImg.svelte';
 	const { heroImg, headline, portableText } = $props();
-
 </script>
 
-<div class="hero" style="--image-url: url({heroImg});">
+<div class="hero" >
+	{#if heroImg}
+		<ResponsiveImg
+			image={heroImg}
+			alt="Hero background"
+			className="background-image"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	{/if}
+
 	<div class="hero-headline">
 		<h1>{headline}</h1>
 	</div>
 </div>
 {#if portableText}
-<section class="section-grid">
-	<article class="hero-content">
-		<PortableText
-			value={portableText}
-			onMissingComponent={false}
-			components={{
-				block: {
-					h1: CustomHeading,
-					h2: CustomHeading,
-					h3: CustomHeading,
-					normal: CustomParagraph
-				},
-				types: {
-					block: CustomParagraph
-				}
-			}}
-		/>
-	</article>
-</section>
+	<section class="section-grid">
+		<article class="hero-content">
+			<PortableText
+				value={portableText}
+				onMissingComponent={false}
+				components={{
+					block: {
+						h1: CustomHeading,
+						h2: CustomHeading,
+						h3: CustomHeading,
+						normal: CustomParagraph
+					},
+					types: {
+						block: CustomParagraph
+					}
+				}}
+			/>
+		</article>
+	</section>
 {/if}
+
 <!-- {#if introduction} -->
 
 <style>
@@ -42,13 +53,10 @@
 		grid-column: 1 / -1;
 		height: 86dvh;
 		gap: 16px;
-		background-image: var(--image-url);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
 		overflow: hidden;
 		pointer-events: none;
 	}
+	
 
 	.hero-headline {
 		flex: 1;
@@ -73,7 +81,6 @@
 		pointer-events: auto;
 		max-width: 72ch;
 	}
-
 
 	/* container query */
 	@media (width < 1970px) {
