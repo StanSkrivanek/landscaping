@@ -1,4 +1,6 @@
 <script>
+	import ResponsiveImg from "./ResponsiveImg.svelte";
+
 	let { items = [] } = $props();
 	// Lightbox state
 	let lightboxOpen = $state(false);
@@ -91,7 +93,7 @@
 			<button class="lightbox-close" onclick={closeLightbox} aria-label="Close lightbox">×</button>
 			<button class="lightbox-nav prev" onclick={prevImage} aria-label="Previous image">❮</button>
 			<div class="lightbox-image-container">
-				<img src={items[currentImageIndex].imageUrl} alt="" />
+				<ResponsiveImg image={items[currentImageIndex].imageUrl} alt="" />
 			</div>
 			<button class="lightbox-nav next" onclick={nextImage} aria-label="Next image">❯</button>
 		</div>

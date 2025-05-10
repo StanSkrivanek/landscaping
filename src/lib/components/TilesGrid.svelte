@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/state';
+	import ResponsiveImg from './ResponsiveImg.svelte';
 
 	let { items, rootPath } = $props();
 
@@ -33,7 +34,7 @@
 						>
 					</div>
 				</a>
-				<img src={item.thumb} alt="" />
+				<ResponsiveImg image={item.thumb} alt="" />
 				<div class="tile-content">
 					{#if item.title}
 						<h2>{item.title}</h2>

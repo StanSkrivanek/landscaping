@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { urlFor } from '$lib/utils/sanityImageUrl';
 
-	interface ResponsiveImgAttributes  {
+	interface ResponsiveImgAttributes {
 		image: string; // URL or image object
 		alt: string; // Alt text for the image
 		sizes?: string; // Sizes attribute for responsive images
