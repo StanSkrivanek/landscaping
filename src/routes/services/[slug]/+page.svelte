@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import CtaBlock from '$lib/components/CtaBlock.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Gallery from '$lib/components/Gallery.svelte';
@@ -6,35 +6,37 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
-	console.log('🚀 ~ data:', data);
 
-	const heroImg = $derived(data.service.mainImage);
-	const headline = $derived(data.service.headline);
-	const portableText = $derived(data.service.description); // Optional chaining to avoid errors if content is undefined
-	const item = $derived(data.service);
-	const shorts = $derived(data.service.shortDescription);
-	function getShortsList() {
-		if (!shorts || shorts.length === 0) {
-			return 'No short description available';
-		} else {
-			return shorts
-				.map((/** @type {{ shortList: string; }} */ short) => short.shortList)
-				.join(', ')
-				.toLowerCase();
-		}
-	}
-	const shortDescription = getShortsList();
-	// SEO data
-	const title = $derived(item.title);
-	const description = $derived(item.headline);
+	// Destructure properties from data.service
+	const {
+		mainImage: heroImg,
+		headline,
+		description: portableText,
+		shortDescription: shorts,
+		title
+	} = $derived(data.service);
+
+	// Only use $derived for computed values
+	const shortDescription = $derived(
+		!shorts || shorts.length === 0
+			? 'No short description available'
+			: shorts
+					.map((short: { shortList: string }) => short.shortList)
+					.join(', ')
+					.toLowerCase()
+	);
+
+
 </script>
-
+<!-- META for SEO -->
 <Seo
-	{title}
-	description={`${description}. Our range of ${title} services include ${shortDescription}`}
+	title={title}
+	description={`${headline}. Our range of ${title} services include ${shortDescription}`}
 />
+<!-- HERO SECTION -->
 <Hero {heroImg} {headline} {portableText} />
 
+<!-- CONTENT -->
 <main>
 	{#if data.service.gallery}
 		<Gallery items={data.service.gallery} />
@@ -56,6 +58,7 @@
 	</section>
 	<CtaBlock />
 </main>
+<!-- FOOTER -->
 <Footer />
 
 <style>
@@ -69,7 +72,6 @@
 		.heading-block h2 {
 			font-size: var(--fs-xxxxl);
 			color: var(--clr-accent-dark);
-			/* text-align: center; */
 			text-transform: uppercase;
 			font-family: var(--ff-org);
 			font-style: italic;
@@ -88,7 +90,6 @@
 			font-style: italic;
 			z-index: -1;
 		}
-
 	}
 
 	.all-services {
@@ -105,8 +106,8 @@
 		text-align: center;
 		border-radius: 8px;
 		cursor: pointer;
-		
-		&:hover p{
+
+		&:hover p {
 			background-color: var(--clr-accent-dark);
 		}
 		& p {
