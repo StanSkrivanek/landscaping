@@ -1,21 +1,34 @@
-<script>
+<script lang="ts">
 	import CtaBlock from '$lib/components/CtaBlock.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import ResponsiveImg from '$lib/components/ResponsiveImg.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
+	console.log("🚀 ~ data:", data)
 
 	const heroImg = $derived(data.project.mainImage);
 	// SEO data
 	const title = data.project.title;
 	const location = data.project.location;
 </script>
+
 <!-- SEO -->
 <Seo {title} description={`${title} in ${location}`} />
 
 <!-- Hero Section -->
-<div class="hero" style="--image-url: url({heroImg});"></div>
-
+<!-- <div class="hero" style="--image-url: url({heroImg});"></div> -->
+<div class="hero">
+    {#if heroImg}
+        <ResponsiveImg
+            image={heroImg}
+            alt={`${title} hero background`}
+            class="hero-background-image"        
+            loading="eager"
+            fetchpriority="high"
+        />
+    {/if}
+</div>
 <!-- Content -->
 <main>
 	<div class="grid">
@@ -49,16 +62,17 @@
 				</div>
 			</div>
 			<div class="project-img-1">
-				<img src={data.project.img1} alt="Main view of project" />
+				<!-- <img src={data.project.img1} alt="Main view of project" /> -->
+				<ResponsiveImg image={data.project.img1} alt="preview 1 of project" />
 			</div>
 			<div class="project-img-2">
-				<img src={data.project.img2} alt="Main view of project" />
+				<ResponsiveImg image={data.project.img2} alt="preview 2 of project" />
 			</div>
 			<div class="project-img-3">
-				<img src={data.project.img3} alt="Main view of project" />
+				<ResponsiveImg image={data.project.img3} alt="preview 3 of project" />
 			</div>
 			<div class="project-img-4">
-				<img src={data.project.img4} alt="Main view of project" />
+				<ResponsiveImg image={data.project.img4} alt="preview 4 of project" />
 			</div>
 			<div class="prev-next">
 				<a href="/projects/{data.prev}"><span class="prev">PREV</span></a>
@@ -73,19 +87,16 @@
 <Footer />
 
 <style>
-	.hero {
-		position: relative;
-		display: grid;
-		grid-template-columns: repeat(10, 1fr);
-		grid-column: 1 / -1;
-		height: 86dvh;
-		background-image: var(--image-url);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		overflow: hidden;
-		pointer-events: none;
-	}
+	.hero :global(img.hero-background-image) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: -1; 
+    }
 
 	.project-grid {
 		display: grid;
@@ -158,42 +169,17 @@
 	}
 	.project-img-1 {
 		grid-column: 4 / -1;
-
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
-		}
 	}
 	.project-img-2 {
 		grid-column: 1 / span 7;
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
-		}
 	}
 	.project-img-3 {
 		grid-column: 8 / -1;
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
-		}
 	}
 	.project-img-4 {
 		grid-column: 1/ -1;
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			object-position: center;
-		}
 	}
-	
+
 	.prev-next {
 		grid-column: 1 / -1;
 		display: flex;

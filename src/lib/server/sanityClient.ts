@@ -2,7 +2,10 @@
 // import { env as envPublic } from '$env/dynamic/public';
 // create Sanity client
 import { createClient } from '@sanity/client';
+// import imageUrlBuilder from '@sanity/image-url'; // MOVED: See comment below for details
+// import type { SanityImageSource } from '@sanity/image-url/lib/types/types'; // MOVED: See comment below for details
 
+// CLIENT CONFIGURATION
 const client = createClient({
 	projectId: 'lbo1agd3', // Replace with your Sanity project ID
 	dataset: 'production', // Replace with your Sanity dataset name
@@ -12,6 +15,8 @@ const client = createClient({
 	// withCredentials: true // Uncomment this line if you need to use credentials
 	// ignoreBrowserTokenWarning: true, // Uncomment this line if you need to ignore the warning
 });
+
+
 
 // --------------------------------------------------------
 // 	QUERIES
