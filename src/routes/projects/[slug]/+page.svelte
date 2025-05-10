@@ -193,10 +193,12 @@
 			object-position: center;
 		}
 	}
+	
 	.prev-next {
 		grid-column: 1 / -1;
 		display: flex;
 		justify-content: space-between;
+		height: max-content;
 		/* background-color: black; */
 		a {
 			padding: 2rem 4rem;
