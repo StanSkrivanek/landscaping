@@ -2,36 +2,39 @@
 	import { urlFor } from '$lib/utils/sanityImageUrl';
 
 	interface ResponsiveImgAttributes {
-		image: string; // URL or image object
-		alt: string; // Alt text for the image
-		sizes?: string; // Sizes attribute for responsive images
-		className?: string; // Optional class for styling
-		loading?: 'eager' | 'lazy'; // Loading attribute for image (lazy |eager)
-		fetchpriority?: 'auto' | 'high' | 'low' | null | undefined; // Fetch priority for the image
+		image: string;
+		alt: string;
+		sizes?: string;
+		className?: string;
+		loading?: 'eager' | 'lazy';
+		fetchpriority?: 'auto' | 'high' | 'low' | null | undefined;
 	}
 
-	const {
-		image,
-		className,
-		loading = 'lazy',
-		fetchpriority = 'auto',
-		alt = '',
-		sizes = '(max-width: 600px) 400px, (max-width: 1024px) 800px, (max-width: 1680px) 1440px, 2400px'
-	}: ResponsiveImgAttributes = $props();
+	let props = $props();
 
-	const imageBuilder = (width: number) =>
-		urlFor(image).width(width).auto('format').quality(75).url();
+	const image = $derived(props.image);
+	const className = props.className
+	const loading = props.loading ?? 'lazy';
+	const fetchpriority = props.fetchpriority ?? 'auto';
+	const alt = props.alt ?? '';
+	const sizes = $derived(
+		props.sizes ??
+			'(max-width: 600px) 400px, (max-width: 1024px) 800px, (max-width: 1680px) 1440px, 2400px'
+	);
 
-	const src480 = imageBuilder(480);
-	const src768 = imageBuilder(768);
-	const src1024 = imageBuilder(1024);
-	const src1366 = imageBuilder(1366); // Common laptop width
-	const src1600 = imageBuilder(1600); // Larger laptop / smaller desktop
-	const src1920 = imageBuilder(1920); // Full HD
-	const src2400 = imageBuilder(2400); // Matches previous max, good for large displays
-	const src3840 = imageBuilder(3840); // 4K displays
+	const imageBuilder = (img: string, width: number) =>
+		urlFor(img).width(width).auto('format').quality(75).url();
 
-	const fallback = src1024; // Updated fallback to a common medium size
+	const src480 = $derived(imageBuilder(image, 480));
+	const src768 = $derived(imageBuilder(image, 768));
+	const src1024 = $derived(imageBuilder(image, 1024));
+	const src1366 = $derived(imageBuilder(image, 1366));
+	const src1600 = $derived(imageBuilder(image, 1600));
+	const src1920 = $derived(imageBuilder(image, 1920));
+	const src2400 = $derived(imageBuilder(image, 2400));
+	const src3840 = $derived(imageBuilder(image, 3840));
+
+	const fallback = $derived(src1024);
 </script>
 
 <img
