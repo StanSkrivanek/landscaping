@@ -5,29 +5,24 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const { data } = $props();
-	console.log("🚀 ~ data:", data)
 
-	const heroImg = $derived(data.project.mainImage);
-	// SEO data
-	const title = data.project.title;
-	const location = data.project.location;
+	const { mainImage, location, title, overview, premiseType, img1, img2, img3, img4} = $derived(data.project);
 </script>
 
 <!-- SEO -->
 <Seo {title} description={`${title} in ${location}`} />
 
 <!-- Hero Section -->
-<!-- <div class="hero" style="--image-url: url({heroImg});"></div> -->
 <div class="hero">
-    {#if heroImg}
-        <ResponsiveImg
-            image={heroImg}
-            alt={`${title} hero background`}
-            className="hero-background-image"        
-            loading="eager"
-            fetchpriority="high"
-        />
-    {/if}
+	{#if mainImage}
+		<ResponsiveImg
+			image={mainImage}
+			alt={`${title} hero background`}
+			className="hero-background-image"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	{/if}
 </div>
 <!-- Content -->
 <main>
@@ -35,16 +30,16 @@
 		<div class="project-grid">
 			<div class="project-data__c">
 				<div class="data-title">
-					<h1>{data.project.title}</h1>
+					<h1>{title}</h1>
 				</div>
 				<div class="data-overview">
 					<div class="location">
 						<h2>Location</h2>
-						<p>{data.project.location}</p>
-						<p>{data.project.premiseType.type}</p>
+						<p>{location}</p>
+						<p>{premiseType.type}</p>
 					</div>
 					<h2>Overview</h2>
-					<p>{data.project.overview}</p>
+					<p>{overview}</p>
 				</div>
 				<div class="data-contact">
 					<img
@@ -63,16 +58,16 @@
 			</div>
 			<div class="project-img-1">
 				<!-- <img src={data.project.img1} alt="Main view of project" /> -->
-				<ResponsiveImg image={data.project.img1} alt="preview 1 of project" />
+				<ResponsiveImg image={img1} alt="preview 1 of project" />
 			</div>
 			<div class="project-img-2">
-				<ResponsiveImg image={data.project.img2} alt="preview 2 of project" />
+				<ResponsiveImg image={img2} alt="preview 2 of project" />
 			</div>
 			<div class="project-img-3">
-				<ResponsiveImg image={data.project.img3} alt="preview 3 of project" />
+				<ResponsiveImg image={img3} alt="preview 3 of project" />
 			</div>
 			<div class="project-img-4">
-				<ResponsiveImg image={data.project.img4} alt="preview 4 of project" />
+				<ResponsiveImg image={img4} alt="preview 4 of project" />
 			</div>
 			<div class="prev-next">
 				<a href="/projects/{data.prev}"><span class="prev">PREV</span></a>
@@ -87,7 +82,6 @@
 <Footer />
 
 <style>
-
 	.project-grid {
 		display: grid;
 		grid-template-columns: repeat(10, 1fr);

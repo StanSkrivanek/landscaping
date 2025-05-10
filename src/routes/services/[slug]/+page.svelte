@@ -9,7 +9,7 @@
 
 	// Destructure properties from data.service
 	const {
-		mainImage: heroImg,
+		heroImg,
 		headline,
 		description: portableText,
 		shortDescription: shorts,
