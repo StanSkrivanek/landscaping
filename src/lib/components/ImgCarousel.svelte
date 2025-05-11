@@ -5,7 +5,7 @@
 	// $inspect('🚀 ~ carouselData:', carouselData);
 
 
-	let slider: HTMLDivElement | undefined = $state();
+	let carousel: HTMLDivElement | undefined = $state();
 	// Make autoRunInterval a regular variable, not $state, to avoid potential effect loops
 	let autoRunInterval: ReturnType<typeof setInterval> | undefined;
 	const autoRunDelay = 8000; // ms
@@ -129,7 +129,7 @@
 <section class="section-grid">
 	<div
 		class="slider"
-		bind:this={slider}
+		bind:this={carousel}
 		onmouseenter={pauseAutoRun}
 		onmouseleave={resumeAutoRun}
 		role="region"
@@ -137,8 +137,7 @@
 		aria-label="Image Carousel - Split Effect"
 	>
 		<!-- list item -->
-		{#each carouselData as item, index (item.img ?? index)}
-		{console.log(item, index, currentSlideIndex)}
+		{#each carouselData as item, index (item.img)}
 			<div
 				class={getClass(index)}
 				aria-hidden={index !== currentSlideIndex}
@@ -191,16 +190,16 @@
 					<div class="testimonial-item active">
 						<div class="projectType">{item.projectType}</div>
 						<div class="description">
-							<p>{item.testimonial}</p>
-							<p>{item.name}</p>
+							<p>{item.testimony}</p>
+							<p>{item.title}</p>
 						</div>
 					</div>
 				{:else}
 					<div class="testimonial-item">
 						<div class="projectType">{item.projectType}</div>
 						<div class="description">
-							<p>{item.testimonial}</p>
-							<p>{item.name}</p>
+							<p>{item.testimony}</p>
+							<p>{item.title}</p>
 						</div>
 					</div>
 				{/if}
@@ -383,7 +382,7 @@
 		pointer-events: none; /* Disable interaction immediately */
 	}
 
-	.content .projectType,
+	/* .content .projectType,
 	.testimonial .projectType {
 		font-size: var(--fs-md);
 		line-height: 1.1;
@@ -397,7 +396,7 @@
 			background-color: var(--clr-accent);
 			margin-top: 0.5rem;
 		}
-	}
+	} */
 	.content .description,
 	.testimonial .description {
 		/* font-size: clamp(0.9rem, 2vw, 1.1rem); */
@@ -462,7 +461,7 @@
 	}
 
 	/* Keep existing styles for .projectType and .description within .testimonial */
-	.testimonial .projectType {
+	/* .testimonial .projectType {
 		font-size: var(--fs-md);
 		line-height: 1.1;
 		letter-spacing: 0.05em;
@@ -475,7 +474,7 @@
 			background-color: var(--clr-accent);
 			margin-top: 0.5rem;
 		}
-	}
+	} */
 	.testimonial .description {
 		font-size: var(--fs-xs);
 		line-height: 1.2;
