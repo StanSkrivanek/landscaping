@@ -187,7 +187,7 @@ export const getProjectBySlug = async (slug: string) => {
 
 // testimonials
 export const getAllTestimonials = async () => {
-	const query = `*[_type == "testimonial" && isFeatured == true]{
+	const query = `*[_type == "testimonial" && isFeatured == true] | order(position asc){
 		"id": _id,
 		"title": title,
 		"slug": slug.current,

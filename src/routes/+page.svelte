@@ -9,7 +9,7 @@
 	import TilesGrid from '$lib/components/TilesGrid.svelte';
 
 	const { data } = $props();
-	console.log("🚀 ~ data:", data)
+	// console.log("🚀 ~ data:", data)
 
 	// Extracting data from the props
 	const heroImg = data.hero.mainImage;
@@ -32,7 +32,7 @@
 			<p><span>People says </span> we craft spaces that nurture heart, soul, and mind</p>
 		</div>
 	</section>
-	<ImgCarousel  />
+	<ImgCarousel  carouselData={data.testimonials}/>
 	<Faq />
 	<Cta />
 </main>

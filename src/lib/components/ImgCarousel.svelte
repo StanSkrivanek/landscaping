@@ -1,54 +1,9 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import ResponsiveImg from './ResponsiveImg.svelte';
 	// Import tick if needed for class timing, though setTimeout might suffice
-	// const props = $props();
-	// console.log("🚀 ImgCarousel ~ props:", props)
-	
-	let items = $state([
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/ec0e3c0f8328af7a6f79e07fb4fcbaef996bacb1-1000x688.jpg', // Placeholder - maybe a nice patio shot
-			projectType: 'Patio Installation',
-			testimonial:
-				'We are absolutely thrilled with our new patio! The team was professional, meticulous, and the final result is stunning. It has completely transformed our outdoor living space.',
-			name: 'Mark & Lisa'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/4e0d61ef665efb6c35468b23a2d63d2900941278-1000x688.jpg', // Placeholder - maybe a lush garden
-			projectType: 'Garden Makeover',
-			testimonial:
-				'Our garden was tired and overgrown. They listened to our ideas and created a beautiful, low-maintenance design that we love. Highly recommended for their creativity and hard work.',
-			name: 'Jennifer S.'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/8172da50f52752c1063fe4d9d9dfc6922cba0d86-1000x688.jpg', // Placeholder - maybe a paved driveway
-			projectType: 'Driveway Paving',
-			testimonial:
-				"Excellent job on our new driveway. The quality of the paving is top-notch, and the crew was efficient and tidy. It has significantly improved our home's curb appeal.",
-			name: 'David Chen'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/6a09c087b2ece7598870e6babf9a4543ec00d210-1000x688.jpg', // Placeholder - maybe a neat lawn/hedges
-			projectType: 'Lawn & Hedge Maintenance',
-			testimonial:
-				'Reliable, friendly, and they always leave our property looking immaculate. Taking care of the lawn and hedges used to be a chore, but now we can just enjoy it.',
-			name: 'The Robertsons'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/e2083e991bd66ee6ac1dcce5ce6649ac7cccafed-1440x961.webp', // Placeholder - maybe a retaining wall or steps
-			projectType: 'Retaining Wall & Steps',
-			testimonial:
-				'The new retaining wall and garden steps look fantastic and are built to last. They solved our slope problem beautifully. Very professional from start to finish.',
-			name: 'Brian T.'
-		},
-		{
-			url: 'https://cdn.sanity.io/images/lbo1agd3/production/1816dd630f6ef5c83067daeffa1c65915ec7901a-1440x800.webp', // Placeholder - maybe a full landscape project
-			projectType: 'Full Landscape Design',
-			testimonial:
-				'From the initial design consultation to the final planting, the entire process was seamless. They transformed our blank canvas into a stunning landscape we enjoy every day.',
-			name: 'Sarah W.'
-		}
-	]);
+	let { carouselData } = $props();
+	// $inspect('🚀 ~ carouselData:', carouselData);
+
 
 	let slider: HTMLDivElement | undefined = $state();
 	// Make autoRunInterval a regular variable, not $state, to avoid potential effect loops
@@ -63,14 +18,14 @@
 
 	function triggerSlide(direction: 'next' | 'prev') {
 		// Prevent starting a new animation if one is already running or if there's only one item
-		if (isAnimating || items.length < 2) return;
+		if (isAnimating || carouselData.length < 2) return;
 		isAnimating = true;
 		previousSlideIndex = currentSlideIndex;
 
 		if (direction === 'next') {
-			currentSlideIndex = (currentSlideIndex + 1) % items.length;
+			currentSlideIndex = (currentSlideIndex + 1) % carouselData.length;
 		} else {
-			currentSlideIndex = (currentSlideIndex - 1 + items.length) % items.length;
+			currentSlideIndex = (currentSlideIndex - 1 + carouselData.length) % carouselData.length;
 		}
 
 		// Use setTimeout to reset isAnimating after the CSS animation duration
@@ -182,21 +137,22 @@
 		aria-label="Image Carousel - Split Effect"
 	>
 		<!-- list item -->
-		{#each items as item, index (item.url)}
+		{#each carouselData as item, index (item.img ?? index)}
+		{console.log(item, index, currentSlideIndex)}
 			<div
 				class={getClass(index)}
 				aria-hidden={index !== currentSlideIndex}
 				aria-roledescription="slide"
-				style={index === previousSlideIndex ? `--bg-image: url(${item.url})` : ''}
+				style={index === previousSlideIndex ? `--bg-image: url(${item.img})` : ''}
 			>
 				<!-- Image is used as fallback and for dimensions, but hidden during split -->
-				<img src={item.url} alt={item.projectType} />
+				<img src={item.img} alt="" />
 				{#if innerWidth >= 768}
 					<div class="content">
-						<div class="projectType">{item.projectType}</div>
+						<!-- <div class="projectType">{item.projectType}</div> -->
 						<div class="description">
-							<p>{item.testimonial}</p>
-							<p>{item.name}</p>
+							<p>{item.testimony}</p>
+							<p>{item.title}</p>
 						</div>
 					</div>
 				{/if}
@@ -230,7 +186,7 @@
 	</div>
 	{#if innerWidth < 768}
 		<div class="testimonial">
-			{#each items as item, index (item.url)}
+			{#each carouselData as item, index (item.url ?? index)}
 				{#if index === currentSlideIndex}
 					<div class="testimonial-item active">
 						<div class="projectType">{item.projectType}</div>
