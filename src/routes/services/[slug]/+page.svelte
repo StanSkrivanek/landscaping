@@ -43,7 +43,7 @@
 	{/if}
 	<section>
 		<div class="heading-block">
-			<h2>SERVICES</h2>
+			<h2><span>Our</span>Services</h2>
 		</div>
 		<div class="all-services">
 			{#each data.allServices as service}
@@ -70,26 +70,44 @@
 			margin-bottom: 2rem;
 		}
 		.heading-block h2 {
+			position:relative;
 			font-size: var(--fs-xxxxl);
 			color: var(--clr-accent-dark);
-			text-transform: uppercase;
+			/* text-transform: uppercase; */
 			font-family: var(--ff-org);
 			font-style: italic;
+			& span {
+				position: absolute;
+				top: calc(-28% - 1rem);
+				left: 0;
+				width: 100%;
+				pointer-events: none;
+				color: var(--clr-orange);
+				font-size: var(--fs-xxl);
+				font-style: italic;
+				z-index: -1;
+			}
+		}
+
+
+		/* & h2 {
 			position: relative;
+			grid-column: 1 / -1;
+			font-size: var(--fs-xxxxl);
+			margin-bottom: 1rem;
+			& span {
+				position: absolute;
+				top: calc(-28% - 1rem);
+				left: 0;
+				width: 100%;
+				pointer-events: none;
+				color: var(--clr-orange);
+				font-size: var(--fs-xxl);
+				font-style: italic;
+				z-index: -1;
+			}
 		}
-		.heading-block h2:before {
-			content: 'Our';
-			position: absolute;
-			top: -1rem;
-			left: 0%;
-			width: 100%;
-			pointer-events: none;
-			color: var(--clr-orange);
-			font-size: var(--fs-xl);
-			font-family: var(--ff-thin);
-			font-style: italic;
-			z-index: -1;
-		}
+	} */
 	}
 
 	.all-services {

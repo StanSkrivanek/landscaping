@@ -3,16 +3,15 @@
 	import ResponsiveImg from './ResponsiveImg.svelte';
 
 	let { items, rootPath } = $props();
-
 </script>
 
 <section class="section-grid">
 	{#if page.url.pathname === '/services'}
-	<h2><span>Services</span> we offer</h2>
-	{:else if page.url.pathname === '/projects'}
-		<h2>our <span>Portfolio</span></h2>
-	{:else}
 		<h2><span>Services</span> we offer</h2>
+	{:else if page.url.pathname === '/projects'}
+		<h2><span>Our</span> Portfolio</h2>
+	{:else}
+		<h2><span class="upper-text">Services</span> we offer</h2>
 	{/if}
 	<div class="tiles-grid">
 		{#each items as item}
@@ -57,7 +56,6 @@
 				<p>{`check our comprehensive range of ${rootPath}`}</p>
 				<!-- <p>all services</p> -->
 				<a href={rootPath} aria-label={`Go to ${rootPath}`}>
-
 					<div class="arrow-icon">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -84,12 +82,21 @@
 		margin-top: 4rem;
 
 		& h2 {
+			position: relative;
 			grid-column: 1 / -1;
-			font-size: var(--fs-xxl);
+			font-size: var(--fs-xxxxl);
+			color: var(--clr-accent-dark);
+			font-style: italic;
 			margin-bottom: 1rem;
 			& span {
-				color: var(--clr-accent);
-				letter-spacing: 0.08rem;
+				position: absolute;
+				top: calc(-28% - 1rem);
+				left: 0;
+				width: 100%;
+				pointer-events: none;
+				color: var(--clr-orange);
+				font-size: var(--fs-xxl);
+				z-index: -1;
 			}
 		}
 	}
