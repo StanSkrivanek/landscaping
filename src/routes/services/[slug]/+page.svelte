@@ -25,12 +25,11 @@
 					.join(', ')
 					.toLowerCase()
 	);
-
-
 </script>
+
 <!-- META for SEO -->
 <Seo
-	title={title}
+	{title}
 	description={`${headline}. Our range of ${title} services include ${shortDescription}`}
 />
 <!-- HERO SECTION -->
@@ -63,14 +62,17 @@
 
 <style>
 	section {
-		.heading-block {
+		/* display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem; */
+		& .heading-block {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			margin-bottom: 2rem;
 		}
-		.heading-block h2 {
-			position:relative;
+		& .heading-block h2 {
+			position: relative;
 			font-size: var(--fs-xxxxl);
 			color: var(--clr-accent-dark);
 			/* text-transform: uppercase; */
@@ -88,7 +90,6 @@
 				z-index: -1;
 			}
 		}
-
 
 		/* & h2 {
 			position: relative;
@@ -111,7 +112,7 @@
 	}
 
 	.all-services {
-		grid-column: 1 / -1;
+		/* grid-column: 8 / -2; */
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
 		gap: 8px;

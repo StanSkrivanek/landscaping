@@ -27,6 +27,12 @@
 		justify-content: center;
 		width: 75%;
 		margin: 0 auto;
+		& img{
+			width: 100%;
+			height: auto;
+			max-width: 100%;
+
+		}
 	}
 	.cta-content {
 		grid-column: 6 / span 4;

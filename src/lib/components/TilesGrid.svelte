@@ -7,11 +7,11 @@
 
 <section class="section-grid">
 	{#if page.url.pathname === '/services'}
-		<h2><span>Services</span> we offer</h2>
+		<h2><span>Services</span> we provide</h2>
 	{:else if page.url.pathname === '/projects'}
 		<h2><span>Our</span> Portfolio</h2>
 	{:else}
-		<h2><span class="upper-text">Services</span> we offer</h2>
+		<h2><span class="upper-text">Services</span> we provide</h2>
 	{/if}
 	<div class="tiles-grid">
 		{#each items as item}
@@ -36,9 +36,9 @@
 				<ResponsiveImg image={item.thumb} alt="" />
 				<div class="tile-content">
 					{#if item.title}
-						<h2>{item.title}</h2>
+						<h3>{item.title}</h3>
 					{:else}
-						<h2>{item.location}</h2>
+						<h3>{item.location}</h3>
 					{/if}
 					{#if item.shorts}
 						{#each item.shorts as short}
@@ -86,7 +86,7 @@
 			grid-column: 1 / -1;
 			font-size: var(--fs-xxxxl);
 			color: var(--clr-accent-dark);
-			font-style: italic;
+			/* font-style: italic; */
 			margin-bottom: 1rem;
 			& span {
 				position: absolute;
@@ -127,11 +127,11 @@
 		}
 	}
 
-	.tile-card img {
+	/* .tile-card img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-	}
+	} */
 
 	/* Card sizes based on the pattern */
 	/* First row and odd rows follow 6-4 pattern */
@@ -192,12 +192,12 @@
 		background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
 	}
 
-	.tile-content h2 {
+	.tile-content h3 {
 		font-size: var(--fs-lg);
 		margin-bottom: 10px;
 		color: var(--clr-bg);
 		width: 20ch;
-		text-shadow: 6px 4px 4px rgba(0, 0, 0, 0.5);
+		text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.5);
 	}
 
 	.tile-content p {
