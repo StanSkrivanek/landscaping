@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	// Import tick if needed for class timing, though setTimeout might suffice
+	import ResponsiveImg from './ResponsiveImg.svelte';
 	let { carouselData } = $props();
 	// $inspect('🚀 ~ carouselData:', carouselData);
 
@@ -145,7 +145,7 @@
 				style={index === previousSlideIndex ? `--bg-image: url(${item.img})` : ''}
 			>
 				<!-- Image is used as fallback and for dimensions, but hidden during split -->
-				<img src={item.img} alt="" />
+				<ResponsiveImg image={item.img} alt="" />
 				{#if innerWidth >= 768}
 					<div class="content">
 						<!-- <div class="projectType">{item.projectType}</div> -->

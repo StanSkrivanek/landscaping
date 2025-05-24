@@ -9,7 +9,7 @@
 <footer class="section-grid">
 	<div class="content__c">
 		<div class="company-info">
-			<img src="/img/abr-logo-txt-orange.svg" alt="ABR Landscaping logo" />
+			<img src="/svg/abr-logo-txt-orange.svg" alt="ABR Landscaping logo" />
 
 			<div>
 				<p>

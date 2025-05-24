@@ -13,7 +13,7 @@
 	<div class="logo">
 		<a href="/">
 			<img
-				src="/img/header-logo-orange-white.svg"
+				src="/svg/header-logo-orange-white.svg"
 				alt="ABR Landscaping logo"
 			/>
 		</a>
