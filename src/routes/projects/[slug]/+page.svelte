@@ -43,7 +43,7 @@
 				</div>
 				<div class="data-contact">
 					<img
-						src="/img/abr-logo-txt-orange.svg"
+						src="/svg/abr-logo-txt-orange.svg"
 						alt="ABR Landscaping logo"
 					/>
 					<div>
