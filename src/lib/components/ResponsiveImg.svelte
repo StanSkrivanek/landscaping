@@ -22,17 +22,17 @@
 			'(max-width: 600px) 400px, (max-width: 1024px) 800px, (max-width: 1680px) 1440px, 2400px'
 	);
 
-	const imageBuilder = (img: string, width: number) =>
+	const imgUrlBuildFn = (img: string, width: number) =>
 		urlFor(img).width(width).auto('format').quality(75).url();
 
-	const src480 = $derived(imageBuilder(image, 480));
-	const src768 = $derived(imageBuilder(image, 768));
-	const src1024 = $derived(imageBuilder(image, 1024));
-	const src1366 = $derived(imageBuilder(image, 1366));
-	const src1600 = $derived(imageBuilder(image, 1600));
-	const src1920 = $derived(imageBuilder(image, 1920));
-	const src2400 = $derived(imageBuilder(image, 2400));
-	const src3840 = $derived(imageBuilder(image, 3840));
+	const src480 = $derived(imgUrlBuildFn(image, 480));
+	const src768 = $derived(imgUrlBuildFn(image, 768));
+	const src1024 = $derived(imgUrlBuildFn(image, 1024));
+	const src1366 = $derived(imgUrlBuildFn(image, 1366));
+	const src1600 = $derived(imgUrlBuildFn(image, 1600));
+	const src1920 = $derived(imgUrlBuildFn(image, 1920));
+	const src2400 = $derived(imgUrlBuildFn(image, 2400));
+	const src3840 = $derived(imgUrlBuildFn(image, 3840));
 
 	const fallback = $derived(src1024);
 </script>

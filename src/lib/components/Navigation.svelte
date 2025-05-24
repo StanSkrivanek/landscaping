@@ -13,8 +13,8 @@
 	<div class="logo">
 		<a href="/">
 			<img
-				src="https://cdn.sanity.io/images/lbo1agd3/production/00c6b0ec3a7febb52fdf1acac9d35376fc2226c5-368x97.svg"
-				alt="Logo"
+				src="/img/header-logo-orange-white.svg"
+				alt="ABR Landscaping logo"
 			/>
 		</a>
 	</div>
@@ -66,7 +66,7 @@
 	}
 
 	.logo {
-		width: 160px;
+		width: 120px;
 	}
 	/* .nav {
 		display: flex;

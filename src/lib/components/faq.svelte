@@ -66,7 +66,7 @@
 
 <section class="section-grid">
 	<div class="faq-content">
-		<h2>Common <span>Questions</span></h2>
+		<h2><span>Common</span> Questions</h2>
 		<!-- <h2>Frequently Asked <span>Questions</span></h2> -->
 
 		{#each faqs as faq, i}
@@ -88,7 +88,7 @@
 						role="region"
 						aria-labelledby="faq-question-{i}"
 						id="faq-answer-{i}"
-						transition:slide|local={{ duration: 200 }}
+						transition:slide|local={{ duration: 300 }}
 					>
 						<p>{faq.answer}</p>
 					</div>
@@ -127,10 +127,17 @@
 		font-size: var(--fs-xxxl);
 		margin-bottom: 2rem;
 		letter-spacing: 0.05em;
+		max-width: 10ch;
+		line-height: .75;
+		color: var(--clr-orange); /* Teal color */
 	}
-
+	
 	.section-grid h2 span {
-		color: var(--clr-accent); /* Teal color */
+		font-size: var(--fs-xxl);
+		color: var(--clr-accent-mid);
+		
+		font-style: italic;
+		 /* Teal color */
 	}
 
 	.faq-item {
@@ -154,26 +161,24 @@
 		text-align: left;
 		background: none;
 		border: none;
-		transition: color 0.2s ease;
+		transition: color 0.2s ease-in-out;
 	}
 
 	.faq-question:hover,
 	.faq-question:focus {
-		color: var(--clr-accent-mid); /* Teal on hover/focus */
+		color: var(--clr-orange); /* Teal on hover/focus */
 		outline: none; /* Remove default focus outline if needed */
 	}
 
 	.faq-question .icon {
-		font-size: 1.8em; /* Larger icon */
+		font-size: 1.8em;
 		line-height: 1;
 		color: var(--clr-accent-mid); /* Teal icon */
-		transition: transform 0.2s ease-in-out;
+		transition: transform 0.3s ease-in-out;
 	}
 
 	.faq-answer {
 		padding: 0 0 1.5rem 0; /* Padding below question */
-
-		/* color: red; Slightly lighter text for answer */
 	}
 
 	.faq-answer p {
@@ -207,7 +212,7 @@
 
 		.section-grid h2 {
 			/* font-size: 2rem; */
-			text-align: center;
+			/* text-align: center; */
 		}
 
 		.faq-question {

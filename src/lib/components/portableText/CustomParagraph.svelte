@@ -30,6 +30,6 @@
 
 <style>
 	p {
-		margin-bottom: 1rem;
+		margin-bottom: 1.6rem;
 	}
 </style>

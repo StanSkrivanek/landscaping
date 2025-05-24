@@ -74,17 +74,17 @@
 		& .heading-block h2 {
 			position: relative;
 			font-size: var(--fs-xxxxl);
-			color: var(--clr-accent-dark);
+			color: var(--clr-orange);
 			/* text-transform: uppercase; */
 			font-family: var(--ff-org);
-			font-style: italic;
+			/* font-style: italic; */
 			& span {
 				position: absolute;
 				top: calc(-28% - 1rem);
 				left: 0;
 				width: 100%;
 				pointer-events: none;
-				color: var(--clr-orange);
+				color: var(--clr-accent-dark);
 				font-size: var(--fs-xxl);
 				font-style: italic;
 				z-index: -1;
@@ -127,7 +127,7 @@
 		cursor: pointer;
 
 		&:hover p {
-			background-color: var(--clr-accent-dark);
+			background-color: var(--clr-orange);
 		}
 		& p {
 			position: absolute;

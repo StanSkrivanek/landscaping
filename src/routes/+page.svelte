@@ -26,7 +26,7 @@
 
 <main>
 	<GlobIntro />
-	<TilesGrid {items} rootPath="/services" />
+	<TilesGrid {items} rootPath="services" />
 	<section class="section-grid">
 		<div class="text-block">
 			<p><span>People says </span> we craft spaces that nurture heart, soul, and mind</p>

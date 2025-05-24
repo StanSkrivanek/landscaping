@@ -43,8 +43,8 @@
 				</div>
 				<div class="data-contact">
 					<img
-						src="https://cdn.sanity.io/images/lbo1agd3/production/f734f6cb6c51a27b41bea4ab46a72997e3d31720-368x97.svg"
-						alt=""
+						src="/img/abr-logo-txt-orange.svg"
+						alt="ABR Landscaping logo"
 					/>
 					<div>
 						<p>

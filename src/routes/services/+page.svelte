@@ -19,7 +19,7 @@
 <Hero {heroImg} {headline} {portableText} />
 
 <main>
-	<TilesGrid {items} rootPath="/services" />
+	<TilesGrid {items} rootPath="services" />
 	<CtaBlock />
 </main>
 <Footer />

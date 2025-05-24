@@ -9,10 +9,7 @@
 <footer class="section-grid">
 	<div class="content__c">
 		<div class="company-info">
-			<img
-				src="https://cdn.sanity.io/images/lbo1agd3/production/643bf99e2bf633a8ee3567dffcc06a1386845f96-200x74.svg"
-				alt="Logo"
-			/>
+			<img src="/img/abr-logo-txt-orange.svg" alt="ABR Landscaping logo" />
 
 			<div>
 				<p>
@@ -129,6 +126,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+		& img {
+			width: 300px;
+		}
 		@media (width < 768px) {
 			align-items: center;
 			text-align: center;

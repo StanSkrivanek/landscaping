@@ -85,7 +85,7 @@
 			position: relative;
 			grid-column: 1 / -1;
 			font-size: var(--fs-xxxxl);
-			color: var(--clr-accent-dark);
+			color: var(--clr-orange);
 			/* font-style: italic; */
 			margin-bottom: 1rem;
 			& span {
@@ -94,8 +94,9 @@
 				left: 0;
 				width: 100%;
 				pointer-events: none;
-				color: var(--clr-orange);
+				color: var(--clr-accent-dark);
 				font-size: var(--fs-xxl);
+				font-style: italic;
 				z-index: -1;
 			}
 		}

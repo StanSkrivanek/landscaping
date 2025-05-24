@@ -212,7 +212,7 @@
 	:root {
 		--speed: 1000ms; /* Animation duration - match JS const */
 		--content-anim-duration: 800ms; /* Duration for content fade/slide in */
-		--content-entry-delay: 1600ms; /* Delay after split before content animates in */
+		--content-entry-delay: 10ms; /* Delay after split before content animates in */
 	}
 
 	.slider {

@@ -16,14 +16,11 @@
 
 		<div class="contact-info">
 			<h2>Contact Us</h2>
-			<!-- <p>
-				We are here to help you with all your landscaping needs. Whether you have a question, need a
-				quote, or want to discuss your project, feel free to reach out to us.
-			</p> -->
 			<p>
-				Whether it’s to discuss your next project, learn more about our services, call us or drop us
-				a line and get the conversation started.
+				We are here to help you with all your landscaping needs. Whether you have a question, need a
+				quote, or want to discuss your visions, feel free to reach out to us.
 			</p>
+			
 			<p>
 				<strong>Email:</strong> info@example.com
 			</p>
