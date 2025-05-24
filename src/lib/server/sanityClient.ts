@@ -9,7 +9,7 @@ import { createClient } from '@sanity/client';
 const client = createClient({
 	projectId: 'lbo1agd3', // Replace with your Sanity project ID
 	dataset: 'production', // Replace with your Sanity dataset name
-	// apiVersion: envPublic.PUBLIC_SANITY_API_VERSION, //  can be public - use a UTC date string
+	 apiVersion: '2025-04-19', //  can be public - use a UTC date string
 	useCdn: true // `true` for faster, cached responses
 	// token: envPrivate.SANITY_TOKEN // Uncomment this line if you need to use a token for authentication
 	// withCredentials: true // Uncomment this line if you need to use credentials
