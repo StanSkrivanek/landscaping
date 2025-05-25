@@ -20,17 +20,18 @@
 				We are here to help you with all your landscaping needs. Whether you have a question, need a
 				quote, or want to discuss your visions, feel free to reach out to us.
 			</p>
-			
-			<p>
-				<strong>Email:</strong> info@example.com
-			</p>
-			<p>
-				<strong>Phone:</strong> (123) 456-7890
-			</p>
-            <div class="thanks">
-                <p>Thank you for your interest</p>
-                <!-- <p>We will get back to you as soon as possible.</p> -->
-            </div>
+			<div>
+				<p>
+					<strong>Email:</strong> info@example.com
+				</p>
+				<p>
+					<strong>Phone:</strong> (123) 456-7890
+				</p>
+			</div>
+			<div class="thanks">
+				<p>Thank you for your interest</p>
+				<!-- <p>We will get back to you as soon as possible.</p> -->
+			</div>
 			<!-- <div class="contact-form">
 				<h2>Get in Touch</h2>
 				<form action="/submit" method="POST">
@@ -78,34 +79,36 @@
 	}
 
 	.contact-info {
-		/* max-width: 400px; */
-		/* margin-left: 0; */
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
 	}
 
 	.contact-info h2 {
 		font-size: var(--fs-xxxxl);
 		margin-bottom: 10px;
+		color: var(--clr-accent-dark);
 	}
 
 	.contact-info p {
-		max-width: 64ch;
-        margin-bottom: 1rem;
-        font-size: var(--fs-xl);
-        line-height: 1;
+		max-width: 40ch;
+		margin-bottom: 1rem;
+		font-size: var(--fs-lg);
+		line-height: 1;
 	}
-.thanks {
-        grid-column: 2/3;
-        margin-top: 20px;
-    }
-    .thanks p {
-        /* margin-bottom: 10px; */
-        font-size: var(--fs-xxxxxl);
-        /* color: var(--clr-accent-dark); */
-        line-height: .9;
-        font-family: var(--ff-org);
-        font-style: italic;
-        color: var(--clr-orange);
-    }
+	.thanks {
+		grid-column: 2/3;
+		margin-top: 20px;
+	}
+	.thanks p {
+		/* margin-bottom: 10px; */
+		font-size: var(--fs-xxxxxl);
+		/* color: var(--clr-accent-dark); */
+		line-height: 0.9;
+		font-family: var(--ff-org);
+		font-style: italic;
+		color: var(--clr-orange);
+	}
 	/* .contact-form {
 		grid-column: 2/3;
 		margin-top: 20px;
@@ -130,7 +133,7 @@
 		border-radius: 4px;
 	} */
 
-    /* .contact-form button {
+	/* .contact-form button {
 		padding: 10px 20px;
 		background-color: #28a745;
 		color: white;
@@ -139,7 +142,7 @@
 		cursor: pointer;
 	} */
 
-    /* .contact-form button:hover {
+	/* .contact-form button:hover {
 		background-color: #218838;
 	} */
 	@media (max-width: 768px) {

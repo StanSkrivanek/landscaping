@@ -74,7 +74,7 @@
 		& .heading-block h2 {
 			position: relative;
 			font-size: var(--fs-xxxxl);
-			color: var(--clr-orange);
+			color: var(--clr-accent);
 			/* text-transform: uppercase; */
 			font-family: var(--ff-org);
 			/* font-style: italic; */
@@ -84,7 +84,8 @@
 				left: 0;
 				width: 100%;
 				pointer-events: none;
-				color: var(--clr-accent-dark);
+				color: var(--clr-orange);
+				font-family: var(--ff-light);
 				font-size: var(--fs-xxl);
 				font-style: italic;
 				z-index: -1;

@@ -54,7 +54,8 @@
 			font-size: var(--fs-xxl);
 			margin-bottom: 2rem;
 			max-width: 20ch;
-
+			color: var(--clr-accent-dark);
+			
 			& span {
 				color: var(--clr-accent);
 			}

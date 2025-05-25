@@ -7,11 +7,11 @@
 
 <section class="section-grid">
 	{#if page.url.pathname === '/services'}
-		<h2><span>Services</span> we provide</h2>
+	<h2><span class="upper-text">Provided</span> Services</h2>
 	{:else if page.url.pathname === '/projects'}
 		<h2><span>Our</span> Portfolio</h2>
 	{:else}
-		<h2><span class="upper-text">Services</span> we provide</h2>
+		<h2><span class="upper-text">Provided</span> Services</h2>
 	{/if}
 	<div class="tiles-grid">
 		{#each items as item}
@@ -85,7 +85,7 @@
 			position: relative;
 			grid-column: 1 / -1;
 			font-size: var(--fs-xxxxl);
-			color: var(--clr-orange);
+			color: var(--clr-accent);
 			/* font-style: italic; */
 			margin-bottom: 1rem;
 			& span {
@@ -94,8 +94,9 @@
 				left: 0;
 				width: 100%;
 				pointer-events: none;
-				color: var(--clr-accent-dark);
-				font-size: var(--fs-xxl);
+				font-family: var(--ff-light);
+				color: var(--clr-orange);
+				font-size: var(--fs-xl);
 				font-style: italic;
 				z-index: -1;
 			}
