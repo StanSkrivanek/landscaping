@@ -13,7 +13,7 @@
 	<div class="logo">
 		<a href="/">
 			<img
-				src="/svg/header-logo-orange-white.svg"
+				src="/svg/abr-logo-full-white.svg"
 				alt="ABR Landscaping logo"
 			/>
 		</a>
@@ -61,7 +61,7 @@
 		padding-block: 1.4rem;
 		align-items: center;
 		justify-content: space-between;
-		background-color: rgba(0, 0, 0, 0.35);
+		background-color: rgba(0, 0, 0, 0.55);
 		pointer-events: auto;
 	}
 
