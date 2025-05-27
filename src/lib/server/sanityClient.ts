@@ -9,7 +9,7 @@ import { createClient } from '@sanity/client';
 const client = createClient({
 	projectId: 'lbo1agd3', // Replace with your Sanity project ID
 	dataset: 'production', // Replace with your Sanity dataset name
-	 apiVersion: '2025-04-19', //  can be public - use a UTC date string
+	apiVersion: '2025-04-19', //  can be public - use a UTC date string
 	useCdn: true // `true` for faster, cached responses
 	// token: envPrivate.SANITY_TOKEN // Uncomment this line if you need to use a token for authentication
 	// withCredentials: true // Uncomment this line if you need to use credentials
@@ -43,6 +43,64 @@ export const getHero = async (page: string) => {
 	}
 };
 
+// Terms
+// export const getTerms = async () => {
+// 	const query = `*[_type == "page" && slug.current == "terms"][0]{
+// 		"id": _id,
+// 			"title": title,
+// 			"slug": slug.current,
+// 			"updatedAt": _updatedAt,
+// 			"content": content[]{
+// 				...
+// 			}
+// 	}`;
+// 	try {
+// 		const terms = await client.fetch(query);
+// 		return terms;
+// 	} catch (err) {
+// 		console.error('Error fetching recipes:', err);
+// 		return [];
+// 	}
+// };
+
+// privacy
+// export const getPrivacy = async () => {
+// 	const query = `*[_type == "page" && slug.current == "privacy"][0]{
+// 		"id": _id,
+// 			"title": title,
+// 			"slug": slug.current,
+// 			"updatedAt": _updatedAt,
+// 			"content": content[]{
+// 				...
+// 			}
+// 	}`;
+// 	try {
+// 		const privacy = await client.fetch(query);
+// 		return privacy;
+// 	} catch (err) {
+// 		console.error('Error fetching recipes:', err);
+// 		return [];
+// 	}
+// };
+
+export const getPage = async (slug: string) => {
+	const query = `*[_type == "page" && slug.current == $slug][0]{
+			"id": _id,
+			"title": title,
+			"slug": slug.current,
+			"updatedAt": _updatedAt,
+			"content": content[]{
+				...
+			}
+	}`;
+	try {
+		const privacy = await client.fetch(query, {slug});
+		return privacy;
+	} catch (err) {
+		console.error('Error fetching recipes:', err);
+		return [];
+	}
+};
 // --- SERVICES ---
 
 // get all projects

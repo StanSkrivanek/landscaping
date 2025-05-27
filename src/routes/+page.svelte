@@ -1,6 +1,6 @@
 <script>
 	import Cta from '$lib/components/CtaBlock.svelte';
-	import Faq from '$lib/components/Faq.svelte';
+	import Faq from '$lib/components/faq.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import GlobIntro from '$lib/components/GlobIntro.svelte';
 	import Hero from '$lib/components/Hero.svelte';

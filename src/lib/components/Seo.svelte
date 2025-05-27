@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/state'; // Using your existing import for page store
-	let { title, description } = $props();
+	let { title, description, siteName = 'ABR Landscaping' } = $props();
 
 	// Reactive derived values for URLs and names
-	const siteName = 'ABR Landscaping';
+	 ;
 	const currentUrl = $derived(page.url.href);
 	let heroImg = $derived(page.data?.hero?.mainImage || '/img/abr-landscaping-hero.webp'); // Fallback to default if not provided
 	const organizationLogoUrl = $derived(`${page.url.origin}/abr-favicon.png`); // Assuming abr-favicon.png is in static

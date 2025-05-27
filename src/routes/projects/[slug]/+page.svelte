@@ -10,7 +10,7 @@
 </script>
 
 <!-- SEO -->
-<Seo {title} description={`${title} in ${location}`} />
+<Seo {title} description={`${title} in ${location}`} siteName="ABR Landscaping" />
 
 <!-- Hero Section -->
 <div class="hero">

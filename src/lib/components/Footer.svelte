@@ -44,9 +44,9 @@
 				<h3>terms</h3>
 				<div>
 					<ul>
-						<li><a href="/terms">Terms of Service</a></li>
+						<li><a href="/services-tc">Terms & Conditions</a></li>
 						<li><a href="/privacy">Privacy Policy</a></li>
-						<li><a href="/cookies">Cookie Policy</a></li>
+						<li><a href="/terms">Terms of Use</a></li>
 					</ul>
 				</div>
 			</div>

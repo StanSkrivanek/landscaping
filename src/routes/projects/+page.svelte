@@ -17,7 +17,7 @@
 	const description = data.hero.headline;
 </script>
 
-<Seo {title} description={`Selection of our projects - ${description} `} />
+<Seo {title} description={`Selection of our projects - ${description} `} siteName="ABR Landscaping" />
 <Hero {heroImg} {headline} {portableText} />
 
 <main>

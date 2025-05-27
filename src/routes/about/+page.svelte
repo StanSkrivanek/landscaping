@@ -8,6 +8,7 @@
 <Seo
 	title="About Us"
 	description="Landscaping services in Cork county that nurture heart, soul, and mind."
+	siteName="ABR Landscaping"
 />
 <main>
 	<section>

@@ -31,6 +31,7 @@
 <Seo
 	{title}
 	description={`${headline}. Our range of ${title} services include ${shortDescription}`}
+	siteName="ABR Landscaping"
 />
 <!-- HERO SECTION -->
 <Hero {heroImg} {headline} {portableText} />

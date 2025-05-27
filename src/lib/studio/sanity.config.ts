@@ -24,7 +24,8 @@ export default defineConfig({
 						S.documentTypeListItem('faq').title('FAQs'),
 						S.documentTypeListItem('testimonial').title('Testimonials'),
 						S.divider(),
-						S.documentTypeListItem('media.tag').title('Tags')
+						S.documentTypeListItem('media.tag').title('Tags'),
+						S.documentTypeListItem('page').title('Pages')
 					])
 		}),
 		visionTool(),
