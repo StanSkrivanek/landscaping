@@ -6,7 +6,9 @@
 
 	const { data } = $props();
 
-	const { mainImage, location, title, overview, premiseType, img1, img2, img3, img4} = $derived(data.project);
+	const { mainImage, location, title, overview, premiseType, img1, img2, img3, img4 } = $derived(
+		data.project
+	);
 </script>
 
 <!-- SEO -->
@@ -42,16 +44,13 @@
 					<p>{overview}</p>
 				</div>
 				<div class="data-contact">
-					<img
-						src="/svg/abr-logo-txt-orange.svg"
-						alt="ABR Landscaping logo"
-					/>
+					<img src="/svg/abr-logo-txt-orange.svg" alt="ABR Landscaping logo" />
 					<div>
 						<p>
 							<a href="mailto:example@example.com">info@abrlandscaping.com</a>
 						</p>
 						<p>
-							<a href="tel:+123456789">+353 86 896 6575</a>
+							<a href="tel:+123456789">+353 80 124 5678</a>
 						</p>
 					</div>
 				</div>
