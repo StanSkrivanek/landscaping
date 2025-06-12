@@ -16,7 +16,7 @@
 					<a href="mailto:example@example.com">info@abrlandscaping.com</a>
 				</p>
 				<p>
-					<a href="tel:+123456789">+353 86 896 6575</a>
+					<a href="tel:+123456789">+353 088 123 4567</a>
 				</p>
 			</div>
 			<div class="social">
